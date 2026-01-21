@@ -17,12 +17,12 @@ import os
 from pathlib import Path
 from typing import List, Optional
 
-from langchain.text_splitter import RecursiveCharacterTextSplitter
+from dotenv import load_dotenv
+from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings, ChatOpenAI
 from langchain_community.document_loaders import PyPDFLoader
 from langchain_community.vectorstores import Chroma
-from langchain.chains import RetrievalQA
-from langchain.prompts import PromptTemplate
+from langchain_core.prompts import ChatPromptTemplate
 
 
 # RAG Prompt Template
@@ -87,14 +87,13 @@ class RAGPipeline:
         self.top_k = top_k
 
         # Initialize components
+        # API key will be read from environment (OPENAI_API_KEY)
         self.embeddings = OpenAIEmbeddings(
-            openai_api_key=self.api_key,
             model=embedding_model
         )
 
         self.llm = ChatOpenAI(
-            openai_api_key=self.api_key,
-            model_name=model,
+            model=model,
             temperature=temperature
         )
 
@@ -105,7 +104,7 @@ class RAGPipeline:
         )
 
         self.vectorstore = None
-        self.qa_chain = None
+        self.retriever = None
 
         print(f"[OK] RAG Pipeline initialized")
         print(f"  Model: {model}")
@@ -160,19 +159,8 @@ class RAGPipeline:
             collection_name="financial_docs"
         )
 
-        # Create QA chain
-        prompt = PromptTemplate(
-            template=RAG_PROMPT_TEMPLATE,
-            input_variables=["context", "question"]
-        )
-
-        self.qa_chain = RetrievalQA.from_chain_type(
-            llm=self.llm,
-            chain_type="stuff",
-            retriever=self.vectorstore.as_retriever(search_kwargs={"k": self.top_k}),
-            chain_type_kwargs={"prompt": prompt},
-            return_source_documents=True
-        )
+        # Create retriever
+        self.retriever = self.vectorstore.as_retriever(search_kwargs={"k": self.top_k})
 
         print(f"[OK] Vector store ready with {len(all_chunks)} chunk(s)")
         return len(all_chunks)
@@ -187,18 +175,26 @@ class RAGPipeline:
         Returns:
             Dict with 'answer' and 'source_documents'
         """
-        if not self.qa_chain:
+        if not self.retriever:
             raise RuntimeError("No documents loaded. Call load_documents() first.")
 
         print(f"\nQuery: {question}")
         print("Retrieving relevant context...")
 
-        result = self.qa_chain({"query": question})
-
-        answer = result["result"]
-        sources = result["source_documents"]
+        # Retrieve relevant documents
+        sources = self.retriever.invoke(question)
 
         print(f"\nRetrieved {len(sources)} chunk(s)")
+
+        # Format context from retrieved documents
+        context = "\n\n".join([doc.page_content for doc in sources])
+
+        # Create prompt with context
+        prompt_text = RAG_PROMPT_TEMPLATE.format(context=context, question=question)
+
+        # Generate answer
+        answer = self.llm.invoke(prompt_text).content
+
         print(f"\nAnswer:\n{answer}")
 
         return {
@@ -242,13 +238,16 @@ def create_rag_pipeline(
 
 
 if __name__ == "__main__":
+    # Load environment variables
+    load_dotenv()
+
     # Test the RAG pipeline
     print("Testing RAG Pipeline...")
     print()
 
     # Check if API key is available
     if not os.getenv("OPENAI_API_KEY"):
-        print("⚠ OPENAI_API_KEY not set. Set it to run the test:")
+        print("WARNING: OPENAI_API_KEY not set. Set it to run the test:")
         print("  export OPENAI_API_KEY='your-key-here'")
         exit(1)
 
@@ -257,7 +256,7 @@ if __name__ == "__main__":
     pdf_files = list(data_dir.glob("*.pdf"))
 
     if not pdf_files:
-        print("⚠ No PDF files found in ./data directory")
+        print("WARNING: No PDF files found in ./data directory")
         print("  Add some financial PDF documents to test the pipeline")
         print()
         print("Creating a sample text file for basic testing...")

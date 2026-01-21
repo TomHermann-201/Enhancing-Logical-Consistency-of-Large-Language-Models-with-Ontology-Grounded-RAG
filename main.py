@@ -275,11 +275,12 @@ Examples:
     # Check for ontology files (if validation enabled)
     if not args.no_validate:
         ontology_path = Path(args.ontology_dir)
-        if not ontology_path.exists() or not any(ontology_path.glob("*.rdf")):
-            print("[X] Error: FIBO ontology files not found")
+        # Check for LOAN ontology files in subdirectories
+        if not ontology_path.exists() or not any(ontology_path.glob("**/*.rdf")):
+            print("[X] Error: LOAN ontology files not found")
             print()
-            print("Run the setup script first:")
-            print("  python setup_ontologies.py")
+            print("Ensure your LOAN ontology files are in the ontologies directory")
+            print("Expected structure: ontologies/loans general module/*.rdf")
             sys.exit(1)
 
     # Determine which documents to load

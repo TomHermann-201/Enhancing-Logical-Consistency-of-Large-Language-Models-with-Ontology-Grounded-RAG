@@ -25,6 +25,7 @@ Classes:
 - CommercialLoan (loans to businesses/corporations)
 - Mortgage (real estate loans)
 - StudentLoan (education financing)
+- SubsidizedStudentLoan (government-subsidized education loans)
 - GreenLoan (sustainable/environmental financing)
 - Lender (financial institution providing the loan)
 - Borrower (entity receiving the loan)
@@ -32,6 +33,7 @@ Classes:
 - FinancialInstitution (banks, lending organizations)
 
 Properties:
+- rdf:type (entity is of a certain type/class)
 - hasLender (loan has a lender)
 - hasBorrower (loan has a borrower)
 - hasLoanAmount (loan has an amount)
@@ -43,11 +45,18 @@ Properties:
 - receivesLoan (borrower receives loan)
 
 Guidelines:
-1. Extract only factual assertions that are explicitly stated in the text
-2. Map entities to the MOST SPECIFIC loan class that applies
-3. Focus on relationships between lenders, borrowers, and loans
-4. Include loan characteristics (amount, rate, type, etc.) when mentioned
-5. Each triple must have: sub, pred, obj, sub_type, obj_type
+1. Extract factual assertions including TYPE CLASSIFICATIONS (e.g., "X is a StudentLoan")
+2. For unnamed entities (like "the loan", "the document"), use descriptive subjects like "TheLoan" or "DocumentLoan"
+3. IMPORTANT: Type assertions like "the loan is a StudentLoan" should extract as:
+   - sub: "TheLoan", pred: "rdf:type", obj: "StudentLoan", sub_type: "Loan", obj_type: "Class"
+4. Map entities to the MOST SPECIFIC loan class that applies (e.g., SubsidizedStudentLoan > StudentLoan > Loan)
+5. Include relationships between lenders, borrowers, and loans
+6. Include loan characteristics (amount, rate, type, etc.) when mentioned
+7. Each triple must have: sub, pred, obj, sub_type, obj_type
+
+Examples:
+- "The loan is a Subsidized Student Loan" → {"sub": "TheLoan", "pred": "rdf:type", "obj": "SubsidizedStudentLoan", "sub_type": "Loan", "obj_type": "Class"}
+- "ACME Corp borrowed from Bank XYZ" → {"sub": "ACME Corp", "pred": "receivesLoan", "obj": "Bank XYZ", "sub_type": "Borrower", "obj_type": "Lender"}
 
 Return JSON in this exact format:
 {"triples": [{"sub": "...", "pred": "...", "obj": "...", "sub_type": "...", "obj_type": "..."}]}
@@ -256,9 +265,13 @@ if __name__ == "__main__":
     Global Industries is wholly owned by John Doe.
     """
 
+    # Load environment variables
+    from dotenv import load_dotenv
+    load_dotenv()
+
     # Check if API key is available
     if not os.getenv("OPENAI_API_KEY"):
-        print("⚠ OPENAI_API_KEY not set. Set it to run the test:")
+        print("WARNING: OPENAI_API_KEY not set. Set it to run the test:")
         print("  export OPENAI_API_KEY='your-key-here'")
         exit(1)
 
