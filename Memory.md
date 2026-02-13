@@ -2,7 +2,7 @@
 
 ## 1. Aktueller Status
 - **Phase:** Phase 1: PDF-Generierung & RDF-Vokabular-Scanner
-- **Letzter Git-Commit:** (wird nach Push aktualisiert)
+- **Letzter Git-Commit:** cfccdee (Implement vocabulary scanner with dynamic prompt generation)
 - **Datum:** 2025-02-13
 
 ## 2. Erledigte Aufgaben (Done)
