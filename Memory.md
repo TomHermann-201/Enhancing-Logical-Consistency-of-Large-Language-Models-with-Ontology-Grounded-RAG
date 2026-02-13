@@ -2,7 +2,7 @@
 
 ## 1. Aktueller Status
 - **Phase:** Phase 1: ABGESCHLOSSEN ✅ → Bereit für Phase 2
-- **Letzter Git-Commit:** (pending - remove ontology hints from PDFs)
+- **Letzter Git-Commit:** a1c69ca (Remove ontology hints from test PDFs)
 - **Datum:** 2026-02-13
 
 ## 2. Erledigte Aufgaben (Done)
