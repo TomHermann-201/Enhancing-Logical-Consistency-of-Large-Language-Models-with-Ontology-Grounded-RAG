@@ -42,6 +42,30 @@ Instructions:
 Answer:"""
 
 
+# Correction Prompt Template - used when ontology validation fails
+CORRECTION_PROMPT_TEMPLATE = """You are a financial analyst assistant. Your previous answer was rejected because it contained logical inconsistencies with respect to a formal loan ontology.
+
+Context (from the original documents):
+{context}
+
+Question: {question}
+
+Your previous answer (REJECTED - attempt {attempt_number}):
+{previous_answer}
+
+Ontology validation feedback:
+{validation_feedback}
+
+Instructions:
+- Rewrite your answer so that it is logically consistent with the LOAN ontology
+- Fix the specific inconsistencies described in the validation feedback
+- Do NOT introduce new facts that are not supported by the context
+- Keep the answer factual, concise, and based on the context provided
+- If the context genuinely contains contradictory information, state that clearly rather than guessing
+
+Corrected answer:"""
+
+
 class RAGPipeline:
     """
     Simple RAG pipeline for financial document Q&A.
@@ -200,6 +224,53 @@ class RAGPipeline:
         return {
             "answer": answer,
             "source_documents": sources,
+            "question": question
+        }
+
+    def query_with_correction(
+        self,
+        question: str,
+        previous_answer: str,
+        validation_feedback: str,
+        attempt_number: int,
+        source_documents: list
+    ) -> dict:
+        """
+        Re-generate an answer incorporating ontology validation feedback.
+
+        Reuses the same source documents from the original query to avoid
+        retrieval drift across correction attempts.
+
+        Args:
+            question: Original user question
+            previous_answer: The rejected answer
+            validation_feedback: Explanation from the ontology validator
+            attempt_number: Current correction attempt (1-based)
+            source_documents: Source docs from the original retrieval
+
+        Returns:
+            Dict with 'answer' and 'source_documents'
+        """
+        print(f"\nCorrection attempt {attempt_number}...")
+
+        # Reuse the same context from original retrieval
+        context = "\n\n".join([doc.page_content for doc in source_documents])
+
+        prompt_text = CORRECTION_PROMPT_TEMPLATE.format(
+            context=context,
+            question=question,
+            previous_answer=previous_answer,
+            validation_feedback=validation_feedback,
+            attempt_number=attempt_number
+        )
+
+        answer = self.llm.invoke(prompt_text).content
+
+        print(f"\nCorrected Answer:\n{answer}")
+
+        return {
+            "answer": answer,
+            "source_documents": source_documents,
             "question": question
         }
 

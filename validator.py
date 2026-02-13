@@ -127,6 +127,18 @@ class OntologyValidator:
         except Exception as e:
             raise RuntimeError(f"Failed to load LOAN ontologies: {e}")
 
+    def _reload_world(self):
+        """
+        Recreate a clean World with ontologies.
+
+        Must be called before each validation to prevent contamination
+        from previous validation attempts (e.g., leftover individuals
+        or inferred axioms from the correction loop).
+        """
+        self.world = None
+        self.onto = None
+        self._load_ontologies()
+
     def _get_class_by_name(self, class_name: str):
         """
         Get an ontology class by its short name or CURIE.
@@ -308,6 +320,9 @@ class OntologyValidator:
                 is_valid=True,
                 explanation="No triples to validate"
             )
+
+        # Reload a clean world to prevent contamination between attempts
+        self._reload_world()
 
         print(f"\nValidating {len(triples)} triple(s)...")
 

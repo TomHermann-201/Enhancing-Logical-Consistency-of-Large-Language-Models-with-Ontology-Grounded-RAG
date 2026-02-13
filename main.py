@@ -23,6 +23,9 @@ from rag_pipeline import RAGPipeline
 from extractor import TripleExtractor
 from validator import OntologyValidator
 
+# Maximum number of correction attempts before hard-reject
+MAX_CORRECTION_ATTEMPTS = 3
+
 
 class OVRAGSystem:
     """
@@ -79,14 +82,21 @@ class OVRAGSystem:
 
     def process_query(self, question: str, validate: bool = True) -> dict:
         """
-        Process a query through the complete OV-RAG pipeline.
+        Process a query through the complete OV-RAG pipeline with correction loop.
+
+        Flow:
+        1. Generate answer with RAG
+        2. Extract triples
+        3. Validate against ontology
+        4. If invalid: re-prompt with feedback (up to MAX_CORRECTION_ATTEMPTS)
+        5. If still invalid after max attempts: Hard-Reject
 
         Args:
             question: User question
             validate: Whether to run ontology validation
 
         Returns:
-            Dict with answer, triples, and validation results
+            Dict with answer, triples, validation results, and correction info
         """
         print("\n" + "="*70)
         print("QUERY PROCESSING")
@@ -94,49 +104,107 @@ class OVRAGSystem:
         print(f"Question: {question}")
         print()
 
-        # Step 1: Generate answer using RAG
+        # Step 1: Generate initial answer using RAG
         print("[1/3] Generating answer with RAG...")
         rag_result = self.rag.query(question)
         answer = rag_result["answer"]
+        source_documents = rag_result["source_documents"]
 
         result = {
             "question": question,
             "answer": answer,
-            "sources": rag_result["source_documents"],
+            "sources": source_documents,
             "triples": [],
-            "validation": None
+            "validation": None,
+            "correction_attempts": [],
+            "hard_reject": False,
+            "hard_reject_reason": None,
+            "total_attempts": 1,
+            "accepted_at_attempt": None,
         }
 
         if not validate:
             return result
 
-        # Step 2: Extract triples from the answer
-        print("\n" + "="*70)
-        print("[2/3] Extracting triples...")
-        extraction_result = self.extractor.extract_triples(answer)
+        # === Extract-Validate Loop ===
+        # Attempt 0 = initial answer, attempts 1..MAX = corrections
+        current_answer = answer
 
-        if not extraction_result.success:
-            print(f"[X] Extraction failed: {extraction_result.error}")
-            return result
+        for attempt in range(MAX_CORRECTION_ATTEMPTS + 1):
+            attempt_label = "initial" if attempt == 0 else f"correction {attempt}"
+            print("\n" + "="*70)
+            print(f"[2/3] Extracting triples ({attempt_label})...")
+            extraction_result = self.extractor.extract_triples(current_answer)
 
-        result["triples"] = extraction_result.triples
+            if not extraction_result.success:
+                print(f"[X] Extraction failed: {extraction_result.error}")
+                result["answer"] = current_answer
+                result["total_attempts"] = attempt + 1
+                return result
 
-        if not extraction_result.triples:
-            print("[i] No triples extracted - skipping validation")
-            return result
+            triples = extraction_result.triples
 
-        # Step 3: Validate triples against LOAN ontology
-        print("\n" + "="*70)
-        print("[3/3] Validating against LOAN ontology...")
-        validation_result = self.validator.validate_text_answer(
-            answer,
-            extraction_result.triples
-        )
+            if not triples:
+                print("[i] No triples extracted - skipping validation")
+                result["answer"] = current_answer
+                result["triples"] = triples
+                result["total_attempts"] = attempt + 1
+                return result
 
-        result["validation"] = validation_result
+            # Validate against LOAN ontology
+            print("\n" + "="*70)
+            print(f"[3/3] Validating against LOAN ontology ({attempt_label})...")
+            validation_result = self.validator.validate_text_answer(
+                current_answer,
+                triples
+            )
 
-        # Print summary
-        self._print_summary(result)
+            # Log this attempt
+            attempt_log = {
+                "attempt_number": attempt,
+                "answer": current_answer,
+                "triples": triples,
+                "is_valid": validation_result.is_valid,
+                "explanation": validation_result.explanation,
+            }
+            result["correction_attempts"].append(attempt_log)
+
+            if validation_result.is_valid:
+                # Accepted
+                result["answer"] = current_answer
+                result["triples"] = triples
+                result["validation"] = validation_result
+                result["total_attempts"] = attempt + 1
+                result["accepted_at_attempt"] = attempt
+                self._print_summary(result)
+                return result
+
+            # Validation failed
+            if attempt < MAX_CORRECTION_ATTEMPTS:
+                # Still have correction attempts left
+                print(f"\n[!] Validation failed ({attempt_label}). "
+                      f"Requesting correction ({attempt + 1}/{MAX_CORRECTION_ATTEMPTS})...")
+                correction_result = self.rag.query_with_correction(
+                    question=question,
+                    previous_answer=current_answer,
+                    validation_feedback=validation_result.explanation,
+                    attempt_number=attempt + 1,
+                    source_documents=source_documents,
+                )
+                current_answer = correction_result["answer"]
+            else:
+                # All correction attempts exhausted → Hard-Reject
+                result["answer"] = current_answer
+                result["triples"] = triples
+                result["validation"] = validation_result
+                result["total_attempts"] = attempt + 1
+                result["hard_reject"] = True
+                result["hard_reject_reason"] = (
+                    f"Answer failed ontology validation after {MAX_CORRECTION_ATTEMPTS} "
+                    f"correction attempt(s). Last failure: {validation_result.explanation}"
+                )
+                self._print_summary(result)
+                return result
 
         return result
 
@@ -150,11 +218,29 @@ class OVRAGSystem:
         print(f"Answer: {result['answer']}")
         print()
         print(f"Triples Extracted: {len(result['triples'])}")
+        print(f"Total Attempts: {result['total_attempts']}")
+
+        # Correction loop info
+        if result['correction_attempts']:
+            print()
+            print("Correction Loop:")
+            for attempt in result['correction_attempts']:
+                attempt_num = attempt['attempt_number']
+                label = "Initial" if attempt_num == 0 else f"Correction {attempt_num}"
+                status = "PASS" if attempt['is_valid'] else "FAIL"
+                print(f"  Attempt {attempt_num} ({label}): {status}")
 
         if result['validation']:
             print()
-            if result['validation'].is_valid:
-                print("[OK] VALIDATION: PASSED")
+            if result['hard_reject']:
+                print("[X] HARD-REJECT")
+                print(f"  {result['hard_reject_reason']}")
+            elif result['validation'].is_valid:
+                accepted = result.get('accepted_at_attempt', 0)
+                if accepted == 0:
+                    print("[OK] VALIDATION: PASSED (first attempt)")
+                else:
+                    print(f"[OK] VALIDATION: PASSED (after {accepted} correction(s))")
                 print("  The answer is logically consistent with LOAN ontology")
             else:
                 print("[X] VALIDATION: FAILED")
