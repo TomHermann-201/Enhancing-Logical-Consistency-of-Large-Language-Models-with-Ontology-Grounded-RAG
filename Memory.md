@@ -2,7 +2,7 @@
 
 ## 1. Aktueller Status
 - **Phase:** Phase 1: PDF-Generierung & RDF-Vokabular-Scanner
-- **Letzter Git-Commit:** 7812ce9 (Add project documentation and Phase 1 development plan)
+- **Letzter Git-Commit:** b234251 (Add manual clash test proving OWL-DL reasoning detects hallucinations)
 - **Datum:** 2025-02-13
 
 ## 2. Erledigte Aufgaben (Done)
