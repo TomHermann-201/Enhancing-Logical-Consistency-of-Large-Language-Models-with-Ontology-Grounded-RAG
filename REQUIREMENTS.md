@@ -50,14 +50,63 @@ Der Agent MUSS nach jedem einzelnen Entwicklungsschritt diesen Zyklus durchlaufe
 - **Side-by-Side Vergleich:** Original-Antwort vs. korrigierte Antwort
 - **Metriken-Dashboard:** LCR, CSR, Latenz pro Dokument
 
-## 5. Definition of Done
+## 5. Benchmark & Evaluation (Groß-Test)
+
+### 5.1 Datensatz
+Skalierung auf **100 Testfragen** basierend auf den generierten Verträgen.
+
+### 5.2 Kategorisierung der Fragen
+| Typ | Anzahl | Beschreibung | Beispiele |
+|-----|--------|--------------|-----------|
+| **Typ A (Fakten)** | 50 | Abfrage von expliziten Daten | Zinsen, Namen, Beträge, Laufzeiten |
+| **Typ B (Logik/Axiome)** | 50 | Gezielte Fallen, die Ontologie-Regeln herausfordern | Disjointness, Kardinalität, OWA vs. Integrity Constraints |
+
+### 5.3 Vergleichs-Modus
+Systematischer Vergleich zwischen:
+- **Standard-RAG:** GPT-4o ohne Validator (Baseline)
+- **OV-RAG:** GPT-4o + Ontologie-Validator (unser System)
+
+### 5.4 Automatisierte Fragen-Generierung
+- Skript `generate_questions.py` nutzt GPT-4o
+- Generiert 100 Fragen passend zur LOAN-Ontologie und den generierten PDFs
+- Kategorisiert automatisch in Typ A und Typ B
+- Speichert als `data/questions.json`
+
+### 5.5 Ergebnis-Matrix
+Speicherung in `results/benchmark_results.json`:
+```json
+{
+  "question_id": "Q001",
+  "question_text": "...",
+  "question_type": "A|B",
+  "source_pdf": "Vertrag_001_ConsumerLoan.pdf",
+  "standard_rag_answer": "...",
+  "standard_rag_correct": true|false,
+  "ov_rag_answer": "...",
+  "ov_rag_consistent": true|false,
+  "clash_detected": true|false,
+  "clash_type": "Disjointness|Cardinality|null",
+  "iterations_needed": 0-3,
+  "hard_reject": true|false,
+  "latency_ms": 1234
+}
+```
+
+### 5.6 Metriken
+- **Accuracy (Typ A):** Korrektheit bei Faktenfragen
+- **Consistency Rate (Typ B):** Logische Konsistenz bei Axiom-Fragen
+- **Clash Detection Rate:** Wie oft werden echte Clashes erkannt?
+- **False Positive Rate:** Wie oft werden valide Antworten fälschlich abgelehnt?
+- **Average Iterations:** Durchschnittliche Korrekturversuche
+
+## 6. Definition of Done
 Ein Feature gilt erst als fertig, wenn es:
 - ✅ Implementiert ist
 - ✅ Getestet wurde (mit dokumentiertem Testergebnis)
 - ✅ In der `Memory.md` dokumentiert ist
 - ✅ Auf Git committed und gepusht wurde
 
-## 6. Technische Anforderungen
+## 7. Technische Anforderungen
 - **Python 3.10+**
 - **OpenAI API** für RAG und Extraction (GPT-4o)
 - **owlready2** für Ontologie-Management
@@ -65,7 +114,7 @@ Ein Feature gilt erst als fertig, wenn es:
 - **Streamlit** für das Dashboard
 - **Java 11+** für den Reasoner (min. 4GB Heap Memory)
 
-## 7. Projekt-Phasen
+## 8. Projekt-Phasen
 
 ### Phase 1: PDF-Generierung & RDF-Scanner (Aktuell)
 - [ ] Vokabular-Scanner für automatisches Mapping
@@ -75,11 +124,17 @@ Ein Feature gilt erst als fertig, wenn es:
 - [ ] Implementierung der Korrekturschleife (max. 3 Versuche)
 - [ ] Hard-Reject Logik
 
-### Phase 3: Benchmark Engine
-- [ ] Batch-Processing aller PDFs
+### Phase 3: Benchmark Engine (Klein)
+- [ ] Batch-Processing aller 10 PDFs
 - [ ] Metriken-Berechnung (LCR, CSR)
 
 ### Phase 4: Streamlit Dashboard
 - [ ] UI-Entwicklung
 - [ ] Passwortschutz
 - [ ] Visualisierungen
+
+### Phase 5: Groß-Benchmark (100 Fragen)
+- [ ] Automatisierte Fragen-Generierung (`generate_questions.py`)
+- [ ] Standard-RAG vs. OV-RAG Vergleich
+- [ ] Ergebnis-Matrix und Analyse
+- [ ] Finale Metriken-Auswertung
