@@ -2,13 +2,20 @@
 generate_test_pdfs.py
 Generates 10 Test PDFs for OV-RAG Benchmark
 
+Creates realistic loan contracts WITHOUT ontology hints (for fair RAG vs OV-RAG comparison):
+- No "Ontology Class" or "Loan Type" fields
+- No type labels like "(Financial Institution)" or "(Natural Person)"
+- No warning markers or clash indicators
+- Neutral filenames: Contract_001.pdf, Contract_002.pdf, etc.
+
 PDFs:
 - 9 consistent contracts (various loan types)
-- 1 error contract (Contract_010_ERROR_CLASH.pdf) with intentional clash
+- 1 contract with hidden clash (Contract_010.pdf)
 
-The Clash in Contract 010:
-- A natural person (John Smith) is listed as lender for a Commercial Loan
-- This violates: NaturalPerson ⊥ LegalEntity (FinancialInstitution is LegalEntity)
+The Hidden Clash in Contract 010:
+- John Smith (a natural person) is listed as lender for a Commercial Loan
+- This violates: NaturalPerson ⊥ LegalEntity (CommercialLoan requires FinancialInstitution as Lender)
+- OV-RAG must detect this from context, not from explicit labels
 """
 
 import os
@@ -201,25 +208,22 @@ CONTRACTS = [
         is_secured=True,
         special_notes="Refinancing of existing loan from Bank of America (remaining balance: $318,500). Cash-out refinance with improved terms.",
     ),
-    # 010: ERROR CLASH - Natural Person as Lender for Commercial Loan
+    # 010: Commercial Loan with hidden clash - Natural Person as Lender
+    # (OV-RAG must detect this without explicit hints)
     LoanContract(
-        contract_id="010_ERROR_CLASH",
+        contract_id="010",
         loan_type="CommercialLoan",
         loan_type_description="Commercial Loan Agreement",
         borrower_name="StartupXYZ Inc.",
         borrower_type="LegalEntity",
-        lender_name="John Smith",  # CLASH! Natural Person as Lender
-        lender_type="NaturalPerson",  # CLASH!
+        lender_name="John Smith",
+        lender_type="NaturalPerson",
         principal_amount=100000.00,
         currency="USD",
         interest_rate=8.0,
         term_months=36,
         purpose="Seed financing for technology startup",
         is_secured=False,
-        special_notes="WARNING: This contract contains a logical error! "
-                      "John Smith (natural person, DOB: March 15, 1985) is listed as the lender. "
-                      "This violates the ontology rule that lenders for Commercial Loans "
-                      "must be Financial Institutions (LegalEntity), not Natural Persons.",
     ),
 ]
 
@@ -238,8 +242,8 @@ def generate_contract_pdf(contract: LoanContract, output_dir: str = "data") -> s
     # Ensure output directory exists
     Path(output_dir).mkdir(parents=True, exist_ok=True)
 
-    # Filename
-    filename = f"Contract_{contract.contract_id}_{contract.loan_type}.pdf"
+    # Filename (neutral - no loan type hints)
+    filename = f"Contract_{contract.contract_id}.pdf"
     filepath = os.path.join(output_dir, filename)
 
     # Create PDF
@@ -289,7 +293,7 @@ def generate_contract_pdf(contract: LoanContract, output_dir: str = "data") -> s
 
     # Title
     content.append(Paragraph(
-        f"LOAN AGREEMENT<br/><br/>{contract.loan_type_description}",
+        "LOAN AGREEMENT",
         styles['ContractTitle']
     ))
     content.append(Spacer(1, 20))
@@ -308,21 +312,11 @@ def generate_contract_pdf(contract: LoanContract, output_dir: str = "data") -> s
 
     # Lender
     lender_desc = f"<b>LENDER:</b><br/>{contract.lender_name}"
-    if contract.lender_type == "FinancialInstitution":
-        lender_desc += "<br/>(Financial Institution)"
-    else:
-        lender_desc += "<br/>(Natural Person)"  # This is the clash!
-
     content.append(Paragraph(lender_desc, styles['ContractBody']))
     content.append(Spacer(1, 10))
 
     # Borrower
     borrower_desc = f"<b>BORROWER:</b><br/>{contract.borrower_name}"
-    if contract.borrower_type == "LegalEntity":
-        borrower_desc += "<br/>(Legal Entity / Corporation)"
-    else:
-        borrower_desc += "<br/>(Natural Person / Individual)"
-
     content.append(Paragraph(borrower_desc, styles['ContractBody']))
     content.append(Spacer(1, 10))
 
@@ -334,8 +328,6 @@ def generate_contract_pdf(contract: LoanContract, output_dir: str = "data") -> s
     maturity_date = (today + timedelta(days=contract.term_months * 30)).strftime('%B %d, %Y') if contract.term_months > 0 else "N/A (Open-ended)"
 
     data = [
-        ["Loan Type:", contract.loan_type_description],
-        ["Ontology Class:", contract.loan_type],
         ["Principal Amount:", f"{contract.currency} {contract.principal_amount:,.2f}"],
         ["Interest Rate (p.a.):", f"{contract.interest_rate}%"],
         ["Term:", term_display],
@@ -385,16 +377,7 @@ def generate_contract_pdf(contract: LoanContract, output_dir: str = "data") -> s
     # Special Provisions
     if contract.special_notes:
         content.append(Paragraph("Section 4: Special Provisions", styles['ContractSection']))
-
-        # Use warning style for clash contract
-        if "ERROR" in contract.contract_id or "CLASH" in contract.contract_id:
-            content.append(Paragraph(
-                f"WARNING: {contract.special_notes}",
-                styles['Warning']
-            ))
-        else:
-            content.append(Paragraph(contract.special_notes, styles['ContractBody']))
-
+        content.append(Paragraph(contract.special_notes, styles['ContractBody']))
         content.append(Spacer(1, 10))
 
     # General Terms
@@ -426,21 +409,6 @@ def generate_contract_pdf(contract: LoanContract, output_dir: str = "data") -> s
     ]))
     content.append(sig_table)
 
-    # Footer for clash document
-    if "ERROR" in contract.contract_id or "CLASH" in contract.contract_id:
-        content.append(Spacer(1, 30))
-        content.append(Paragraph(
-            "=" * 50 + "<br/>"
-            "<b>TEST DOCUMENT FOR OV-RAG BENCHMARK</b><br/>"
-            "This document intentionally contains a logical inconsistency:<br/>"
-            f"- {contract.lender_name} is classified as a Natural Person<br/>"
-            "- Commercial Loans require an institutional lender (Financial Institution)<br/>"
-            "- Expected result: Ontology validator detects INCONSISTENCY<br/>"
-            "- Violated axiom: NaturalPerson disjointWith LegalEntity<br/>"
-            "=" * 50,
-            styles['Warning']
-        ))
-
     # Generate PDF
     doc.build(content)
 
@@ -468,9 +436,7 @@ def generate_all_pdfs(output_dir: str = "data") -> list:
         try:
             filepath = generate_contract_pdf(contract, output_dir)
             generated_files.append(filepath)
-
-            clash_marker = " [CLASH]" if "ERROR" in contract.contract_id else ""
-            print(f"  OK  {os.path.basename(filepath)}{clash_marker}")
+            print(f"  OK  {os.path.basename(filepath)}")
 
         except Exception as e:
             print(f"  ERR {contract.contract_id}: {e}")
@@ -558,4 +524,4 @@ if __name__ == "__main__":
 
     print()
     print("The PDFs can now be used for the OV-RAG benchmark.")
-    print("Contract_010_ERROR_CLASH_CommercialLoan.pdf contains the intentional clash.")
+    print("Contract_010.pdf contains a hidden logical clash (NaturalPerson as Lender for CommercialLoan).")
