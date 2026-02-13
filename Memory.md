@@ -12,6 +12,11 @@
 - [x] Language-Tag Cleaning für Reasoner-Kompatibilität
 - [x] Test für HermiT-Fix erstellt (test_hermit_fix.py)
 - [x] REQUIREMENTS.md und Memory.md angelegt
+- [x] **Manueller Clash-Test** (`test_manual_clash.py`) - 4/4 Tests bestanden:
+  - ✅ Szenario 1: Gültige Aussage → CONSISTENT
+  - ✅ Szenario 2: SecuredLoan ⊥ UnsecuredLoan → INCONSISTENT erkannt
+  - ✅ Szenario 3: NaturalPerson ⊥ LegalEntity → INCONSISTENT erkannt
+  - ✅ Szenario 4: OpenEndCredit ⊥ ClosedEndCredit → INCONSISTENT erkannt
 
 ## 3. Aktuelle TODO (Next Step)
 - [ ] **RDF-Vokabular-Scanner implementieren**
@@ -27,6 +32,7 @@
 | Triple Extractor | `extractor.py` | ✅ Implementiert (statischer Prompt) |
 | Ontology Validator | `validator.py` | ✅ Implementiert |
 | CLI Interface | `main.py` | ✅ Implementiert |
+| **Manueller Clash-Test** | `test_manual_clash.py` | ✅ 4/4 Tests bestanden |
 | Vokabular-Scanner | `vocabulary_scanner.py` | ❌ Noch zu erstellen |
 | PDF-Generator | `generate_test_pdfs.py` | ❌ Noch zu erstellen |
 | Korrekturschleife | in `main.py` | ❌ Noch zu erweitern |
@@ -55,4 +61,4 @@ Siehe: `docs/PHASE_1_PLAN.md` für den vollständigen Plan mit:
 - Akzeptanzkriterien und Testfälle
 
 ---
-*Zuletzt aktualisiert: 2025-02-13 - Nach Erstellung der Projektstruktur-Dateien und Entwicklungsplan*
+*Zuletzt aktualisiert: 2025-02-13 - Nach Erstellung des manuellen Clash-Tests (4/4 bestanden)*

@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(python test_hermit_fix.py:*)"
+      "Bash(python test_hermit_fix.py:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }
