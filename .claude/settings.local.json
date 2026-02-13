@@ -4,7 +4,14 @@
       "Bash(python test_hermit_fix.py:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(pip install:*)",
+      "Bash(python test_manual_clash.py:*)",
+      "Bash(python vocabulary_scanner.py:*)",
+      "Bash(python test_vocabulary_scanner.py:*)",
+      "Bash(python -c:*)",
+      "Bash(python generate_test_pdfs.py:*)",
+      "Bash(python test_validation_loop.py:*)"
     ]
   }
 }
