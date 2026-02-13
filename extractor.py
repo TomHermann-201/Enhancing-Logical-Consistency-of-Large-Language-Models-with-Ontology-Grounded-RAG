@@ -6,6 +6,10 @@ Uses an LLM with a specialized system prompt to extract entities and relations
 from natural language text and map them strictly to LOAN ontology classes.
 
 Output: JSON List of Triples (Subject, Predicate, Object) with LOAN ontology types.
+
+FEATURE: Dynamisches Prompt-Loading aus vocabulary_cache.json
+- Wenn vocabulary_cache.json existiert, wird der dynamisch generierte Prompt geladen
+- Andernfalls wird der statische Fallback-Prompt verwendet
 """
 
 import os
@@ -16,8 +20,25 @@ from dataclasses import dataclass
 from openai import OpenAI
 
 
-# LOAN ontology extraction prompt
-EXTRACTION_SYSTEM_PROMPT = """You are a Semantic Translator for financial loan documents. Extract facts from the text and map them to these LOAN ontology concepts:
+# Versuche dynamischen Prompt aus Cache zu laden
+def _load_dynamic_prompt() -> Optional[str]:
+    """Lädt den dynamisch generierten Prompt aus dem Vokabular-Cache."""
+    cache_path = "vocabulary_cache.json"
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            prompt = data.get('generated_prompt')
+            if prompt:
+                print(f"[OK] Dynamischer Prompt geladen aus {cache_path}")
+                return prompt
+        except Exception as e:
+            print(f"[!] Fehler beim Laden des Caches: {e}")
+    return None
+
+
+# LOAN ontology extraction prompt (FALLBACK - statisch)
+STATIC_EXTRACTION_PROMPT = """You are a Semantic Translator for financial loan documents. Extract facts from the text and map them to these LOAN ontology concepts:
 
 Classes:
 - Loan (general loan concept)
@@ -64,6 +85,10 @@ Return JSON in this exact format:
 If no triples can be extracted, return: {"triples": []}
 """
 
+# Lade dynamischen Prompt oder verwende statischen Fallback
+_DYNAMIC_PROMPT = _load_dynamic_prompt()
+EXTRACTION_SYSTEM_PROMPT = _DYNAMIC_PROMPT if _DYNAMIC_PROMPT else STATIC_EXTRACTION_PROMPT
+
 
 @dataclass
 class ExtractionResult:
@@ -105,7 +130,9 @@ class TripleExtractor:
         self.model = model
         self.client = OpenAI(api_key=self.api_key)
 
-        print(f"[OK] Triple Extractor initialized (model: {model})")
+        # Zeige an, welcher Prompt verwendet wird
+        prompt_type = "dynamisch (vocabulary_cache.json)" if _DYNAMIC_PROMPT else "statisch (Fallback)"
+        print(f"[OK] Triple Extractor initialized (model: {model}, prompt: {prompt_type})")
 
     def extract_triples(self, text: str) -> ExtractionResult:
         """

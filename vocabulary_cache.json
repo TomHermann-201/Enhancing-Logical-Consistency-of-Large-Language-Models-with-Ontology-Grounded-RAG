@@ -1,0 +1,1266 @@
+{
+  "classes": [
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/ClosedEndCredit",
+      "name": "ClosedEndCredit",
+      "label": "closed-end credit",
+      "definition": "credit agreement in which the loan principal cannot be increased after funds are dispersed in full when the loan closes",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "CreditAgreement"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/CollateralizedLoan",
+      "name": "CollateralizedLoan",
+      "label": "collateralized loan",
+      "definition": "secured loan that is secured with cash or other acceptable collateral (real property, securities or other assets) provided by the borrower as specified in the collateral agreement",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "SecuredLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Comaker",
+      "name": "Comaker",
+      "label": "co-maker",
+      "definition": "party that signs a borrower's promissory note, providing additional security and potentially improving the quality of the debt",
+      "synonyms": [
+        "comaker",
+        "cosigner"
+      ],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "ContractThirdParty"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/CombinedLoanToValueRatio",
+      "name": "CombinedLoanToValueRatio",
+      "label": "combined loan-to-value ratio",
+      "definition": "ratio of the total amount of debt that is secured by the asset(s) and the appraised value of the asset(s) securing the financing",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "PercentageMonetaryAmount"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/GuaranteedLoan",
+      "name": "GuaranteedLoan",
+      "label": "guaranteed loan",
+      "definition": "loan that is secured with respect to repayment of principal and interest by guaranty",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "SecuredLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/IndividualPaymentTransaction",
+      "name": "IndividualPaymentTransaction",
+      "label": "individual payment transaction",
+      "definition": "actual payment of principal, interest, fees, or other related amounts towards fulfillment of a debt obligation",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "IndividualTransaction",
+        "Payment"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LenderLienPosition",
+      "name": "LenderLienPosition",
+      "label": "lender lien position",
+      "definition": "classifier indicating whether the lender has the primary lien position with respect to an asset used as collateral for the loan",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "Classifier"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Loan",
+      "name": "Loan",
+      "label": "loan",
+      "definition": "debt instrument whereby one party extends money or credit to another party (or parties) with the understanding that the borrowed money will be repaid according to the terms of the contract",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "CreditAgreementRepaidPeriodically",
+        "DebtInstrument"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanPaymentSchedule",
+      "name": "LoanPaymentSchedule",
+      "label": "loan payment schedule",
+      "definition": "regular or explicit (ad hoc) payment schedule associated with a given loan-specific account",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "PaymentSchedule"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanSpecificCustomerAccount",
+      "name": "LoanSpecificCustomerAccount",
+      "label": "loan-specific customer account",
+      "definition": "account held by the borrower associated with a specific loan",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "CustomerAccount",
+        "LoanOrCreditAccount"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/LoanToValueRatio",
+      "name": "LoanToValueRatio",
+      "label": "loan-to-value ratio",
+      "definition": "ratio, expressed as a percentage, between the principal amount of the loan and the appraised value of the asset securing the financing",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "PercentageMonetaryAmount"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/OpenEndCredit",
+      "name": "OpenEndCredit",
+      "label": "open-end credit",
+      "definition": "credit agreement that may be extended up to an agreed credit limit and paid down at any time within the period of the line, if any, and on which interest is charged only on the outstanding balance",
+      "synonyms": [
+        "charge account credit",
+        "revolving credit"
+      ],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "CreditAgreement"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/OwnershipInterest",
+      "name": "OwnershipInterest",
+      "label": "ownership interest",
+      "definition": "classifier indicating the nature of the applicant's or borrower's ownership or leasehold interest in an asset used as collateral for the loan",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "Classifier"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/PaymentHistory",
+      "name": "PaymentHistory",
+      "label": "payment history",
+      "definition": "record of actual payments of principal, interest, and other related amounts made by a borrower to a lender or servicer in order to fulfill their re-payment obligation",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "TransactionRecord"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/PrepaymentTerms",
+      "name": "PrepaymentTerms",
+      "label": "pre-payment terms",
+      "definition": "principal repayment terms related to payment of the loan prior to maturity",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "PrincipalRepaymentTerms"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/SecuredLoan",
+      "name": "SecuredLoan",
+      "label": "secured loan",
+      "definition": "loan in which the borrower pledges some asset via a security agreement as collateral for the loan, or that is secured via third-party guarantee",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "Loan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/Servicer",
+      "name": "Servicer",
+      "label": "servicer",
+      "definition": "party that collects principal and interest payments on behalf of the lender",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "FinancialServiceProvider",
+        "ContractThirdParty"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/TotalOutstandingPrincipal",
+      "name": "TotalOutstandingPrincipal",
+      "label": "total outstanding principal",
+      "definition": "the principal balance of all loans secured by the property",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "Principal"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/UnsecuredLoan",
+      "name": "UnsecuredLoan",
+      "label": "unsecured loan",
+      "definition": "loan granted based on the strength of the borrower's credit history or reputation in the community",
+      "synonyms": [],
+      "source_file": "Loans.rdf",
+      "parent_classes": [
+        "Loan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans/PrivateStudentLoan",
+      "name": "PrivateStudentLoan",
+      "label": "private student loan",
+      "definition": "student loan that is not considered a government-backed / regulated loan",
+      "synonyms": [],
+      "source_file": "StudentLoans.rdf",
+      "parent_classes": [
+        "RegulatedStudentLoan",
+        "StudentLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans/RegulatedStudentLoan",
+      "name": "RegulatedStudentLoan",
+      "label": "regulated student loan",
+      "definition": "student loan (1) whose lender is a government agency or instrumentality, and/or (2) that is treated uniquely due to tax regulations",
+      "synonyms": [],
+      "source_file": "StudentLoans.rdf",
+      "parent_classes": [
+        "StudentLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans/StudentLoan",
+      "name": "StudentLoan",
+      "label": "student loan",
+      "definition": "loan provided for the purposes of education, allowing students and parents/guardians to borrow money for college",
+      "synonyms": [],
+      "source_file": "StudentLoans.rdf",
+      "parent_classes": [
+        "Loan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/ConsumerLoan",
+      "name": "ConsumerLoan",
+      "label": "consumer loan",
+      "definition": "loan to one or more individuals for household, family, or other personal expenditures, excluding mortgages and student loans",
+      "synonyms": [],
+      "source_file": "ConsumerLoans.rdf",
+      "parent_classes": [
+        "Loan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/HomeEquityLineOfCredit",
+      "name": "HomeEquityLineOfCredit",
+      "label": "home equity line of credit",
+      "definition": "line of credit granted to a homeowner secured by the equity value in a borrower's home or other property",
+      "synonyms": [],
+      "source_file": "ConsumerLoans.rdf",
+      "parent_classes": [
+        "RevolvingLineOfCredit",
+        "SecuredConsumerLoan",
+        "LoanSecuredByRealEstate"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/MotorVehicleLoan",
+      "name": "MotorVehicleLoan",
+      "label": "motor vehicle loan",
+      "definition": "collateralized, simple-interest loan that is repaid in monthly installments over a period of typically three to five years, for the purpose of purchasing a vehicle",
+      "synonyms": [
+        "auto loan"
+      ],
+      "source_file": "ConsumerLoans.rdf",
+      "parent_classes": [
+        "CollateralizedLoan",
+        "SecuredConsumerLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/SecuredConsumerLoan",
+      "name": "SecuredConsumerLoan",
+      "label": "secured consumer loan",
+      "definition": "loan to one or more individuals for household, family, or other personal expenditures in which the borrower pledges some asset via a security agreement as collateral for the loan, or that is secured via third-party guarantee",
+      "synonyms": [],
+      "source_file": "ConsumerLoans.rdf",
+      "parent_classes": [
+        "SecuredLoan",
+        "ConsumerLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/UnsecuredConsumerLoan",
+      "name": "UnsecuredConsumerLoan",
+      "label": "unsecured consumer loan",
+      "definition": "loan to one or more individuals for household, family, or other personal expenditures granted based on the strength of the borrower's credit history or reputation in the community",
+      "synonyms": [],
+      "source_file": "ConsumerLoans.rdf",
+      "parent_classes": [
+        "UnsecuredLoan",
+        "ConsumerLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/AssessmentBoundary",
+      "name": "AssessmentBoundary",
+      "label": "assessment boundary",
+      "definition": "defined scope, limits, and criteria used to determine what is included or excluded in an evaluation, analysis, or measurement of environmental impacts, sustainability performance, or related objectives",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "Context",
+        "Specification"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/EnvironmentalProgram",
+      "name": "EnvironmentalProgram",
+      "label": "environmental program",
+      "definition": "broad scale initiative, activity, or investment aimed at improving environmental sustainability, reducing ecological harm, or addressing environmental challenges",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "Program"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/EnvironmentalProject",
+      "name": "EnvironmentalProject",
+      "label": "environmental project",
+      "definition": "specific initiative, activity, or investment aimed at improving environmental sustainability, reducing ecological harm, or addressing environmental challenges",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "Project"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/GreenLoan",
+      "name": "GreenLoan",
+      "label": "green loan",
+      "definition": "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) made available exclusively to finance, re-finance or guarantee, in whole or in part, new and/or existing eligible green projects that are aligned to the four core components of the Green Loan Principles (GLP)",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "CreditAgreementRepaidPeriodically"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/GreenProject",
+      "name": "GreenProject",
+      "label": "green project",
+      "definition": "project that contributes to environmental sustainability by addressing climate change, conserving natural resources, reducing pollution, or promoting ecological balance",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "EnvironmentalProject"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/GreenProjectUseOfProceedsProvision",
+      "name": "GreenProjectUseOfProceedsProvision",
+      "label": "green project use of proceeds provision",
+      "definition": "use of proceeds provision specifying that funds obtained through financing, such as through a credit agreement, offering, warrant, or other instrument are intended to be used for Green Projects (including other related and supporting expenditures, including research and development)",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "UseOfProceedsProvision"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/ObservedIndicatorValue",
+      "name": "ObservedIndicatorValue",
+      "label": "observed indicator value",
+      "definition": "observation (measurement) of a key performance indicator measured at specific date and time",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "DatedCollectionConstituent"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/ObservedIndicatorValueStructure",
+      "name": "ObservedIndicatorValueStructure",
+      "label": "observed indicator value structure",
+      "definition": "collection of observations for some key performance indicator measured over a specified window of time",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "DatedStructuredCollection"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/SustainabilityBusinessObjective",
+      "name": "SustainabilityBusinessObjective",
+      "label": "sustainability business objective",
+      "definition": "objective related to improving the sustainability profile of the business",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "BusinessObjective"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/SustainabilityBusinessStrategy",
+      "name": "SustainabilityBusinessStrategy",
+      "label": "sustainability business strategy",
+      "definition": "strategy for achieving specific business objectives related to sustainability (from an environmental and/or social and/or governance (ESG) perspective)",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "BusinessStrategy"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/SustainabilityKeyPerformanceIndicator",
+      "name": "SustainabilityKeyPerformanceIndicator",
+      "label": "sustainability key performance indicator",
+      "definition": "measurable performance indicator that is sustainability specific",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "KeyPerformanceIndicator"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/SustainabilityKeyPerformanceIndicatorIdentifier",
+      "name": "SustainabilityKeyPerformanceIndicatorIdentifier",
+      "label": "sustainability key performance indicator identifier",
+      "definition": "sequence of characters uniquely identifying a specific sustainability-related key performance indicator",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "ContextualIdentifier"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/SustainabilityLinkedLoan",
+      "name": "SustainabilityLinkedLoan",
+      "label": "sustainability-linked loan",
+      "definition": "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) for which the economic characteristics can vary depending on whether the borrower achieves ambitious, material and quantifiable predetermined sustainability performance objectives aligned with Sustainability-Linked Loan Principles (SSLP)",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "CreditAgreementRepaidPeriodically",
+        "CommercialLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/SustainabilityPerformanceTarget",
+      "name": "SustainabilityPerformanceTarget",
+      "label": "sustainability performance target",
+      "definition": "collection of quantitative target values used to calibrate the level of achievement a borrower makes with respect to a key performance indicator, by date, including, but not limited to, the methodology used to calculate its value at any point over the lifetime of a loan",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "DatedStructuredCollection"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/SustainabilityPerformanceTargetIdentifier",
+      "name": "SustainabilityPerformanceTargetIdentifier",
+      "label": "sustainability performance target identifier",
+      "definition": "sequence of characters uniquely identifying a specific sustainability-related performance target",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "ContextualIdentifier"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/SustainabilityStructuringAgent",
+      "name": "SustainabilityStructuringAgent",
+      "label": "sustainability structuring agent",
+      "definition": "financial institution appointed to help design, implement, and monitor the sustainability aspects of a syndicated green loan",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "SyndicateMember"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/TargetIndicatorValue",
+      "name": "TargetIndicatorValue",
+      "label": "target indicator value",
+      "definition": "target value for a key performance indicator as of a specific date and time",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "DatedCollectionConstituent"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/TransitionLoan",
+      "name": "TransitionLoan",
+      "label": "transition loan",
+      "definition": "credit agreement and/or contingent facility (such as a bonding line, guarantee line or letter of credit) designed to help a business or organization shift from carbon-intensive or environmentally harmful practices to more sustainable and environmentally friendly operations",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "CreditAgreementRepaidPeriodically",
+        "CommercialLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/TransitionProject",
+      "name": "TransitionProject",
+      "label": "transition project",
+      "definition": "project that supports broad, sector-specific efforts to reduce environmental impact",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "EnvironmentalProject"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/TransitionStrategy",
+      "name": "TransitionStrategy",
+      "label": "transition strategy",
+      "definition": "strategy for achieving specific business objectives related to sustainability in the context of long-term decarbonization or sustainability transitions",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "BusinessStrategy"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/TransitionUseOfProceedsProvision",
+      "name": "TransitionUseOfProceedsProvision",
+      "label": "transition use of proceeds provision",
+      "definition": "use of proceeds provision specifying that funds obtained through financing, such as through a credit agreement, offering, warrant, or other instrument are intended to be used to fund specific projects, investments, or operational changes that support a company's transition toward sustainability",
+      "synonyms": [],
+      "source_file": "GreenLoans.rdf",
+      "parent_classes": [
+        "UseOfProceedsProvision"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardAccount",
+      "name": "CardAccount",
+      "label": "card account",
+      "definition": "account whose terms and conditions are defined in a card agreement that is represented by a payment card",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CustomerAccount"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardAuthenticationValue",
+      "name": "CardAuthenticationValue",
+      "label": "card authentication value",
+      "definition": "card verification value specifically for JCB payment cards",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "MagneticStripeVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardAuthenticationValue2",
+      "name": "CardAuthenticationValue2",
+      "label": "card authentication value 2",
+      "definition": "card verification value specifically for JCB payment cards",
+      "synonyms": [
+        "CAV2"
+      ],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "ThreeDigitVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardExpirationDate",
+      "name": "CardExpirationDate",
+      "label": "card expiration date",
+      "definition": "date on which a given payment card expires",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "ExplicitDate"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardIdentificationNumber",
+      "name": "CardIdentificationNumber",
+      "label": "card identification number",
+      "definition": "card verification value specifically for American Express and Discover payment cards",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "ThreeDigitVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardProduct",
+      "name": "CardProduct",
+      "label": "card product",
+      "definition": "financial product involving the issuance of credit, debit, or other payment cards",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "FinancialProduct"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardSecurityCode",
+      "name": "CardSecurityCode",
+      "label": "card security code",
+      "definition": "card verification value specifically for American Express payment cards",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "MagneticStripeVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardValidationCode",
+      "name": "CardValidationCode",
+      "label": "card validation code",
+      "definition": "card verification code specifically for Mastercard payment cards",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "MagneticStripeVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardValidationCode2",
+      "name": "CardValidationCode2",
+      "label": "card validation code 2",
+      "definition": "card verification value specifically for Mastercard payment cards",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "ThreeDigitVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardVerificationCodeValue",
+      "name": "CardVerificationCodeValue",
+      "label": "card verification code or value",
+      "definition": "code that specifies either (1) magnetic-stripe data, or (2) printed security features that are used to protect data integrity and limit alteration, counterfeiting and fraud generally",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CodeElement"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardVerificationValue",
+      "name": "CardVerificationValue",
+      "label": "card verification value",
+      "definition": "card verification value specifically for Visa and Discover payment cards",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "MagneticStripeVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CardVerificationValue2",
+      "name": "CardVerificationValue2",
+      "label": "card verification value 2",
+      "definition": "card verification value specifically for Visa payment cards",
+      "synonyms": [
+        "CVV2"
+      ],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "ThreeDigitVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/Cardholder",
+      "name": "Cardholder",
+      "label": "cardholder",
+      "definition": "account holder to whom a payment card is issued",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CustomerAccountHolder"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CommercialCreditCardAgreement",
+      "name": "CommercialCreditCardAgreement",
+      "label": "commercial credit card agreement",
+      "definition": "credit card agreement for a card issued to, or in conjunction with, a formal organization, such as a small business, middle market business, local, state, or national government, or large corporation",
+      "synonyms": [
+        "corporate credit card agreement"
+      ],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CreditCardAgreement"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/ConsumerCreditCardAgreement",
+      "name": "ConsumerCreditCardAgreement",
+      "label": "consumer credit card agreement",
+      "definition": "credit card agreement for a card issued for household, family, or other personal expenditures that is accessed by a borrower's use of a credit card",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CreditCardAgreement",
+        "UnsecuredConsumerLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCard",
+      "name": "CreditCard",
+      "label": "credit card",
+      "definition": "card issued by a financial service provider that enables the cardholder to borrow funds",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "PaymentCard"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAccount",
+      "name": "CreditCardAccount",
+      "label": "credit card account",
+      "definition": "card account whose terms and conditions are defined in a credit card agreement that is represented by a credit card",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "LoanOrCreditAccount",
+        "CardAccount"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardAgreement",
+      "name": "CreditCardAgreement",
+      "label": "credit card agreement",
+      "definition": "account-specific credit facility that specifies the terms and conditions under which the credit card is offered to the cardholder by the issuer",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CommittedCreditFacility",
+        "PaymentCardAgreement"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardNetwork",
+      "name": "CreditCardNetwork",
+      "label": "credit card network",
+      "definition": "classifier for the network that authorizes, processes, and sets the terms of credit card transactions, as well as transfers payments between shoppers, merchants, and their banks",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "Classifier"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/CreditCardProduct",
+      "name": "CreditCardProduct",
+      "label": "credit card product",
+      "definition": "card product allowing the holder to purchase goods or services on credit",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CardProduct"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCard",
+      "name": "DebitCard",
+      "label": "debit card",
+      "definition": "payment card issued by a financial service provider that enables the cardholder to access funds in a demand deposit account",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "PaymentCard"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardAccount",
+      "name": "DebitCardAccount",
+      "label": "debit card account",
+      "definition": "card account that is represented by a one or more debit cards",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CardAccount"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/DebitCardProduct",
+      "name": "DebitCardProduct",
+      "label": "debit card product",
+      "definition": "card product card typically provided by a depository institution allowing the holder to transfer money electronically to another account when making a purchase",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CardProduct"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/IssuingFinancialInstitution",
+      "name": "IssuingFinancialInstitution",
+      "label": "issuing financial institution",
+      "definition": "issuer and financial services provider that issues payment cards or performs, facilitates, or supports issuing services including but not limited to issuing banks and issuing processors",
+      "synonyms": [
+        "issuing bank"
+      ],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "Issuer",
+        "FinancialServiceProvider"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/MagneticStripeVerificationCodeValue",
+      "name": "MagneticStripeVerificationCodeValue",
+      "label": "magnetic stripe verification code or value",
+      "definition": "card verification code on a card's magnetic stripe that uses secure cryptographic processes to protect data integrity on the stripe, and reveals any alteration or counterfeiting",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CardVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/PaymentCard",
+      "name": "PaymentCard",
+      "label": "payment card",
+      "definition": "legal document issued by a financial services provider that enables the cardholder to access the funds in the customer's designated bank accounts, or through a credit account and make payments by electronic funds transfer and access automated teller machines (ATMs)",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "LegalDocument"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/PaymentCardAgreement",
+      "name": "PaymentCardAgreement",
+      "label": "payment card agreement",
+      "definition": "account-specific credit agreement that specifies the terms and conditions under which the payment card is offered to the cardholder by the issuer",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CreditAgreement",
+        "AccountSpecificServiceAgreement"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/PrimaryCardAccountNumber",
+      "name": "PrimaryCardAccountNumber",
+      "label": "primary card account number",
+      "definition": "composite identifier of 14 or 16 digits embossed on a bank or payment card and encoded in the card's magnetic strip",
+      "synonyms": [
+        "primary account number"
+      ],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "AccountIdentifier"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/SmartCard",
+      "name": "SmartCard",
+      "label": "smart card",
+      "definition": "payment card that has integrated circuits embedded within it",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "PaymentCard"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/ThreeDigitVerificationCodeValue",
+      "name": "ThreeDigitVerificationCodeValue",
+      "label": "three-digit verification code or value",
+      "definition": "card verification code that is the rightmost three-digit value printed in the signature panel area on the back of the card",
+      "synonyms": [],
+      "source_file": "CardAccounts.rdf",
+      "parent_classes": [
+        "CardVerificationCodeValue"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/CommercialLoan",
+      "name": "CommercialLoan",
+      "label": "commercial loan",
+      "definition": "loan extended to a corporation, commercial enterprise, joint venture, or other organization as opposed to a consumer",
+      "synonyms": [
+        "commercial and industrial loan"
+      ],
+      "source_file": "CommercialLoans.rdf",
+      "parent_classes": [
+        "Loan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/ClosedEndMortgageLoan",
+      "name": "ClosedEndMortgageLoan",
+      "label": "closed-end mortgage loan",
+      "definition": "loan secured by real estate with no ability for the borrower to receive additional funds under the loan at a later date",
+      "synonyms": [],
+      "source_file": "Mortgages.rdf",
+      "parent_classes": [
+        "ClosedEndCredit",
+        "LoanSecuredByRealEstate"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/ClosedEndReverseMortgage",
+      "name": "ClosedEndReverseMortgage",
+      "label": "closed-end reverse mortgage",
+      "definition": "reverse mortgage that provides a lump sum payment to the borrower at closing, with no ability for the borrower to receive additional funds under the mortgage at a later date",
+      "synonyms": [],
+      "source_file": "Mortgages.rdf",
+      "parent_classes": [
+        "ClosedEndMortgageLoan",
+        "ReverseMortgageLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/LoanSecuredByRealEstate",
+      "name": "LoanSecuredByRealEstate",
+      "label": "loan secured by real estate",
+      "definition": "loan that, at origination, is secured wholly or substantially by a lien or liens on real property for which the lien or liens are central to the extension of the credit - that is, the borrower would not have been extended credit in the same amount or on terms as favorable without the lien or liens on real property",
+      "synonyms": [],
+      "source_file": "Mortgages.rdf",
+      "parent_classes": [
+        "CollateralizedLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/Mortgage",
+      "name": "Mortgage",
+      "label": "mortgage",
+      "definition": "grant of financial interest in real property to a party that is not an owner of that real property and is recorded by a registration authority",
+      "synonyms": [],
+      "source_file": "Mortgages.rdf",
+      "parent_classes": [
+        "SecurityAgreement"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/OpenEndMortgageLoan",
+      "name": "OpenEndMortgageLoan",
+      "label": "open-end mortgage loan",
+      "definition": "loan secured by real estate with a provision that the outstanding loan amount may be increased upon mutual agreement of the lender and the borrower",
+      "synonyms": [],
+      "source_file": "Mortgages.rdf",
+      "parent_classes": [
+        "OpenEndCredit",
+        "LoanSecuredByRealEstate"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/OpenEndReverseMortgage",
+      "name": "OpenEndReverseMortgage",
+      "label": "open-end reverse mortgage",
+      "definition": "reverse mortgage structured like a home equity line of credit in that it provides the borrower with additional funds after closing (either as fixed monthly payments, under a line of credit, or both)",
+      "synonyms": [],
+      "source_file": "Mortgages.rdf",
+      "parent_classes": [
+        "OpenEndMortgageLoan",
+        "ReverseMortgageLoan"
+      ]
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/ReverseMortgageLoan",
+      "name": "ReverseMortgageLoan",
+      "label": "reverse mortgage loan",
+      "definition": "loan secured by real estate that pays money to the borrower against a set principal limit based on the value of existing equity in the underlying collateral",
+      "synonyms": [],
+      "source_file": "Mortgages.rdf",
+      "parent_classes": [
+        "LoanSecuredByRealEstate"
+      ]
+    }
+  ],
+  "properties": [
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasCost",
+      "name": "hasCost",
+      "label": "has cost",
+      "definition": "has amount payable for principal, interest, fees or other expenses",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": null,
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasFirstRateChangeTerm",
+      "name": "hasFirstRateChangeTerm",
+      "label": "has first rate change term",
+      "definition": "specifies a period of time in months after origination during which the interest rate cannot change",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": null,
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasIndividualPayment",
+      "name": "hasIndividualPayment",
+      "label": "has individual payment",
+      "definition": "links an actual payment of principal, interest, and other related amounts to the overall payment history for an account",
+      "property_type": "ObjectProperty",
+      "domain": "PaymentHistory",
+      "range": "IndividualPaymentTransaction",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasLoanBalance",
+      "name": "hasLoanBalance",
+      "label": "has loan balance",
+      "definition": "indicates the balance with respect to the principal on the loan as of some date",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": null,
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasPaymentHistory",
+      "name": "hasPaymentHistory",
+      "label": "has payment history",
+      "definition": "relates a credit agreement, loan, or commitment to any history of payments that have been made by the borrower up to the point that payment history is requested",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": "PaymentHistory",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasPrePaymentPenaltyTerm",
+      "name": "hasPrePaymentPenaltyTerm",
+      "label": "has pre-payment penalty term",
+      "definition": "relates a loan to a period of time in months after which there is no prepayment penalty",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": null,
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasPrincipalAmount",
+      "name": "hasPrincipalAmount",
+      "label": "has principal amount",
+      "definition": "indicates the nominal amount of the loan that must be paid at or before maturity",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": "MonetaryAmount",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasScheduledUnpaidBalance",
+      "name": "hasScheduledUnpaidBalance",
+      "label": "has scheduled unpaid balance",
+      "definition": "indicates what the balance should be after a scheduled payment is made according to contract terms",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": "Balance",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasTotalClosingCosts",
+      "name": "hasTotalClosingCosts",
+      "label": "has total closing costs",
+      "definition": "indicates the total the amount paid at the closing of a real estate transaction, i.e., at the time when the title to the property is conveyed (transferred) to the buyer",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": null,
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasTotalPointsAndFees",
+      "name": "hasTotalPointsAndFees",
+      "label": "has total points and fees",
+      "definition": "indicates a form of pre-paid interest, charged by the lender as an alternative to charging a higher rate of interest on the mortgage loan",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": null,
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isServicedBy",
+      "name": "isServicedBy",
+      "label": "is performed by",
+      "definition": "relates a loan to the financial service provider that services it",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": "Servicer",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasBalloonPayment",
+      "name": "hasBalloonPayment",
+      "label": "has balloon payment",
+      "definition": "indicates whether the contractual terms include or would have included repayment of the outstanding principal sum at the end of a loan period, prior to which only partial or no payments were made on the principal",
+      "property_type": "DatatypeProperty",
+      "domain": null,
+      "range": "boolean",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/hasNegativeAmortization",
+      "name": "hasNegativeAmortization",
+      "label": "has negative amortization",
+      "definition": "indicates whether the contractual terms include or would have included a feature that allows unpaid interest to be added to the balance of unpaid principal",
+      "property_type": "DatatypeProperty",
+      "domain": null,
+      "range": "boolean",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isAssumable",
+      "name": "isAssumable",
+      "label": "is assumable",
+      "definition": "indicates whether or not another borrower may assume the payments on this loan",
+      "property_type": "DatatypeProperty",
+      "domain": "Loan",
+      "range": "boolean",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isInitiallyPayable",
+      "name": "isInitiallyPayable",
+      "label": "is initially payable",
+      "definition": "indicates whether the obligation arising from the covered loan was, or in the case of an application, would have been initially payable to the financial institution",
+      "property_type": "DatatypeProperty",
+      "domain": null,
+      "range": "boolean",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/isInterestOnly",
+      "name": "isInterestOnly",
+      "label": "is interest only",
+      "definition": "indicates whether the contractual terms include or would have included interest only payments",
+      "property_type": "DatatypeProperty",
+      "domain": null,
+      "range": "boolean",
+      "source_file": "Loans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/hasAssessmentBoundary",
+      "name": "hasAssessmentBoundary",
+      "label": "has assessment boundary",
+      "definition": "indicates the scope, limits, and context for an environmental or sustainability project",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": "AssessmentBoundary",
+      "source_file": "GreenLoans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans/hasSpatialBoundary",
+      "name": "hasSpatialBoundary",
+      "label": "has spatial boundary",
+      "definition": "specifies a geographic region included in an environmental or sustainability assessment, which may cover a specific site, facility, region, or the global operations of a company or project",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": "GeographicRegion",
+      "source_file": "GreenLoans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/hasCardVerificationCode",
+      "name": "hasCardVerificationCode",
+      "label": "has card verification code",
+      "definition": "links a credit card to either: (1) magnetic-stripe data, or (2) printed security features that are used to protect data integrity and limit alteration, counterfeiting and fraud generally",
+      "property_type": "ObjectProperty",
+      "domain": "PaymentCard",
+      "range": "CardVerificationCodeValue",
+      "source_file": "CardAccounts.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/hasCreditCardNetwork",
+      "name": "hasCreditCardNetwork",
+      "label": "has credit card network",
+      "definition": "indicates the underlying network for credit card product",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": "CreditCardNetwork",
+      "source_file": "CardAccounts.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/hasPrimaryAccountNumber",
+      "name": "hasPrimaryAccountNumber",
+      "label": "has primary account number",
+      "definition": "specifies the account number displayed on the face of the card",
+      "property_type": "ObjectProperty",
+      "domain": "PaymentCard",
+      "range": "PrimaryCardAccountNumber",
+      "source_file": "CardAccounts.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts/usesCurrency",
+      "name": "usesCurrency",
+      "label": "uses currency",
+      "definition": "indicates the currency defined for the credit card product",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": "Currency",
+      "source_file": "CardAccounts.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/hasBusinessPurposeDescription",
+      "name": "hasBusinessPurposeDescription",
+      "label": "has business purpose description",
+      "definition": "provides a description of the purpose of the loan from the perspective of the borrower",
+      "property_type": "DatatypeProperty",
+      "domain": "CommercialLoan",
+      "range": null,
+      "source_file": "CommercialLoans.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/hasInitialFundingDate",
+      "name": "hasInitialFundingDate",
+      "label": "has initial funding date",
+      "definition": "relates a mortgage to the date on which the contract is consummated, officially creating the obligations therein",
+      "property_type": "ObjectProperty",
+      "domain": null,
+      "range": null,
+      "source_file": "Mortgages.rdf"
+    },
+    {
+      "uri": "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/isARMConvertible",
+      "name": "isARMConvertible",
+      "label": "is ARM convertible",
+      "definition": "indicates whether or not the loan can be converted into an adjustable-rate mortgage contract (ARM)",
+      "property_type": "DatatypeProperty",
+      "domain": "LoanSecuredByRealEstate",
+      "range": "boolean",
+      "source_file": "Mortgages.rdf"
+    }
+  ],
+  "disjointness_axioms": [
+    {
+      "classes": [
+        "OpenEndCredit",
+        "ClosedEndCredit"
+      ],
+      "source_file": "Loans.rdf"
+    },
+    {
+      "classes": [
+        "UnsecuredLoan",
+        "SecuredLoan"
+      ],
+      "source_file": "Loans.rdf"
+    }
+  ],
+  "statistics": {
+    "total_classes": 86,
+    "total_properties": 25,
+    "total_disjointness_axioms": 2
+  },
+  "generated_prompt": "You are a Semantic Translator for financial loan documents. Extract facts from the text and map them to these LOAN ontology concepts:\n\n## Classes (Loan Types & Entities)\n- AssessmentBoundary - defined scope, limits, and criteria used to determine what is included or exclud...\n- CardAccount - account whose terms and conditions are defined in a card agreement that is repre...\n- CardAuthenticationValue - card verification value specifically for JCB payment cards\n- CardAuthenticationValue2 (also: CAV2) - card verification value specifically for JCB payment cards\n- CardExpirationDate - date on which a given payment card expires\n- CardIdentificationNumber - card verification value specifically for American Express and Discover payment c...\n- CardProduct - financial product involving the issuance of credit, debit, or other payment card...\n- CardSecurityCode - card verification value specifically for American Express payment cards\n- CardValidationCode - card verification code specifically for Mastercard payment cards\n- CardValidationCode2 - card verification value specifically for Mastercard payment cards\n- CardVerificationCodeValue - code that specifies either (1) magnetic-stripe data, or (2) printed security fea...\n- CardVerificationValue - card verification value specifically for Visa and Discover payment cards\n- CardVerificationValue2 (also: CVV2) - card verification value specifically for Visa payment cards\n- Cardholder - account holder to whom a payment card is issued\n- ClosedEndCredit - credit agreement in which the loan principal cannot be increased after funds are...\n- ClosedEndMortgageLoan - loan secured by real estate with no ability for the borrower to receive addition...\n- ClosedEndReverseMortgage - reverse mortgage that provides a lump sum payment to the borrower at closing, wi...\n- CollateralizedLoan - secured loan that is secured with cash or other acceptable collateral (real prop...\n- Comaker (also: comaker, cosigner) - party that signs a borrower's promissory note, providing additional security and...\n- CombinedLoanToValueRatio - ratio of the total amount of debt that is secured by the asset(s) and the apprai...\n- CommercialCreditCardAgreement (also: corporate credit card agreement) - credit card agreement for a card issued to, or in conjunction with, a formal org...\n- CommercialLoan (also: commercial and industrial loan) - loan extended to a corporation, commercial enterprise, joint venture, or other o...\n- ConsumerCreditCardAgreement - credit card agreement for a card issued for household, family, or other personal...\n- ConsumerLoan - loan to one or more individuals for household, family, or other personal expendi...\n- CreditCard - card issued by a financial service provider that enables the cardholder to borro...\n- CreditCardAccount - card account whose terms and conditions are defined in a credit card agreement t...\n- CreditCardAgreement - account-specific credit facility that specifies the terms and conditions under w...\n- CreditCardNetwork - classifier for the network that authorizes, processes, and sets the terms of cre...\n- CreditCardProduct - card product allowing the holder to purchase goods or services on credit\n- DebitCard - payment card issued by a financial service provider that enables the cardholder ...\n\n## Properties (Relations)\n- hasAssessmentBoundary [? → AssessmentBoundary] - indicates the scope, limits, and context for an environmenta...\n- hasBalloonPayment [? → boolean] - indicates whether the contractual terms include or would hav...\n- hasBusinessPurposeDescription [CommercialLoan → ?] - provides a description of the purpose of the loan from the p...\n- hasCardVerificationCode [PaymentCard → CardVerificationCodeValue] - links a credit card to either: (1) magnetic-stripe data, or ...\n- hasCost - has amount payable for principal, interest, fees or other ex...\n- hasCreditCardNetwork [? → CreditCardNetwork] - indicates the underlying network for credit card product\n- hasFirstRateChangeTerm - specifies a period of time in months after origination durin...\n- hasIndividualPayment [PaymentHistory → IndividualPaymentTransaction] - links an actual payment of principal, interest, and other re...\n- hasInitialFundingDate - relates a mortgage to the date on which the contract is cons...\n- hasLoanBalance - indicates the balance with respect to the principal on the l...\n- hasNegativeAmortization [? → boolean] - indicates whether the contractual terms include or would hav...\n- hasPaymentHistory [? → PaymentHistory] - relates a credit agreement, loan, or commitment to any histo...\n- hasPrePaymentPenaltyTerm - relates a loan to a period of time in months after which the...\n- hasPrimaryAccountNumber [PaymentCard → PrimaryCardAccountNumber] - specifies the account number displayed on the face of the ca...\n- hasPrincipalAmount [? → MonetaryAmount] - indicates the nominal amount of the loan that must be paid a...\n- hasScheduledUnpaidBalance [? → Balance] - indicates what the balance should be after a scheduled payme...\n- hasSpatialBoundary [? → GeographicRegion] - specifies a geographic region included in an environmental o...\n- hasTotalClosingCosts - indicates the total the amount paid at the closing of a real...\n- hasTotalPointsAndFees - indicates a form of pre-paid interest, charged by the lender...\n- isARMConvertible [LoanSecuredByRealEstate → boolean] - indicates whether or not the loan can be converted into an a...\n\n## Disjointness Axioms (CRITICAL - These cause CLASHES if violated!)\n- OpenEndCredit ⊥ ClosedEndCredit\n- UnsecuredLoan ⊥ SecuredLoan\n\n## Extraction Guidelines:\n1. Extract factual assertions including TYPE CLASSIFICATIONS (e.g., \"X is a StudentLoan\")\n2. For unnamed entities (like \"the loan\"), use descriptive subjects like \"TheLoan\"\n3. IMPORTANT: Type assertions should use \"rdf:type\" as predicate\n   Example: {\"sub\": \"TheLoan\", \"pred\": \"rdf:type\", \"obj\": \"StudentLoan\", \"sub_type\": \"Loan\", \"obj_type\": \"Class\"}\n4. Map entities to the MOST SPECIFIC class that applies\n5. Include relationships between lenders, borrowers, and loans\n6. Include loan characteristics (amount, rate, type) when mentioned\n7. Each triple must have: sub, pred, obj, sub_type, obj_type\n\n## Output Format:\nReturn JSON: {\"triples\": [{\"sub\": \"...\", \"pred\": \"...\", \"obj\": \"...\", \"sub_type\": \"...\", \"obj_type\": \"...\"}]}\n\nIf no triples can be extracted, return: {\"triples\": []}\n"
+}

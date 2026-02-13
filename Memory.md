@@ -2,7 +2,7 @@
 
 ## 1. Aktueller Status
 - **Phase:** Phase 1: PDF-Generierung & RDF-Vokabular-Scanner
-- **Letzter Git-Commit:** b234251 (Add manual clash test proving OWL-DL reasoning detects hallucinations)
+- **Letzter Git-Commit:** (wird nach Push aktualisiert)
 - **Datum:** 2025-02-13
 
 ## 2. Erledigte Aufgaben (Done)
@@ -12,28 +12,30 @@
 - [x] Language-Tag Cleaning für Reasoner-Kompatibilität
 - [x] Test für HermiT-Fix erstellt (test_hermit_fix.py)
 - [x] REQUIREMENTS.md und Memory.md angelegt
-- [x] **Manueller Clash-Test** (`test_manual_clash.py`) - 4/4 Tests bestanden:
-  - ✅ Szenario 1: Gültige Aussage → CONSISTENT
-  - ✅ Szenario 2: SecuredLoan ⊥ UnsecuredLoan → INCONSISTENT erkannt
-  - ✅ Szenario 3: NaturalPerson ⊥ LegalEntity → INCONSISTENT erkannt
-  - ✅ Szenario 4: OpenEndCredit ⊥ ClosedEndCredit → INCONSISTENT erkannt
+- [x] **Manueller Clash-Test** (`test_manual_clash.py`) - 4/4 Tests bestanden
+- [x] **Vokabular-Scanner** (`vocabulary_scanner.py`) - 6/6 Tests bestanden:
+  - ✅ 7 RDF-Dateien gefunden
+  - ✅ 86 Klassen extrahiert (Loan, SecuredLoan, CommercialLoan, Mortgage, etc.)
+  - ✅ 25 Properties extrahiert (hasBorrower, hasLender, etc.)
+  - ✅ 2 Disjointness-Axiome (SecuredLoan ⊥ UnsecuredLoan, OpenEndCredit ⊥ ClosedEndCredit)
+  - ✅ Cache gespeichert als `vocabulary_cache.json`
+  - ✅ Dynamischer Prompt integriert in `extractor.py`
 
 ## 3. Aktuelle TODO (Next Step)
-- [ ] **RDF-Vokabular-Scanner implementieren**
-  - Automatisches Parsen aller .rdf Dateien in `ontologies/`
-  - Extraktion von Klassen (owl:Class) und Properties (owl:ObjectProperty, owl:DatatypeProperty)
-  - Generierung eines dynamischen Extractor-Prompts basierend auf dem Vokabular
-  - Speichern als `vocabulary_cache.json`
+- [ ] **10 Test-PDFs generieren** (`generate_test_pdfs.py`)
+  - 9 konsistente Verträge (Consumer, Commercial, Mortgage, Student, Green, etc.)
+  - 1 fehlerhafter Vertrag (`Vertrag_010_ERROR_CLASH.pdf`) mit absichtlichem Clash
 
 ## 4. Vorhandene Komponenten
 | Komponente | Datei | Status |
 |------------|-------|--------|
 | RAG Pipeline | `rag_pipeline.py` | ✅ Implementiert |
-| Triple Extractor | `extractor.py` | ✅ Implementiert (statischer Prompt) |
+| Triple Extractor | `extractor.py` | ✅ Implementiert (dynamischer Prompt) |
 | Ontology Validator | `validator.py` | ✅ Implementiert |
 | CLI Interface | `main.py` | ✅ Implementiert |
 | **Manueller Clash-Test** | `test_manual_clash.py` | ✅ 4/4 Tests bestanden |
-| Vokabular-Scanner | `vocabulary_scanner.py` | ❌ Noch zu erstellen |
+| **Vokabular-Scanner** | `vocabulary_scanner.py` | ✅ 6/6 Tests bestanden |
+| **Vokabular-Cache** | `vocabulary_cache.json` | ✅ 86 Klassen, 25 Properties |
 | PDF-Generator | `generate_test_pdfs.py` | ❌ Noch zu erstellen |
 | Korrekturschleife | in `main.py` | ❌ Noch zu erweitern |
 | Benchmark Engine | `benchmark.py` | ❌ Noch zu erstellen |
@@ -48,17 +50,17 @@
 - Java-Memory muss auf 4GB gesetzt werden für komplexe Ontologien
 
 ## 7. Nächste Schritte (Reihenfolge)
-1. `vocabulary_scanner.py` implementieren
-2. Test für Scanner schreiben und ausführen
-3. 10 Test-PDFs generieren (`generate_test_pdfs.py`)
+1. ~~`vocabulary_scanner.py` implementieren~~ ✅
+2. ~~Test für Scanner schreiben und ausführen~~ ✅
+3. 10 Test-PDFs generieren (`generate_test_pdfs.py`) ← **NÄCHSTER SCHRITT**
 4. Memory.md aktualisieren
 5. Git commit & push
 
 ## 8. Detaillierter Entwicklungsplan
 Siehe: `docs/PHASE_1_PLAN.md` für den vollständigen Plan mit:
-- Sprint 1.1: RDF-Vokabular-Scanner
-- Sprint 1.2: PDF Test-Daten-Generierung
+- Sprint 1.1: RDF-Vokabular-Scanner ✅ ABGESCHLOSSEN
+- Sprint 1.2: PDF Test-Daten-Generierung ← AKTUELL
 - Akzeptanzkriterien und Testfälle
 
 ---
-*Zuletzt aktualisiert: 2025-02-13 - Nach Erstellung des manuellen Clash-Tests (4/4 bestanden)*
+*Zuletzt aktualisiert: 2025-02-13 - Nach Implementierung des Vokabular-Scanners (6/6 Tests bestanden)*
