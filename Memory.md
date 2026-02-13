@@ -2,7 +2,7 @@
 
 ## 1. Aktueller Status
 - **Phase:** Phase 1: ABGESCHLOSSEN ✅ → Bereit für Phase 2
-- **Letzter Git-Commit:** e0f1980 (Complete Phase 1: Add PDF generator and 10 test contracts)
+- **Letzter Git-Commit:** b97a6d0 (Convert test PDFs to English for thesis consistency)
 - **Datum:** 2025-02-13
 
 ## 2. Erledigte Aufgaben (Done)
@@ -14,19 +14,19 @@
 - [x] REQUIREMENTS.md und Memory.md angelegt
 - [x] **Manueller Clash-Test** (`test_manual_clash.py`) - 4/4 Tests bestanden
 - [x] **Vokabular-Scanner** (`vocabulary_scanner.py`) - 6/6 Tests bestanden
-- [x] **10 Test-PDFs generiert** (`generate_test_pdfs.py`) - 10/10 PDFs erstellt:
-  | Nr. | Datei | Typ | Status |
-  |-----|-------|-----|--------|
-  | 001 | Vertrag_001_ConsumerLoan.pdf | ConsumerLoan | ✅ Konsistent |
-  | 002 | Vertrag_002_CommercialLoan.pdf | CommercialLoan | ✅ Konsistent |
-  | 003 | Vertrag_003_Mortgage.pdf | Mortgage | ✅ Konsistent |
-  | 004 | Vertrag_004_StudentLoan.pdf | StudentLoan | ✅ Konsistent |
-  | 005 | Vertrag_005_SubsidizedStudentLoan.pdf | SubsidizedStudentLoan | ✅ Konsistent |
-  | 006 | Vertrag_006_GreenLoan.pdf | GreenLoan | ✅ Konsistent |
-  | 007 | Vertrag_007_CardAccount.pdf | CardAccount (OpenEnd) | ✅ Konsistent |
-  | 008 | Vertrag_008_CommercialLoan.pdf | CommercialLoan (Syndiziert) | ✅ Konsistent |
-  | 009 | Vertrag_009_Mortgage.pdf | Mortgage (Umschuldung) | ✅ Konsistent |
-  | **010** | **Vertrag_010_ERROR_CLASH_CommercialLoan.pdf** | **CommercialLoan** | ⚠️ **CLASH: Max Müller (NaturalPerson) als Lender** |
+- [x] **10 Test-PDFs generiert** (`generate_test_pdfs.py`) - 10/10 PDFs (English):
+  | Nr. | File | Type | Status |
+  |-----|------|------|--------|
+  | 001 | Contract_001_ConsumerLoan.pdf | ConsumerLoan | ✅ Consistent |
+  | 002 | Contract_002_CommercialLoan.pdf | CommercialLoan | ✅ Consistent |
+  | 003 | Contract_003_Mortgage.pdf | Mortgage | ✅ Consistent |
+  | 004 | Contract_004_StudentLoan.pdf | StudentLoan | ✅ Consistent |
+  | 005 | Contract_005_SubsidizedStudentLoan.pdf | SubsidizedStudentLoan | ✅ Consistent |
+  | 006 | Contract_006_GreenLoan.pdf | GreenLoan | ✅ Consistent |
+  | 007 | Contract_007_CardAccount.pdf | CardAccount (OpenEnd) | ✅ Consistent |
+  | 008 | Contract_008_CommercialLoan.pdf | CommercialLoan (Syndicated) | ✅ Consistent |
+  | 009 | Contract_009_Mortgage.pdf | Mortgage (Refinance) | ✅ Consistent |
+  | **010** | **Contract_010_ERROR_CLASH_CommercialLoan.pdf** | **CommercialLoan** | ⚠️ **CLASH: John Smith (NaturalPerson) as Lender** |
 
 ## 3. Aktuelle TODO (Next Step)
 - [ ] **Phase 2: Validation Loop mit Hard-Reject**
@@ -49,11 +49,11 @@
 | Benchmark Engine | `benchmark.py` | ❌ Phase 3 |
 | Streamlit Dashboard | `app.py` | ❌ Phase 4 |
 
-## 5. Test-Daten Status
-- **Vorhanden:** 11 PDFs (1 original + 10 generiert)
-- **Konsistent:** 9 Verträge
-- **Mit Clash:** 1 Vertrag (Vertrag_010_ERROR_CLASH_CommercialLoan.pdf)
-- **Clash-Typ:** NaturalPerson (Max Müller) als Lender für CommercialLoan
+## 5. Test Data Status
+- **Available:** 11 PDFs (1 original + 10 generated, all in English)
+- **Consistent:** 9 contracts
+- **With Clash:** 1 contract (Contract_010_ERROR_CLASH_CommercialLoan.pdf)
+- **Clash Type:** NaturalPerson (John Smith) as Lender for CommercialLoan
 
 ## 6. Bekannte Probleme / Blockaden
 - HermiT Reasoner hat Probleme mit `langString` Datatype → Pellet-Fallback implementiert
