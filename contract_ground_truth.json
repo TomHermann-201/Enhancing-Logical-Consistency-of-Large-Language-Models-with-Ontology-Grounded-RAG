@@ -1,0 +1,602 @@
+{
+  "001": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "002": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "003": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "004": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "005": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "006": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "007": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "008": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "009": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "010": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "011": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "012": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "013": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "014": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "015": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "016": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "017": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "018": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "019": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "020": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "021": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "022": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "023": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "024": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "025": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "026": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "027": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "028": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "029": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "030": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "031": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "032": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "033": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "034": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "035": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "036": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "037": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "038": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "039": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "040": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "041": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "042": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "043": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "044": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "045": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "046": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "047": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "048": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "049": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "050": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "051": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "052": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "053": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "054": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "055": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "056": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "057": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "058": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "059": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "060": {
+    "label": "CLEAN",
+    "expect_clash": false,
+    "clash_type": null,
+    "clash_description": null
+  },
+  "061": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Commercial loan stated as secured but no collateral specified"
+  },
+  "062": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Consumer loan with collateral but described as unsecured"
+  },
+  "063": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+  },
+  "064": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Commercial loan stated as secured but no collateral specified"
+  },
+  "065": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Consumer loan with collateral but described as unsecured"
+  },
+  "066": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+  },
+  "067": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Commercial loan stated as secured but no collateral specified"
+  },
+  "068": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Consumer loan with collateral but described as unsecured"
+  },
+  "069": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+  },
+  "070": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Commercial loan stated as secured but no collateral specified"
+  },
+  "071": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Consumer loan with collateral but described as unsecured"
+  },
+  "072": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+  },
+  "073": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Commercial loan stated as secured but no collateral specified"
+  },
+  "074": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Consumer loan with collateral but described as unsecured"
+  },
+  "075": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "secured_unsecured",
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+  },
+  "076": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+  },
+  "077": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+  },
+  "078": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+  },
+  "079": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+  },
+  "080": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+  },
+  "081": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+  },
+  "082": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+  },
+  "083": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+  },
+  "084": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+  },
+  "085": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+  },
+  "086": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+  },
+  "087": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+  },
+  "088": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+  },
+  "089": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+  },
+  "090": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "openend_closedend",
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+  },
+  "091": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "borrower_type",
+    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)"
+  },
+  "092": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "borrower_type",
+    "clash_description": "Consumer loan issued to a corporation (should be NaturalPerson)"
+  },
+  "093": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "borrower_type",
+    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)"
+  },
+  "094": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "borrower_type",
+    "clash_description": "Consumer loan issued to a corporation (should be NaturalPerson)"
+  },
+  "095": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "borrower_type",
+    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)"
+  },
+  "096": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "lender_type",
+    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)"
+  },
+  "097": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "lender_type",
+    "clash_description": "Mortgage issued by a natural person (should be FinancialInstitution)"
+  },
+  "098": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "lender_type",
+    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)"
+  },
+  "099": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "lender_type",
+    "clash_description": "Mortgage issued by a natural person (should be FinancialInstitution)"
+  },
+  "100": {
+    "label": "CLASH",
+    "expect_clash": true,
+    "clash_type": "lender_type",
+    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)"
+  }
+}
