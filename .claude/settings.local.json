@@ -31,7 +31,8 @@
       "Bash(streamlit run:*)",
       "Bash(python evaluate.py:*)",
       "Bash(/Users/tomhermann/Desktop/Bachelor-Arbeit/Enhancing-Logical-Consistency-of-Large-Language-Models-with-Ontology-Grounded-RAG/.venv/bin/pip install plotly)",
-      "Bash(test:*)"
+      "Bash(test:*)",
+      "Bash(.venv/bin/python:*)"
     ]
   }
 }

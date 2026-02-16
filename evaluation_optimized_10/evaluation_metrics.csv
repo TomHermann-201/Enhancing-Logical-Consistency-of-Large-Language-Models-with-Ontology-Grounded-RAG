@@ -1,0 +1,2 @@
+tp,fp,tn,fn,precision,recall,f1,total_ovrag_queries,total_plain_queries,corrections_needed,corrections_succeeded,hard_rejects,correction_success_rate,hard_reject_rate,avg_rouge_l_ovrag,avg_rouge_l_plain,avg_bertscore_f1_ovrag,avg_bertscore_f1_plain,avg_bertscore_precision_ovrag,avg_bertscore_precision_plain,avg_bertscore_recall_ovrag,avg_bertscore_recall_plain,avg_latency_ovrag,avg_latency_plain,latency_overhead_seconds,latency_overhead_percent
+5,4,21,20,0.5555555555555556,0.2,0.29411764705882354,50,0,10,1,9,0.1,0.18,0.3564,,0.8954,,0.878,,0.9143,,10.54,,,
