@@ -10,6 +10,7 @@
 	<!ENTITY fibo-loan-ln-ln "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/">
 	<!ENTITY fibo-loan-reln-mtg "https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/">
 	<!ENTITY fibo-loan-spc-cns "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/">
+	<!ENTITY fibo-loan-spc-com "https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/">
 	<!ENTITY owl "http://www.w3.org/2002/07/owl#">
 	<!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#">
 	<!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#">
@@ -27,6 +28,7 @@
 	xmlns:fibo-loan-ln-ln="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans/"
 	xmlns:fibo-loan-reln-mtg="https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages/"
 	xmlns:fibo-loan-spc-cns="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans/"
+	xmlns:fibo-loan-spc-com="https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans/"
 	xmlns:owl="http://www.w3.org/2002/07/owl#"
 	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
@@ -88,6 +90,7 @@ THE SOFTWARE IS PROVIDED &apos;AS IS&apos;, WITHOUT WARRANTY OF ANY KIND, EXPRES
 		<cmns-av:adaptedFrom xml:lang="en">12 CFR § 228.12, https://www.law.cornell.edu/cfr/text/12/228.12</cmns-av:adaptedFrom>
 		<cmns-av:explanatoryNote xml:lang="en">In the United Kingdom and per the Bank of England, lending to individuals (excluding student loans) consists of sterling lending secured on dwellings (i.e. mortgages) and sterling consumer credit to UK-resident individuals. See https://www.bankofengland.co.uk/statistics/details/further-details-about-total-lending-to-individuals-data. This definition is broader than the definition used in the US, however.</cmns-av:explanatoryNote>
 		<cmns-av:explanatoryNote xml:lang="en">In the United States, consumer loans do not include a home mortgage, small business, or small farm loans. They are defined by law to include the following: (1) Motor vehicle loan, which is a consumer loan extended for the purchase of and secured by a motor vehicle; (2) Credit card loan, which is a line of credit for household, family, or other personal expenditures that is accessed by a borrower&apos;s use of a &apos;credit card,&apos; as this term is defined in § 1026.2 of 12 CFR § 228.12; (3) Other secured consumer loan, which is a secured consumer loan that is not included in one of the other categories of consumer loans; and (4) Other unsecured consumer loan, which is an unsecured consumer loan that is not included in one of the other categories of consumer loans.</cmns-av:explanatoryNote>
+		<owl:disjointWith rdf:resource="&fibo-loan-spc-com;CommercialLoan"/>
 	</owl:Class>
 	
 	<owl:Class rdf:about="&fibo-loan-spc-cns;HomeEquityLineOfCredit">

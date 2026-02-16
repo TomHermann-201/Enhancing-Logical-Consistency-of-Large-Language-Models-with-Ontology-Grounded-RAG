@@ -1,0 +1,3 @@
+clash_type,tp,fp,tn,fn,total,precision,recall,f1,detection_rate
+clean,0,0,5,0,5,,,,
+secured_unsecured,0,0,0,5,5,,0.0,,0.0

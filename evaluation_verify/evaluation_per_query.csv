@@ -1,0 +1,211 @@
+contract_id,condition,question_id,question_target,ground_truth,expect_clash,clash_type,validation_passed,total_attempts,hard_reject,hard_reject_reason,accepted_at_attempt,error,rouge_l,bertscore_precision,bertscore_recall,bertscore_f1,latency_rag,latency_extraction,latency_validation,latency_total
+001,ovrag,Q3,SecuredLoan / UnsecuredLoan disjointness,CLEAN,False,,True,1,False,,0,,0.3077,0.9698,0.9351,0.9521,1.2024459838867188,8.330749750137329,1.3227403163909912,10.856112718582153
+061,ovrag,Q3,SecuredLoan / UnsecuredLoan disjointness,CLASH,True,secured_unsecured,False,4,True,"Answer failed ontology validation after 3 correction attempt(s). Last failure: LOGICAL INCONSISTENCY DETECTED
+============================================================
+
+The following assertions violate FIBO ontology constraints:
+
+1. TheLoan (Loan) rdf:type UnsecuredLoan (Class)
+2. TheLoan (Loan) hasPrincipalAmount USD 962,000.00 (MonetaryAmount)
+3. TheLoan (Loan) hasInterestRate 2.6% per annum (InterestRate)
+4. TheLoan (Loan) hasTerm 59 months (Term)
+5. TheLoan (Loan) hasMaturityDate December 22, 2030 (Date)
+6. First National Bank (Entity) providesLoan TheLoan (Loan)
+7. TechStart Inc. (Entity) receivesLoan TheLoan (Loan)
+8. TheLoan (Loan) rdf:type SecuredLoan (Class)
+9. TheLoan (Loan) rdf:type ClosedEndCredit (Class)
+10. TheLoan (Loan) rdf:type CommercialLoan (Class)
+11. TheLoan (Loan) hasLender Commerce Bank of America (Lender)
+12. TheLoan (Loan) hasBorrower ACME Industries LLC (Borrower)
+13. TheLoan (Loan) hasLoanAmount USD 1,296,000.00 (Literal)
+14. TheLoan (Loan) hasInterestRate 5.4% (Literal)
+15. TheLoan (Loan) hasMaturityDate November 11, 2032 (Literal)
+16. TheLoan (Loan) hasCollateral Yes (Literal)
+17. TheLoan (Loan) hasLender First National Bank (Lender)
+18. TheLoan (Loan) hasBorrower TechStart Inc. (Borrower)
+19. TheLoan (Loan) hasLoanAmount USD 962,000.00 (Literal)
+20. TheLoan (Loan) hasInterestRate 2.6% (Literal)
+21. TheLoan (Loan) hasCollateral No (Literal)
+
+Possible violations:
+• Disjointness: Entity cannot belong to disjoint classes
+• Cardinality: Property exceeds allowed number of values
+• Irreflexivity: Entity cannot have relation to itself
+• Domain/Range: Property applied to incompatible entity types
+
+Reasoner output: Java error message is: Feb 16, 2026 9:58:11 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/RealEstateLoans/Mortgages
+Feb 16, 2026 9:58:11 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CommercialLoans
+Feb 16, 2026 9:58:11 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/ConsumerLoans
+Feb 16, 2026 9:58:11 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CardAccounts
+Feb 16, 2026 9:58:11 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/StudentLoans
+Feb 16, 2026 9:58:11 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/Loans
+Feb 16, 2026 9:58:11 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/GreenLoans
+ERROR: Ontology is inconsistent, run ""pellet explain"" to get the reason
+",,,0.0864,0.8053,0.8963,0.8484,10.229373455047607,16.39519429206848,3.822927474975586,30.4496009349823
+076,ovrag,Q3,SecuredLoan / UnsecuredLoan disjointness,CLASH,True,openend_closedend,False,4,True,"Answer failed ontology validation after 3 correction attempt(s). Last failure: LOGICAL INCONSISTENCY DETECTED
+============================================================
+
+The following assertions violate FIBO ontology constraints:
+
+1. LoanAgreement_LA-2025-061 (Loan) rdf:type SecuredLoan (Class)
+2. LoanAgreement_LA-2025-076 (Loan) rdf:type SecuredLoan (Class)
+3. LoanAgreement_LA-2025-076 (Loan) hasCollateral SolarInstallationEquipment (Asset)
+4. LoanAgreement_LA-2025-001 (Loan) rdf:type UnsecuredLoan (Class)
+5. TheLoan (Loan) rdf:type SecuredLoan (Class)
+6. TheLoan (Loan) rdf:type ClosedEndCredit (Class)
+7. TheLoan (Loan) hasLender Commerce Bank of America (Lender)
+8. TheLoan (Loan) hasBorrower ACME Industries LLC (Borrower)
+9. TheLoan (Loan) hasLoanAmount USD 1,296,000.00 (Literal)
+10. TheLoan (Loan) hasInterestRate 5.4% (Literal)
+11. TheLoan (Loan) hasMaturityDate November 11, 2032 (Literal)
+12. TheLoan (Loan) hasCollateral collateral (Literal)
+13. TheLoan (Loan) rdf:type OpenEndCredit (Class)
+14. TheLoan (Loan) hasLender Barclays (Lender)
+15. TheLoan (Loan) hasBorrower Ironwood Properties LLC (Borrower)
+16. TheLoan (Loan) hasLoanAmount USD 1,128,000.00 (Literal)
+17. TheLoan (Loan) hasInterestRate 7.5% (Literal)
+18. TheLoan (Loan) hasMaturityDate May 01, 2029 (Literal)
+19. TheLoan (Loan) hasCollateral The solar installation equipment (Literal)
+20. TheLoan (Loan) rdf:type UnsecuredLoan (Class)
+21. TheLoan (Loan) hasLender First National Bank (Lender)
+22. TheLoan (Loan) hasBorrower TechStart Inc. (Borrower)
+23. TheLoan (Loan) hasLoanAmount USD 962,000.00 (Literal)
+24. TheLoan (Loan) hasInterestRate 2.6% (Literal)
+25. TheLoan (Loan) hasMaturityDate December 22, 2030 (Literal)
+
+Possible violations:
+• Disjointness: Entity cannot belong to disjoint classes
+• Cardinality: Property exceeds allowed number of values
+• Irreflexivity: Entity cannot have relation to itself
+• Domain/Range: Property applied to incompatible entity types
+
+Reasoner output: Java error message is: Feb 16, 2026 9:58:54 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/RealEstateLoans/Mortgages
+Feb 16, 2026 9:58:54 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CommercialLoans
+Feb 16, 2026 9:58:54 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/ConsumerLoans
+Feb 16, 2026 9:58:54 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CardAccounts
+Feb 16, 2026 9:58:54 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/StudentLoans
+Feb 16, 2026 9:58:54 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/Loans
+Feb 16, 2026 9:58:54 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/GreenLoans
+ERROR: Ontology is inconsistent, run ""pellet explain"" to get the reason
+",,,0.1244,0.8027,0.9243,0.8592,14.882817506790161,16.065998077392578,3.706975221633911,34.65693497657776
+091,ovrag,Q3,SecuredLoan / UnsecuredLoan disjointness,CLASH,True,borrower_type,False,4,True,"Answer failed ontology validation after 3 correction attempt(s). Last failure: LOGICAL INCONSISTENCY DETECTED
+============================================================
+
+The following assertions violate FIBO ontology constraints:
+
+1. Loan1 (Loan) rdf:type SecuredLoan (Class)
+2. Loan1 (Loan) hasLender Commerce Bank of America (Entity)
+3. Loan1 (Loan) hasBorrower ACME Industries LLC (Entity)
+4. Loan2 (Loan) rdf:type SecuredLoan (Class)
+5. Loan2 (Loan) hasLender Sallie Mae (Entity)
+6. Loan2 (Loan) hasBorrower Maria Garcia (Entity)
+7. Loan2 (Loan) hasCollateral The solar installation equipment (Asset)
+8. Loan3 (Loan) rdf:type SecuredLoan (Class)
+9. Loan3 (Loan) hasLender Barclays (Entity)
+10. Loan3 (Loan) hasBorrower Ironwood Properties LLC (Entity)
+11. Loan3 (Loan) hasCollateral The solar installation equipment (Asset)
+12. TheLoan (Loan) rdf:type SecuredLoan (Class)
+13. TheLoan (Loan) rdf:type ClosedEndCredit (Class)
+14. TheLoan (Loan) hasLender Commerce Bank of America (Lender)
+15. TheLoan (Loan) hasBorrower ACME Industries LLC (Borrower)
+16. TheLoan (Loan) hasLoanAmount USD 1,296,000.00 (Literal)
+17. TheLoan (Loan) hasInterestRate 5.4% (Literal)
+18. TheLoan (Loan) hasMaturityDate November 11, 2032 (Literal)
+19. TheLoan (Loan) hasLender Sallie Mae (Lender)
+20. TheLoan (Loan) hasBorrower Maria Garcia (Borrower)
+21. TheLoan (Loan) hasLoanAmount USD 1,321,000.00 (Literal)
+22. TheLoan (Loan) hasInterestRate 5.2% (Literal)
+23. TheLoan (Loan) hasMaturityDate November 17, 2031 (Literal)
+24. TheLoan (Loan) hasCollateral The solar installation equipment (Literal)
+25. TheLoan (Loan) rdf:type OpenEndCredit (Class)
+26. TheLoan (Loan) hasLender Barclays (Lender)
+27. TheLoan (Loan) hasBorrower Ironwood Properties LLC (Borrower)
+28. TheLoan (Loan) hasLoanAmount USD 1,128,000.00 (Literal)
+29. TheLoan (Loan) hasInterestRate 7.5% (Literal)
+30. TheLoan (Loan) hasMaturityDate May 01, 2029 (Literal)
+
+Possible violations:
+• Disjointness: Entity cannot belong to disjoint classes
+• Cardinality: Property exceeds allowed number of values
+• Irreflexivity: Entity cannot have relation to itself
+• Domain/Range: Property applied to incompatible entity types
+
+Reasoner output: Java error message is: Feb 16, 2026 9:59:42 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/RealEstateLoans/Mortgages
+Feb 16, 2026 9:59:42 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CommercialLoans
+Feb 16, 2026 9:59:42 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/ConsumerLoans
+Feb 16, 2026 9:59:42 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CardAccounts
+Feb 16, 2026 9:59:42 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/StudentLoans
+Feb 16, 2026 9:59:42 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/Loans
+Feb 16, 2026 9:59:42 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/GreenLoans
+ERROR: Ontology is inconsistent, run ""pellet explain"" to get the reason
+",,,0.1558,0.81,0.9153,0.8594,16.73648238182068,20.433847904205322,2.8285083770751953,39.999634981155396
+096,ovrag,Q3,SecuredLoan / UnsecuredLoan disjointness,CLASH,True,lender_type,False,4,True,"Answer failed ontology validation after 3 correction attempt(s). Last failure: LOGICAL INCONSISTENCY DETECTED
+============================================================
+
+The following assertions violate FIBO ontology constraints:
+
+1. TheLoan (Loan) rdf:type SecuredLoan (Class)
+2. Commerce Bank of America (Entity) rdf:type Lender (Class)
+3. ACME Industries LLC (Entity) rdf:type Borrower (Class)
+4. TheLoan (Loan) hasLender Commerce Bank of America (Entity)
+5. TheLoan (Loan) hasBorrower ACME Industries LLC (Entity)
+6. TheLoan (Loan) rdf:type ClosedEndCredit (Class)
+7. TheLoan (Loan) hasLoanAmount USD 1,296,000.00 (Literal)
+8. TheLoan (Loan) hasInterestRate 5.4% (Literal)
+9. TheLoan (Loan) hasMaturityDate November 11, 2032 (Literal)
+10. TheLoan (Loan) hasLender Sallie Mae (Lender)
+11. TheLoan (Loan) hasBorrower Maria Garcia (Borrower)
+12. TheLoan (Loan) hasLoanAmount USD 1,321,000.00 (Literal)
+13. TheLoan (Loan) hasInterestRate 5.2% (Literal)
+14. TheLoan (Loan) hasMaturityDate November 17, 2031 (Literal)
+15. TheLoan (Loan) hasCollateral The solar installation equipment (Literal)
+16. TheLoan (Loan) rdf:type OpenEndCredit (Class)
+17. TheLoan (Loan) hasLender Barclays (Lender)
+18. TheLoan (Loan) hasBorrower Ironwood Properties LLC (Borrower)
+19. TheLoan (Loan) hasLoanAmount USD 1,128,000.00 (Literal)
+20. TheLoan (Loan) hasInterestRate 7.5% (Literal)
+21. TheLoan (Loan) hasMaturityDate May 01, 2029 (Literal)
+
+Possible violations:
+• Disjointness: Entity cannot belong to disjoint classes
+• Cardinality: Property exceeds allowed number of values
+• Irreflexivity: Entity cannot have relation to itself
+• Domain/Range: Property applied to incompatible entity types
+
+Reasoner output: Java error message is: Feb 16, 2026 10:00:17 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/RealEstateLoans/Mortgages
+Feb 16, 2026 10:00:17 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CommercialLoans
+Feb 16, 2026 10:00:17 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/ConsumerLoans
+Feb 16, 2026 10:00:17 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CardAccounts
+Feb 16, 2026 10:00:17 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/StudentLoans
+Feb 16, 2026 10:00:17 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/Loans
+Feb 16, 2026 10:00:17 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature
+WARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/GreenLoans
+ERROR: Ontology is inconsistent, run ""pellet explain"" to get the reason
+",,,0.1333,0.8499,0.9254,0.8861,7.447950124740601,18.223390102386475,2.657214403152466,28.329465866088867

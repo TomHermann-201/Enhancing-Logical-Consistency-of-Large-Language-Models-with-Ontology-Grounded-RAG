@@ -1,0 +1,5 @@
+contract_id,condition,question_id,question_target,ground_truth,expect_clash,clash_type,validation_passed,total_attempts,hard_reject,hard_reject_reason,accepted_at_attempt,error,rouge_l,bertscore_precision,bertscore_recall,bertscore_f1,latency_rag,latency_extraction,latency_validation,latency_total
+001,ovrag,Q1,Loan type classification,CLEAN,False,,False,4,True,Answer failed ontology validation after 3 correction attempt(s). Last failure: Validation error: ValueError: ,,,0.1429,0.8415,0.9089,0.8739,9.344008207321167,12.959292888641357,0.25393176078796387,22.55735993385315
+001,plain,Q1,Loan type classification,CLEAN,False,,,1,False,,,,0.625,0.9263,0.933,0.9296,1.4470479488372803,0.0,0.0,1.4472861289978027
+061,ovrag,Q1,Loan type classification,CLASH,True,secured_unsecured,False,4,True,Answer failed ontology validation after 3 correction attempt(s). Last failure: Validation error: ValueError: ,,,0.058,0.8256,0.9062,0.864,5.667171955108643,8.237725496292114,0.1791369915008545,14.084091186523438
+061,plain,Q1,Loan type classification,CLASH,True,secured_unsecured,,1,False,,,,0.0769,0.8403,0.9097,0.8736,1.9205381870269775,0.0,0.0,1.9205539226531982

@@ -1,0 +1,5 @@
+contract_id,condition,ground_truth,clash_type,queries,passed,failed,no_triples,errors
+001,ovrag,CLEAN,,1,0,1,0,0
+001,plain,CLEAN,,1,0,0,1,0
+061,ovrag,CLASH,secured_unsecured,1,0,1,0,0
+061,plain,CLASH,secured_unsecured,1,0,0,1,0

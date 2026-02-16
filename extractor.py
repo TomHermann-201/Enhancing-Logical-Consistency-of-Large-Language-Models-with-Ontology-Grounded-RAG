@@ -85,6 +85,47 @@ Return JSON in this exact format:
 If no triples can be extracted, return: {"triples": []}
 """
 
+# Context extraction prompt: extracts ALL facts from source documents,
+# preserving contradictions so the validator can detect clashes.
+CONTEXT_EXTRACTION_PROMPT = """You are a Semantic Extractor for financial loan documents. Your task is to extract ALL factual assertions from the source text and map them to LOAN ontology concepts.
+
+CRITICAL: Extract EVERY classification and assertion you find, even if they contradict each other. Do NOT resolve contradictions — preserve them all.
+
+Classes:
+- Loan, SecuredLoan, UnsecuredLoan
+- ConsumerLoan, CommercialLoan
+- Mortgage, StudentLoan, SubsidizedStudentLoan, GreenLoan
+- OpenEndCredit, ClosedEndCredit
+- Lender, Borrower
+- Corporation, FinancialInstitution, NaturalPerson
+
+Keyword mapping (apply ALL that match):
+- "secured", "collateral", "pledge", "backed by" → SecuredLoan
+- "unsecured", "no collateral", "without collateral" → UnsecuredLoan
+- "open-end", "revolving", "line of credit" → OpenEndCredit
+- "closed-end", "fixed term", "installment" → ClosedEndCredit
+- "consumer", "personal", "individual", "household" → ConsumerLoan
+- "commercial", "business", "corporate", "enterprise" → CommercialLoan
+- "mortgage", "real estate", "home loan" → Mortgage
+- "student loan", "education loan" → StudentLoan
+- "green loan", "sustainable", "environmental" → GreenLoan
+
+Properties:
+- rdf:type (entity classification)
+- hasLender, hasBorrower, hasLoanAmount, hasInterestRate
+- hasMaturityDate, hasGuarantor, hasCollateral
+
+Rules:
+1. Use "TheLoan" as subject for all loan-related assertions (to match answer extraction)
+2. Extract type assertions as: {"sub": "TheLoan", "pred": "rdf:type", "obj": "<ClassName>", "sub_type": "Loan", "obj_type": "Class"}
+3. Extract ALL applicable types — if the text says both "secured" and "unsecured", extract BOTH
+4. For borrower/lender entities, use their names or "TheBorrower"/"TheLender"
+5. Each triple must have: sub, pred, obj, sub_type, obj_type
+
+Return JSON: {"triples": [{"sub": "...", "pred": "...", "obj": "...", "sub_type": "...", "obj_type": "..."}]}
+If no triples can be extracted, return: {"triples": []}
+"""
+
 # Lade dynamischen Prompt oder verwende statischen Fallback
 _DYNAMIC_PROMPT = _load_dynamic_prompt()
 EXTRACTION_SYSTEM_PROMPT = _DYNAMIC_PROMPT if _DYNAMIC_PROMPT else STATIC_EXTRACTION_PROMPT
@@ -246,6 +287,79 @@ class TripleExtractor:
             extraction_text = answer
 
         return self.extract_triples(extraction_text)
+
+    def extract_from_context(self, context_text: str) -> ExtractionResult:
+        """
+        Extract triples from source document context, preserving contradictions.
+
+        Uses a specialized prompt that captures ALL factual assertions from
+        the source text, even contradictory ones, so the validator can detect
+        clashes between source documents and LLM answers.
+
+        Args:
+            context_text: Concatenated text from source documents
+
+        Returns:
+            ExtractionResult with context triples
+        """
+        print(f"\nExtracting context triples from source documents...")
+        print(f"Context: {context_text[:100]}..." if len(context_text) > 100 else f"Context: {context_text}")
+
+        try:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[
+                    {"role": "system", "content": CONTEXT_EXTRACTION_PROMPT},
+                    {"role": "user", "content": context_text}
+                ],
+                temperature=0.0,
+                response_format={"type": "json_object"}
+            )
+
+            raw_response = response.choices[0].message.content
+            print(f"\nRaw context extraction response:\n{raw_response}")
+
+            parsed = json.loads(raw_response)
+            triples = parsed.get("triples", [])
+
+            validated_triples = []
+            for triple in triples:
+                if self._validate_triple_structure(triple):
+                    validated_triples.append(triple)
+                else:
+                    print(f"Warning: Invalid context triple structure: {triple}")
+
+            result = ExtractionResult(
+                triples=validated_triples,
+                raw_response=raw_response,
+                success=True
+            )
+
+            print(f"\n[Context] {result}")
+            if validated_triples:
+                print("\nContext triples:")
+                for i, triple in enumerate(validated_triples, 1):
+                    print(f"  {i}. {triple['sub']} ({triple['sub_type']}) "
+                          f"{triple['pred']} "
+                          f"{triple['obj']} ({triple['obj_type']})")
+
+            return result
+
+        except json.JSONDecodeError as e:
+            return ExtractionResult(
+                triples=[],
+                raw_response="",
+                success=False,
+                error=f"JSON parsing error: {e}"
+            )
+
+        except Exception as e:
+            return ExtractionResult(
+                triples=[],
+                raw_response="",
+                success=False,
+                error=f"Context extraction error: {type(e).__name__}: {str(e)}"
+            )
 
 
 # Convenience function for quick extraction

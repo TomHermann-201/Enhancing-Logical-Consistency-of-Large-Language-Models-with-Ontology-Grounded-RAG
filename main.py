@@ -138,6 +138,16 @@ class OVRAGSystem:
             result["latency_total"] = time.time() - _t_start
             return result
 
+        # === Context Extraction (once, before correction loop) ===
+        # Extract triples from source documents to detect answer-vs-source clashes
+        context_text = "\n\n".join([doc.page_content for doc in source_documents])
+        print("\n" + "="*70)
+        print("[1.5/3] Extracting context triples from source documents...")
+        _t0 = time.time()
+        context_extraction = self.extractor.extract_from_context(context_text)
+        _t_extraction += time.time() - _t0
+        context_triples = context_extraction.triples if context_extraction.success else []
+
         # === Extract-Validate Loop ===
         # Attempt 0 = initial answer, attempts 1..MAX = corrections
         current_answer = answer
@@ -160,18 +170,21 @@ class OVRAGSystem:
                 result["latency_total"] = time.time() - _t_start
                 return result
 
-            triples = extraction_result.triples
+            answer_triples = extraction_result.triples
 
-            if not triples:
+            if not answer_triples and not context_triples:
                 print("[i] No triples extracted - skipping validation")
                 result["answer"] = current_answer
-                result["triples"] = triples
+                result["triples"] = answer_triples
                 result["total_attempts"] = attempt + 1
                 result["latency_rag"] = _t_rag
                 result["latency_extraction"] = _t_extraction
                 result["latency_validation"] = _t_validation
                 result["latency_total"] = time.time() - _t_start
                 return result
+
+            # Merge answer triples with context triples for combined validation
+            triples = self._merge_triples(answer_triples, context_triples)
 
             # Validate against LOAN ontology
             print("\n" + "="*70)
@@ -245,6 +258,33 @@ class OVRAGSystem:
         result["latency_validation"] = _t_validation
         result["latency_total"] = time.time() - _t_start
         return result
+
+    def _merge_triples(self, answer_triples: list, context_triples: list) -> list:
+        """
+        Merge answer triples with context triples, deduplicating by (sub, pred, obj).
+
+        Answer triples take priority; unique context triples are appended.
+        """
+        seen = set()
+        merged = []
+
+        for triple in answer_triples:
+            key = (triple["sub"], triple["pred"], triple["obj"])
+            if key not in seen:
+                seen.add(key)
+                merged.append(triple)
+
+        added_from_context = 0
+        for triple in context_triples:
+            key = (triple["sub"], triple["pred"], triple["obj"])
+            if key not in seen:
+                seen.add(key)
+                merged.append(triple)
+                added_from_context += 1
+
+        print(f"  Merged triples: {len(answer_triples)} answer + "
+              f"{added_from_context} unique context = {len(merged)} total")
+        return merged
 
     def _print_summary(self, result: dict):
         """Print a summary of the processing results."""

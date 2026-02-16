@@ -657,7 +657,25 @@ class OntologyValidator:
                     print("  [i] Basic structural validation passed (no immediate inconsistencies)")
                     print("  [i] Consider using a langString-compatible ontology version")
 
-            # If we reach here, ontology is consistent
+            # If we reach here, ontology is consistent (no disjointness violations).
+            # Now check rule-based role constraints that OWL cannot express.
+            role_violations = self._check_role_constraints(triples)
+            if role_violations:
+                explanation_parts = [
+                    "ROLE CONSTRAINT VIOLATION DETECTED",
+                    "=" * 60,
+                    "",
+                ]
+                for v in role_violations:
+                    explanation_parts.append(f"• {v}")
+                explanation_parts.append("")
+                explanation_parts.append("These assertions violate LOAN ontology role constraints.")
+                return ValidationResult(
+                    is_valid=False,
+                    explanation="\n".join(explanation_parts),
+                    inconsistent_triples=triples
+                )
+
             return ValidationResult(
                 is_valid=True,
                 explanation=(
@@ -683,6 +701,77 @@ class OntologyValidator:
                 is_valid=False,
                 explanation=f"Validation error: {type(e).__name__}: {error_detail}"
             )
+
+    def _check_role_constraints(self, triples: List[Dict]) -> List[str]:
+        """
+        Check rule-based role constraints that OWL disjointness cannot express.
+
+        Detects:
+        - NaturalPerson as lender for CommercialLoan or Mortgage
+        - Corporation as borrower for ConsumerLoan
+
+        Args:
+            triples: List of extracted triples
+
+        Returns:
+            List of violation descriptions (empty if no violations)
+        """
+        violations = []
+
+        # Collect type assertions and role assertions per entity
+        entity_types = {}  # entity_name -> set of types
+        loan_types = set()
+        lender_entities = set()
+        borrower_entities = set()
+
+        for triple in triples:
+            sub = triple.get("sub", "")
+            pred = triple.get("pred", "")
+            obj = triple.get("obj", "")
+            sub_type = triple.get("sub_type", "")
+
+            if pred in ("rdf:type", "type"):
+                entity_types.setdefault(sub, set()).add(obj)
+            if pred in ("hasLender", "providesLoan"):
+                lender_entities.add(obj if pred == "hasLender" else sub)
+            if pred in ("hasBorrower", "receivesLoan"):
+                borrower_entities.add(obj if pred == "hasBorrower" else sub)
+
+            # Also track types from sub_type field
+            if sub_type:
+                entity_types.setdefault(sub, set()).add(sub_type)
+
+        # Collect loan types from TheLoan or any loan entity
+        for entity, types in entity_types.items():
+            for t in types:
+                if t in ("CommercialLoan", "ConsumerLoan", "Mortgage",
+                         "StudentLoan", "SubsidizedStudentLoan", "GreenLoan",
+                         "SecuredLoan", "UnsecuredLoan", "OpenEndCredit",
+                         "ClosedEndCredit", "Loan"):
+                    loan_types.add(t)
+
+        # Check: NaturalPerson as lender for CommercialLoan or Mortgage
+        for lender in lender_entities:
+            lender_types = entity_types.get(lender, set())
+            if "NaturalPerson" in lender_types:
+                if "CommercialLoan" in loan_types:
+                    violations.append(
+                        f"NaturalPerson '{lender}' cannot be lender for a CommercialLoan"
+                    )
+                if "Mortgage" in loan_types:
+                    violations.append(
+                        f"NaturalPerson '{lender}' cannot be lender for a Mortgage"
+                    )
+
+        # Check: Corporation as borrower for ConsumerLoan
+        for borrower in borrower_entities:
+            borrower_types = entity_types.get(borrower, set())
+            if "Corporation" in borrower_types and "ConsumerLoan" in loan_types:
+                violations.append(
+                    f"Corporation '{borrower}' cannot be borrower for a ConsumerLoan"
+                )
+
+        return violations
 
     def _generate_inconsistency_explanation(
         self, triples: List[Dict], error_msg: str

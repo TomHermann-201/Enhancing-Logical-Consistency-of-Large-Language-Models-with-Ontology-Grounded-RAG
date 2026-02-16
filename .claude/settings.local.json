@@ -11,7 +11,27 @@
       "Bash(python test_vocabulary_scanner.py:*)",
       "Bash(python -c:*)",
       "Bash(python generate_test_pdfs.py:*)",
-      "Bash(python test_validation_loop.py:*)"
+      "Bash(python test_validation_loop.py:*)",
+      "Bash(pip show:*)",
+      "Bash(grep:*)",
+      "Bash(jar tf:*)",
+      "Bash(find:*)",
+      "Bash(jar xf:*)",
+      "Bash(javap:*)",
+      "Bash(python validator.py:*)",
+      "Bash(java -version:*)",
+      "Bash(ls:*)",
+      "Bash(python3:*)",
+      "Bash(/opt/anaconda3/bin/python3:*)",
+      "Bash(/opt/anaconda3/bin/pip show:*)",
+      "Bash(java:*)",
+      "Bash(brew list:*)",
+      "Bash(brew search:*)",
+      "Bash(curl:*)",
+      "Bash(streamlit run:*)",
+      "Bash(python evaluate.py:*)",
+      "Bash(/Users/tomhermann/Desktop/Bachelor-Arbeit/Enhancing-Logical-Consistency-of-Large-Language-Models-with-Ontology-Grounded-RAG/.venv/bin/pip install plotly)",
+      "Bash(test:*)"
     ]
   }
 }

@@ -1,0 +1,11 @@
+contract_id,condition,question_id,question_target,ground_truth,expect_clash,clash_type,validation_passed,total_attempts,hard_reject,hard_reject_reason,accepted_at_attempt,error,rouge_l,bertscore_precision,bertscore_recall,bertscore_f1,latency_rag,latency_extraction,latency_validation,latency_total
+001,ovrag,Q1,Loan type classification,CLEAN,False,,True,1,False,,0,,0.625,0.9263,0.933,0.9296,1.0188159942626953,0.8479769229888916,1.2002201080322266,3.0670766830444336
+001,ovrag,Q2,Party classification,CLEAN,False,,True,1,False,,0,,0.5789,0.938,0.9314,0.9347,2.7285592555999756,8.75396203994751,1.1590018272399902,12.641683101654053
+001,ovrag,Q3,SecuredLoan / UnsecuredLoan disjointness,CLEAN,False,,True,1,False,,0,,0.5882,0.9655,0.9662,0.9659,1.7407300472259521,1.0365841388702393,3.345071792602539,6.122815847396851
+001,ovrag,Q4,OpenEndCredit / ClosedEndCredit disjointness,CLEAN,False,,True,1,False,,0,,0.4528,0.895,0.9452,0.9194,1.6284232139587402,1.2301278114318848,1.6236491203308105,4.482280015945435
+001,ovrag,Q5,Comprehensive extraction,CLEAN,False,,True,1,False,,0,,0.5169,0.8866,0.9469,0.9158,2.131160020828247,4.142445087432861,1.0996849536895752,7.373335123062134
+061,ovrag,Q1,Loan type classification,CLASH,True,secured_unsecured,True,1,False,,0,,0.1935,0.8238,0.9294,0.8734,4.938905954360962,1.9973649978637695,1.1318280696868896,8.068173170089722
+061,ovrag,Q2,Party classification,CLASH,True,secured_unsecured,True,1,False,,0,,0.3684,0.8989,0.8819,0.8904,1.1067650318145752,2.058479070663452,1.0941600799560547,4.259451150894165
+061,ovrag,Q3,SecuredLoan / UnsecuredLoan disjointness,CLASH,True,secured_unsecured,True,1,False,,0,,0.3448,0.9246,0.9363,0.9304,2.357272148132324,1.2017889022827148,1.0830669403076172,4.642180919647217
+061,ovrag,Q4,OpenEndCredit / ClosedEndCredit disjointness,CLASH,True,secured_unsecured,True,1,False,,0,,0.4231,0.8897,0.9421,0.9152,1.157430648803711,1.3419599533081055,1.0418598651885986,3.541325092315674
+061,ovrag,Q5,Comprehensive extraction,CLASH,True,secured_unsecured,True,1,False,,0,,0.4,0.8271,0.9037,0.8637,2.039191961288452,5.31904411315918,1.0949299335479736,8.453237056732178

@@ -1,0 +1,6 @@
+contract_id,condition,ground_truth,clash_type,queries,passed,failed,no_triples,errors
+001,ovrag,CLEAN,,1,1,0,0,0
+061,ovrag,CLASH,secured_unsecured,1,0,1,0,0
+076,ovrag,CLASH,openend_closedend,1,0,1,0,0
+091,ovrag,CLASH,borrower_type,1,0,1,0,0
+096,ovrag,CLASH,lender_type,1,0,1,0,0

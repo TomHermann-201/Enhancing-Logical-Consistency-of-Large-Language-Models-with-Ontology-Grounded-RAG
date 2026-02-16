@@ -1,0 +1,6 @@
+clash_type,tp,fp,tn,fn,total,precision,recall,f1,detection_rate
+borrower_type,1,0,0,0,1,1.0,1.0,1.0,1.0
+clean,0,0,1,0,1,,,,
+lender_type,1,0,0,0,1,1.0,1.0,1.0,1.0
+openend_closedend,1,0,0,0,1,1.0,1.0,1.0,1.0
+secured_unsecured,1,0,0,0,1,1.0,1.0,1.0,1.0
