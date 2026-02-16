@@ -12,6 +12,7 @@ Detects three types of logical inconsistencies:
 """
 
 import os
+import re
 import shutil
 import tempfile
 from pathlib import Path
@@ -26,6 +27,7 @@ from owlready2 import (
     sync_reasoner_pellet,
     Thing,
     ObjectProperty,
+    DataProperty,
 )
 import owlready2
 
@@ -288,6 +290,36 @@ class OntologyValidator:
         print(f"Warning: Property '{property_name}' not found in ontology")
         return None
 
+    def _sanitize_name(self, name: str) -> str:
+        """Sanitize a string for use as an OWL individual name."""
+        sanitized = re.sub(r'[^a-zA-Z0-9_]', '_', name)
+        sanitized = re.sub(r'_+', '_', sanitized).strip('_')
+        if sanitized and sanitized[0].isdigit():
+            sanitized = 'n' + sanitized
+        return sanitized or 'unnamed'
+
+    @staticmethod
+    def _parse_literal_value(raw_value: str):
+        """Parse a string literal into an appropriate Python primitive."""
+        if raw_value.lower() in ('true', 'yes'):
+            return True
+        if raw_value.lower() in ('false', 'no'):
+            return False
+        try:
+            return int(raw_value)
+        except (ValueError, TypeError):
+            pass
+        try:
+            return float(raw_value)
+        except (ValueError, TypeError):
+            pass
+        return str(raw_value)
+
+    @staticmethod
+    def _is_data_property(property_obj) -> bool:
+        """Check if a property is a DatatypeProperty (expects literal values)."""
+        return isinstance(property_obj, DataProperty)
+
     def _clean_language_tags(self):
         """
         Remove language tags from all data/annotation property values.
@@ -507,6 +539,10 @@ class OntologyValidator:
                     obj_type = triple.get("obj_type")
                     pred_name = triple.get("pred")
 
+                    if not sub_name or not pred_name or not obj_name:
+                        print(f"  Skipping triple with missing fields: {triple}")
+                        continue
+
                     # Handle rdf:type assertions specially
                     if pred_name in ["rdf:type", "type"]:
                         target_class = self._get_class_by_name(obj_name)
@@ -514,15 +550,15 @@ class OntologyValidator:
                         if sub_name not in individuals:
                             # First type assertion — create the individual
                             if target_class:
-                                individuals[sub_name] = target_class(sub_name.replace(" ", "_"))
+                                individuals[sub_name] = target_class(self._sanitize_name(sub_name))
                                 print(f"  Created: {sub_name} as {obj_name}")
                             else:
                                 sub_class = self._get_class_by_name(sub_type)
                                 if sub_class:
-                                    individuals[sub_name] = sub_class(sub_name.replace(" ", "_"))
+                                    individuals[sub_name] = sub_class(self._sanitize_name(sub_name))
                                     print(f"  Created: {sub_name} as {sub_type} (type assertion)")
                                 else:
-                                    individuals[sub_name] = Thing(sub_name.replace(" ", "_"))
+                                    individuals[sub_name] = Thing(self._sanitize_name(sub_name))
                                     print(f"  Created: {sub_name} as Thing (fallback)")
                         else:
                             # Additional type assertion — add class to existing individual
@@ -536,21 +572,23 @@ class OntologyValidator:
                     if sub_name not in individuals:
                         sub_class = self._get_class_by_name(sub_type)
                         if sub_class:
-                            individuals[sub_name] = sub_class(sub_name.replace(" ", "_"))
+                            individuals[sub_name] = sub_class(self._sanitize_name(sub_name))
                             print(f"  Created: {sub_name} as {sub_type}")
                         else:
                             # Fallback to Thing if class not found
-                            individuals[sub_name] = Thing(sub_name.replace(" ", "_"))
+                            individuals[sub_name] = Thing(self._sanitize_name(sub_name))
                             print(f"  Created: {sub_name} as Thing (fallback)")
 
-                    # Create object individual (only for non-type assertions)
-                    if obj_name not in individuals:
+                    # Create object individual — skip for literals
+                    if obj_type and obj_type.lower() in ("literal", "description", "string", "boolean"):
+                        print(f"  Literal object: {obj_name} (type={obj_type}), skipping individual creation")
+                    elif obj_name not in individuals:
                         obj_class = self._get_class_by_name(obj_type)
                         if obj_class:
-                            individuals[obj_name] = obj_class(obj_name.replace(" ", "_"))
+                            individuals[obj_name] = obj_class(self._sanitize_name(obj_name))
                             print(f"  Created: {obj_name} as {obj_type}")
                         else:
-                            individuals[obj_name] = Thing(obj_name.replace(" ", "_"))
+                            individuals[obj_name] = Thing(self._sanitize_name(obj_name))
                             print(f"  Created: {obj_name} as Thing (fallback)")
 
                 # Step 2: Assert properties (relations) - skip rdf:type
@@ -558,32 +596,56 @@ class OntologyValidator:
                     sub_name = triple.get("sub")
                     pred_name = triple.get("pred")
                     obj_name = triple.get("obj")
+                    obj_type = triple.get("obj_type")
 
                     # Skip type assertions as they were handled in Step 1
                     if pred_name in ["rdf:type", "type"]:
                         continue
 
+                    if not sub_name or not pred_name or not obj_name:
+                        continue
+
                     sub_individual = individuals.get(sub_name)
-                    obj_individual = individuals.get(obj_name)
+                    if not sub_individual:
+                        print(f"  Warning: Subject '{sub_name}' not found for property assertion")
+                        continue
 
-                    if sub_individual and obj_individual:
-                        property_obj = self._get_property_by_name(pred_name)
+                    property_obj = self._get_property_by_name(pred_name)
+                    if not property_obj:
+                        print(f"  Warning: Property {pred_name} not found")
+                        continue
 
-                        if property_obj:
-                            # Assert the property
-                            try:
-                                prop_list = getattr(sub_individual, property_obj.name, None)
-                                if prop_list is not None:
-                                    prop_list.append(obj_individual)
-                                    print(f"  Asserted: {sub_name} {pred_name} {obj_name}")
-                                else:
-                                    # Create the property dynamically
-                                    setattr(sub_individual, property_obj.name, [obj_individual])
-                                    print(f"  Asserted: {sub_name} {pred_name} {obj_name}")
-                            except AttributeError:
-                                print(f"  Warning: Could not assert {pred_name}")
-                        else:
-                            print(f"  Warning: Property {pred_name} not found")
+                    # Decide: data property (literal value) vs object property (individual)
+                    is_literal = obj_type and obj_type.lower() in ("literal", "description", "string", "boolean")
+                    is_data_prop = self._is_data_property(property_obj)
+
+                    if is_literal or is_data_prop:
+                        # Data property path: assign a Python primitive
+                        value = self._parse_literal_value(obj_name)
+                        try:
+                            prop_list = getattr(sub_individual, property_obj.name, None)
+                            if prop_list is not None and isinstance(prop_list, list):
+                                prop_list.append(value)
+                            else:
+                                setattr(sub_individual, property_obj.name, [value])
+                            print(f"  Asserted (data): {sub_name} {pred_name} {value!r}")
+                        except (AttributeError, ValueError, TypeError) as exc:
+                            print(f"  Warning: Could not assert data property {pred_name}: {exc}")
+                    else:
+                        # Object property path: use individual
+                        obj_individual = individuals.get(obj_name)
+                        if not obj_individual:
+                            print(f"  Warning: Object '{obj_name}' not found for property assertion")
+                            continue
+                        try:
+                            prop_list = getattr(sub_individual, property_obj.name, None)
+                            if prop_list is not None:
+                                prop_list.append(obj_individual)
+                            else:
+                                setattr(sub_individual, property_obj.name, [obj_individual])
+                            print(f"  Asserted: {sub_name} {pred_name} {obj_name}")
+                        except (AttributeError, ValueError, TypeError) as exc:
+                            print(f"  Warning: Could not assert {pred_name}: {exc}")
 
                 # Step 3: Run the reasoner with automatic fallback to Pellet if needed
                 # (Language tags are pre-cleaned in the SQLite cache)
@@ -616,9 +678,10 @@ class OntologyValidator:
 
         except Exception as e:
             # Unexpected error
+            error_detail = str(e) if str(e) else repr(e)
             return ValidationResult(
                 is_valid=False,
-                explanation=f"Validation error: {type(e).__name__}: {str(e)}"
+                explanation=f"Validation error: {type(e).__name__}: {error_detail}"
             )
 
     def _generate_inconsistency_explanation(

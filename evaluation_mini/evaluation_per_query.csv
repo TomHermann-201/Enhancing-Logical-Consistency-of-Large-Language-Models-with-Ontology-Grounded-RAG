@@ -1,0 +1,7 @@
+contract_id,condition,question_id,question_target,ground_truth,expect_clash,clash_type,validation_passed,total_attempts,hard_reject,hard_reject_reason,accepted_at_attempt,error,rouge_l,bertscore_precision,bertscore_recall,bertscore_f1,latency_rag,latency_extraction,latency_validation,latency_total
+001,ovrag,Q1,Loan type classification,CLEAN,False,,True,1,False,,0,,0.625,0.9263,0.933,0.9296,0.951085090637207,0.8315920829772949,1.2474849224090576,3.030212879180908
+001,plain,Q1,Loan type classification,CLEAN,False,,,1,False,,,,0.2941,0.8698,0.9228,0.8955,1.1697380542755127,0.0,0.0,1.169745922088623
+065,ovrag,Q1,Loan type classification,CLASH,True,secured_unsecured,True,1,False,,0,,0.1111,0.8346,0.9111,0.8711,3.032897710800171,5.472452878952026,1.515962839126587,10.021342992782593
+065,plain,Q1,Loan type classification,CLASH,True,secured_unsecured,,1,False,,,,0.0811,0.8094,0.9051,0.8546,2.320816993713379,0.0,0.0,2.320831060409546
+080,ovrag,Q1,Loan type classification,CLASH,True,openend_closedend,True,1,False,,0,,0.127,0.8244,0.8917,0.8567,1.8828668594360352,34.80141997337341,1.1091828346252441,37.79351496696472
+080,plain,Q1,Loan type classification,CLASH,True,openend_closedend,,1,False,,,,0.0968,0.8151,0.8683,0.8409,1.7958528995513916,0.0,0.0,1.7958641052246094

@@ -1,0 +1,1863 @@
+{
+  "metadata": {
+    "timestamp": "2026-02-16T14:07:35",
+    "contracts": [
+      "001",
+      "065",
+      "080"
+    ],
+    "questions": [
+      "Q1"
+    ],
+    "conditions": [
+      "ovrag",
+      "plain"
+    ],
+    "total_results": 6
+  },
+  "metrics": {
+    "tp": 0,
+    "fp": 0,
+    "tn": 1,
+    "fn": 2,
+    "precision": null,
+    "recall": 0.0,
+    "f1": null,
+    "total_ovrag_queries": 3,
+    "total_plain_queries": 3,
+    "corrections_needed": 0,
+    "corrections_succeeded": 0,
+    "hard_rejects": 0,
+    "correction_success_rate": null,
+    "hard_reject_rate": 0.0,
+    "avg_rouge_l_ovrag": 0.2877,
+    "avg_rouge_l_plain": 0.1573,
+    "avg_bertscore_f1_ovrag": 0.8858,
+    "avg_bertscore_f1_plain": 0.8637,
+    "avg_bertscore_precision_ovrag": 0.8618,
+    "avg_bertscore_precision_plain": 0.8314,
+    "avg_bertscore_recall_ovrag": 0.9119,
+    "avg_bertscore_recall_plain": 0.8987,
+    "avg_latency_ovrag": 16.95,
+    "avg_latency_plain": 1.76,
+    "latency_overhead_seconds": 15.19,
+    "latency_overhead_percent": 863.1
+  },
+  "clash_type_metrics": {
+    "clean": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 1,
+      "fn": 0,
+      "total": 1,
+      "precision": null,
+      "recall": null,
+      "f1": null,
+      "detection_rate": null
+    },
+    "secured_unsecured": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "total": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "detection_rate": 0.0
+    },
+    "openend_closedend": {
+      "tp": 0,
+      "fp": 0,
+      "tn": 0,
+      "fn": 1,
+      "total": 1,
+      "precision": null,
+      "recall": 0.0,
+      "f1": null,
+      "detection_rate": 0.0
+    }
+  },
+  "ab_comparison": [
+    {
+      "metric": "Avg ROUGE-L",
+      "plain_rag": "0.1573",
+      "ovrag": "0.2877",
+      "difference": "0.1304"
+    },
+    {
+      "metric": "Avg BERTScore-F1",
+      "plain_rag": "0.8637",
+      "ovrag": "0.8858",
+      "difference": "0.0221"
+    },
+    {
+      "metric": "Avg Latency",
+      "plain_rag": "1.76s",
+      "ovrag": "16.95s",
+      "difference": "+15.19s (863.1%)"
+    },
+    {
+      "metric": "Clash Detection Rate",
+      "plain_rag": "N/A (no validator)",
+      "ovrag": "0.0000",
+      "difference": "—"
+    },
+    {
+      "metric": "Hard-Reject Rate",
+      "plain_rag": "N/A",
+      "ovrag": "0.0000",
+      "difference": "—"
+    }
+  ],
+  "results": [
+    {
+      "contract_id": "001",
+      "condition": "ovrag",
+      "question_id": "Q1",
+      "question_text": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "question_target": "Loan type classification",
+      "ground_truth": "CLEAN",
+      "expect_clash": false,
+      "clash_type": null,
+      "timestamp": "2026-02-16T14:05:59",
+      "question": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "answer": "The loan described in this document is a commercial loan.",
+      "num_sources": 2,
+      "triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        }
+      ],
+      "validation_is_valid": true,
+      "validation_explanation": "All triples are logically consistent with LOAN ontology.\nValidated 1 assertion(s) successfully.",
+      "correction_attempts": [
+        {
+          "attempt_number": 0,
+          "answer": "The loan described in this document is a commercial loan.",
+          "triples": [
+            {
+              "sub": "TheLoan",
+              "pred": "rdf:type",
+              "obj": "CommercialLoan",
+              "sub_type": "Loan",
+              "obj_type": "Class"
+            }
+          ],
+          "is_valid": true,
+          "explanation": "All triples are logically consistent with LOAN ontology.\nValidated 1 assertion(s) successfully."
+        }
+      ],
+      "hard_reject": false,
+      "hard_reject_reason": null,
+      "total_attempts": 1,
+      "accepted_at_attempt": 0,
+      "latency_rag": 0.951085090637207,
+      "latency_extraction": 0.8315920829772949,
+      "latency_validation": 1.2474849224090576,
+      "latency_total": 3.030212879180908,
+      "validation_passed": true,
+      "error": null,
+      "rouge_l": 0.625,
+      "bertscore_precision": 0.9263,
+      "bertscore_recall": 0.933,
+      "bertscore_f1": 0.9296
+    },
+    {
+      "contract_id": "001",
+      "condition": "plain",
+      "question_id": "Q1",
+      "question_text": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "question_target": "Loan type classification",
+      "ground_truth": "CLEAN",
+      "expect_clash": false,
+      "clash_type": null,
+      "timestamp": "2026-02-16T14:06:11",
+      "question": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "answer": "The loan described in this document is a commercial loan. It is provided by First National Bank to TechStart Inc. for the purpose of an equipment modernization program.",
+      "num_sources": 3,
+      "triples": [],
+      "validation_is_valid": null,
+      "validation_explanation": null,
+      "correction_attempts": [],
+      "hard_reject": false,
+      "hard_reject_reason": null,
+      "total_attempts": 1,
+      "accepted_at_attempt": null,
+      "latency_rag": 1.1697380542755127,
+      "latency_extraction": 0.0,
+      "latency_validation": 0.0,
+      "latency_total": 1.169745922088623,
+      "validation_passed": null,
+      "error": null,
+      "rouge_l": 0.2941,
+      "bertscore_precision": 0.8698,
+      "bertscore_recall": 0.9228,
+      "bertscore_f1": 0.8955
+    },
+    {
+      "contract_id": "065",
+      "condition": "ovrag",
+      "question_id": "Q1",
+      "question_text": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "question_target": "Loan type classification",
+      "ground_truth": "CLASH",
+      "expect_clash": true,
+      "clash_type": "secured_unsecured",
+      "timestamp": "2026-02-16T14:06:17",
+      "question": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "answer": "The document describes two types of loans: \n\n1. A commercial loan provided by First National Bank to TechStart Inc. for an equipment modernization program.\n2. A consumer loan provided by TD Bank to Ashley Morgan for debt consolidation. \n\nBoth are unsecured loans as specified in the document.",
+      "num_sources": 3,
+      "triples": [
+        {
+          "sub": "TheCommercialLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheCommercialLoan",
+          "pred": "hasBusinessPurposeDescription",
+          "obj": "equipment modernization program",
+          "sub_type": "CommercialLoan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheCommercialLoan",
+          "pred": "isProvidedBy",
+          "obj": "First National Bank",
+          "sub_type": "CommercialLoan",
+          "obj_type": "Entity"
+        },
+        {
+          "sub": "TheCommercialLoan",
+          "pred": "isProvidedTo",
+          "obj": "TechStart Inc.",
+          "sub_type": "CommercialLoan",
+          "obj_type": "Entity"
+        },
+        {
+          "sub": "TheCommercialLoan",
+          "pred": "rdf:type",
+          "obj": "UnsecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheConsumerLoan",
+          "pred": "rdf:type",
+          "obj": "ConsumerLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheConsumerLoan",
+          "pred": "isProvidedBy",
+          "obj": "TD Bank",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "Entity"
+        },
+        {
+          "sub": "TheConsumerLoan",
+          "pred": "isProvidedTo",
+          "obj": "Ashley Morgan",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "Entity"
+        },
+        {
+          "sub": "TheConsumerLoan",
+          "pred": "rdf:type",
+          "obj": "UnsecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        }
+      ],
+      "validation_is_valid": true,
+      "validation_explanation": "All triples are logically consistent with LOAN ontology.\nValidated 9 assertion(s) successfully.",
+      "correction_attempts": [
+        {
+          "attempt_number": 0,
+          "answer": "The document describes two types of loans: \n\n1. A commercial loan provided by First National Bank to TechStart Inc. for an equipment modernization program.\n2. A consumer loan provided by TD Bank to Ashley Morgan for debt consolidation. \n\nBoth are unsecured loans as specified in the document.",
+          "triples": [
+            {
+              "sub": "TheCommercialLoan",
+              "pred": "rdf:type",
+              "obj": "CommercialLoan",
+              "sub_type": "Loan",
+              "obj_type": "Class"
+            },
+            {
+              "sub": "TheCommercialLoan",
+              "pred": "hasBusinessPurposeDescription",
+              "obj": "equipment modernization program",
+              "sub_type": "CommercialLoan",
+              "obj_type": "Literal"
+            },
+            {
+              "sub": "TheCommercialLoan",
+              "pred": "isProvidedBy",
+              "obj": "First National Bank",
+              "sub_type": "CommercialLoan",
+              "obj_type": "Entity"
+            },
+            {
+              "sub": "TheCommercialLoan",
+              "pred": "isProvidedTo",
+              "obj": "TechStart Inc.",
+              "sub_type": "CommercialLoan",
+              "obj_type": "Entity"
+            },
+            {
+              "sub": "TheCommercialLoan",
+              "pred": "rdf:type",
+              "obj": "UnsecuredLoan",
+              "sub_type": "Loan",
+              "obj_type": "Class"
+            },
+            {
+              "sub": "TheConsumerLoan",
+              "pred": "rdf:type",
+              "obj": "ConsumerLoan",
+              "sub_type": "Loan",
+              "obj_type": "Class"
+            },
+            {
+              "sub": "TheConsumerLoan",
+              "pred": "isProvidedBy",
+              "obj": "TD Bank",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "Entity"
+            },
+            {
+              "sub": "TheConsumerLoan",
+              "pred": "isProvidedTo",
+              "obj": "Ashley Morgan",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "Entity"
+            },
+            {
+              "sub": "TheConsumerLoan",
+              "pred": "rdf:type",
+              "obj": "UnsecuredLoan",
+              "sub_type": "Loan",
+              "obj_type": "Class"
+            }
+          ],
+          "is_valid": true,
+          "explanation": "All triples are logically consistent with LOAN ontology.\nValidated 9 assertion(s) successfully."
+        }
+      ],
+      "hard_reject": false,
+      "hard_reject_reason": null,
+      "total_attempts": 1,
+      "accepted_at_attempt": 0,
+      "latency_rag": 3.032897710800171,
+      "latency_extraction": 5.472452878952026,
+      "latency_validation": 1.515962839126587,
+      "latency_total": 10.021342992782593,
+      "validation_passed": true,
+      "error": null,
+      "rouge_l": 0.1111,
+      "bertscore_precision": 0.8346,
+      "bertscore_recall": 0.9111,
+      "bertscore_f1": 0.8711
+    },
+    {
+      "contract_id": "065",
+      "condition": "plain",
+      "question_id": "Q1",
+      "question_text": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "question_target": "Loan type classification",
+      "ground_truth": "CLASH",
+      "expect_clash": true,
+      "clash_type": "secured_unsecured",
+      "timestamp": "2026-02-16T14:06:34",
+      "question": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "answer": "The document describes two different loans: \n\n1. The loan with Contract Number LA-2025-001 is a commercial loan, as it is between First National Bank (Lender) and TechStart Inc. (Borrower) for an equipment modernization program.\n\n2. The loan with Contract Number LA-2025-065 is a consumer loan, as it is between TD Bank (Lender) and Ashley Morgan (Borrower) for debt consolidation.\n\nBoth loans are unsecured.",
+      "num_sources": 3,
+      "triples": [],
+      "validation_is_valid": null,
+      "validation_explanation": null,
+      "correction_attempts": [],
+      "hard_reject": false,
+      "hard_reject_reason": null,
+      "total_attempts": 1,
+      "accepted_at_attempt": null,
+      "latency_rag": 2.320816993713379,
+      "latency_extraction": 0.0,
+      "latency_validation": 0.0,
+      "latency_total": 2.320831060409546,
+      "validation_passed": null,
+      "error": null,
+      "rouge_l": 0.0811,
+      "bertscore_precision": 0.8094,
+      "bertscore_recall": 0.9051,
+      "bertscore_f1": 0.8546
+    },
+    {
+      "contract_id": "080",
+      "condition": "ovrag",
+      "question_id": "Q1",
+      "question_text": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "question_target": "Loan type classification",
+      "ground_truth": "CLASH",
+      "expect_clash": true,
+      "clash_type": "openend_closedend",
+      "timestamp": "2026-02-16T14:06:42",
+      "question": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "answer": "The document describes two types of loans: \n\n1. A consumer loan provided by Goldman Sachs to Dylan Peterson for vehicle purchase financing. This is an unsecured, revolving personal loan with a definite maturity date.\n\n2. A commercial loan provided by First National Bank to TechStart Inc. for an equipment modernization program. This is an unsecured loan.",
+      "num_sources": 3,
+      "triples": [
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "rdf:type",
+          "obj": "ConsumerLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasBusinessPurposeDescription",
+          "obj": "vehicle purchase financing",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "string"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasPrincipalAmount",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasLoanBalance",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasScheduledUnpaidBalance",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "Balance"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasPaymentHistory",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "PaymentHistory"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCost",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasTotalClosingCosts",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasTotalPointsAndFees",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasPrePaymentPenaltyTerm",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "string"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasNegativeAmortization",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasBalloonPayment",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasInitialFundingDate",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "string"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasFirstRateChangeTerm",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "string"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "isARMConvertible",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasAssessmentBoundary",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "AssessmentBoundary"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasSpatialBoundary",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "GeographicRegion"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCreditCardNetwork",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CreditCardNetwork"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardVerificationCode",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardVerificationCodeValue"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasPrimaryAccountNumber",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "PrimaryCardAccountNumber"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasIndividualPayment",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "IndividualPaymentTransaction"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardholder",
+          "obj": "Dylan Peterson",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "Cardholder"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardProduct",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardProduct"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardAccount",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardAccount"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardAuthenticationValue",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardAuthenticationValue"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardAuthenticationValue2",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardAuthenticationValue2"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardExpirationDate",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardExpirationDate"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardIdentificationNumber",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardIdentificationNumber"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardSecurityCode",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardSecurityCode"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardValidationCode",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardValidationCode"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardValidationCode2",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardValidationCode2"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardVerificationValue",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardVerificationValue"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCardVerificationValue2",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CardVerificationValue2"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasClosedEndCredit",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasClosedEndMortgageLoan",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasClosedEndReverseMortgage",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCollateralizedLoan",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasComaker",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "Comaker"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCombinedLoanToValueRatio",
+          "obj": "unspecified",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "CombinedLoanToValueRatio"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCommercialCreditCardAgreement",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCommercialLoan",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasConsumerCreditCardAgreement",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCreditCard",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCreditCardAccount",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCreditCardAgreement",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasCreditCardProduct",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasDebitCard",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasOpenEndCredit",
+          "obj": "true",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasSecuredLoan",
+          "obj": "false",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "ConsumerLoan1",
+          "pred": "hasUnsecuredLoan",
+          "obj": "true",
+          "sub_type": "ConsumerLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasBusinessPurposeDescription",
+          "obj": "equipment modernization program",
+          "sub_type": "CommercialLoan",
+          "obj_type": "string"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasPrincipalAmount",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasLoanBalance",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasScheduledUnpaidBalance",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "Balance"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasPaymentHistory",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "PaymentHistory"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCost",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasTotalClosingCosts",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasTotalPointsAndFees",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "MonetaryAmount"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasPrePaymentPenaltyTerm",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "string"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasNegativeAmortization",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasBalloonPayment",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasInitialFundingDate",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "string"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasFirstRateChangeTerm",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "string"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "isARMConvertible",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasAssessmentBoundary",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "AssessmentBoundary"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasSpatialBoundary",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "GeographicRegion"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCreditCardNetwork",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CreditCardNetwork"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardVerificationCode",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardVerificationCodeValue"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasPrimaryAccountNumber",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "PrimaryCardAccountNumber"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasIndividualPayment",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "IndividualPaymentTransaction"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardholder",
+          "obj": "TechStart Inc.",
+          "sub_type": "CommercialLoan",
+          "obj_type": "Cardholder"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardProduct",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardProduct"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardAccount",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardAccount"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardAuthenticationValue",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardAuthenticationValue"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardAuthenticationValue2",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardAuthenticationValue2"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardExpirationDate",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardExpirationDate"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardIdentificationNumber",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardIdentificationNumber"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardSecurityCode",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardSecurityCode"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardValidationCode",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardValidationCode"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardValidationCode2",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardValidationCode2"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardVerificationValue",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardVerificationValue"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCardVerificationValue2",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CardVerificationValue2"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasClosedEndCredit",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasClosedEndMortgageLoan",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasClosedEndReverseMortgage",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCollateralizedLoan",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasComaker",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "Comaker"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCombinedLoanToValueRatio",
+          "obj": "unspecified",
+          "sub_type": "CommercialLoan",
+          "obj_type": "CombinedLoanToValueRatio"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCommercialCreditCardAgreement",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasConsumerCreditCardAgreement",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCreditCard",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCreditCardAccount",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCreditCardAgreement",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasCreditCardProduct",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasDebitCard",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasOpenEndCredit",
+          "obj": "true",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasSecuredLoan",
+          "obj": "false",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        },
+        {
+          "sub": "CommercialLoan1",
+          "pred": "hasUnsecuredLoan",
+          "obj": "true",
+          "sub_type": "CommercialLoan",
+          "obj_type": "boolean"
+        }
+      ],
+      "validation_is_valid": true,
+      "validation_explanation": "All triples are logically consistent with LOAN ontology.\nValidated 99 assertion(s) successfully.",
+      "correction_attempts": [
+        {
+          "attempt_number": 0,
+          "answer": "The document describes two types of loans: \n\n1. A consumer loan provided by Goldman Sachs to Dylan Peterson for vehicle purchase financing. This is an unsecured, revolving personal loan with a definite maturity date.\n\n2. A commercial loan provided by First National Bank to TechStart Inc. for an equipment modernization program. This is an unsecured loan.",
+          "triples": [
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "rdf:type",
+              "obj": "ConsumerLoan",
+              "sub_type": "Loan",
+              "obj_type": "Class"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasBusinessPurposeDescription",
+              "obj": "vehicle purchase financing",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "string"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasPrincipalAmount",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasLoanBalance",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasScheduledUnpaidBalance",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "Balance"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasPaymentHistory",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "PaymentHistory"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCost",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasTotalClosingCosts",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasTotalPointsAndFees",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasPrePaymentPenaltyTerm",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "string"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasNegativeAmortization",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasBalloonPayment",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasInitialFundingDate",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "string"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasFirstRateChangeTerm",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "string"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "isARMConvertible",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasAssessmentBoundary",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "AssessmentBoundary"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasSpatialBoundary",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "GeographicRegion"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCreditCardNetwork",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CreditCardNetwork"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardVerificationCode",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardVerificationCodeValue"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasPrimaryAccountNumber",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "PrimaryCardAccountNumber"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasIndividualPayment",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "IndividualPaymentTransaction"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardholder",
+              "obj": "Dylan Peterson",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "Cardholder"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardProduct",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardProduct"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardAccount",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardAccount"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardAuthenticationValue",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardAuthenticationValue"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardAuthenticationValue2",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardAuthenticationValue2"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardExpirationDate",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardExpirationDate"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardIdentificationNumber",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardIdentificationNumber"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardSecurityCode",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardSecurityCode"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardValidationCode",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardValidationCode"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardValidationCode2",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardValidationCode2"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardVerificationValue",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardVerificationValue"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCardVerificationValue2",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CardVerificationValue2"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasClosedEndCredit",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasClosedEndMortgageLoan",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasClosedEndReverseMortgage",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCollateralizedLoan",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasComaker",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "Comaker"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCombinedLoanToValueRatio",
+              "obj": "unspecified",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "CombinedLoanToValueRatio"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCommercialCreditCardAgreement",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCommercialLoan",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasConsumerCreditCardAgreement",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCreditCard",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCreditCardAccount",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCreditCardAgreement",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasCreditCardProduct",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasDebitCard",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasOpenEndCredit",
+              "obj": "true",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasSecuredLoan",
+              "obj": "false",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "ConsumerLoan1",
+              "pred": "hasUnsecuredLoan",
+              "obj": "true",
+              "sub_type": "ConsumerLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "rdf:type",
+              "obj": "CommercialLoan",
+              "sub_type": "Loan",
+              "obj_type": "Class"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasBusinessPurposeDescription",
+              "obj": "equipment modernization program",
+              "sub_type": "CommercialLoan",
+              "obj_type": "string"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasPrincipalAmount",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasLoanBalance",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasScheduledUnpaidBalance",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "Balance"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasPaymentHistory",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "PaymentHistory"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCost",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasTotalClosingCosts",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasTotalPointsAndFees",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "MonetaryAmount"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasPrePaymentPenaltyTerm",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "string"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasNegativeAmortization",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasBalloonPayment",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasInitialFundingDate",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "string"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasFirstRateChangeTerm",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "string"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "isARMConvertible",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasAssessmentBoundary",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "AssessmentBoundary"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasSpatialBoundary",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "GeographicRegion"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCreditCardNetwork",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CreditCardNetwork"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardVerificationCode",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardVerificationCodeValue"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasPrimaryAccountNumber",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "PrimaryCardAccountNumber"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasIndividualPayment",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "IndividualPaymentTransaction"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardholder",
+              "obj": "TechStart Inc.",
+              "sub_type": "CommercialLoan",
+              "obj_type": "Cardholder"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardProduct",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardProduct"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardAccount",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardAccount"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardAuthenticationValue",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardAuthenticationValue"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardAuthenticationValue2",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardAuthenticationValue2"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardExpirationDate",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardExpirationDate"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardIdentificationNumber",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardIdentificationNumber"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardSecurityCode",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardSecurityCode"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardValidationCode",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardValidationCode"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardValidationCode2",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardValidationCode2"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardVerificationValue",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardVerificationValue"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCardVerificationValue2",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CardVerificationValue2"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasClosedEndCredit",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasClosedEndMortgageLoan",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasClosedEndReverseMortgage",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCollateralizedLoan",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasComaker",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "Comaker"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCombinedLoanToValueRatio",
+              "obj": "unspecified",
+              "sub_type": "CommercialLoan",
+              "obj_type": "CombinedLoanToValueRatio"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCommercialCreditCardAgreement",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasConsumerCreditCardAgreement",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCreditCard",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCreditCardAccount",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCreditCardAgreement",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasCreditCardProduct",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasDebitCard",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasOpenEndCredit",
+              "obj": "true",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasSecuredLoan",
+              "obj": "false",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            },
+            {
+              "sub": "CommercialLoan1",
+              "pred": "hasUnsecuredLoan",
+              "obj": "true",
+              "sub_type": "CommercialLoan",
+              "obj_type": "boolean"
+            }
+          ],
+          "is_valid": true,
+          "explanation": "All triples are logically consistent with LOAN ontology.\nValidated 99 assertion(s) successfully."
+        }
+      ],
+      "hard_reject": false,
+      "hard_reject_reason": null,
+      "total_attempts": 1,
+      "accepted_at_attempt": 0,
+      "latency_rag": 1.8828668594360352,
+      "latency_extraction": 34.80141997337341,
+      "latency_validation": 1.1091828346252441,
+      "latency_total": 37.79351496696472,
+      "validation_passed": true,
+      "error": null,
+      "rouge_l": 0.127,
+      "bertscore_precision": 0.8244,
+      "bertscore_recall": 0.8917,
+      "bertscore_f1": 0.8567
+    },
+    {
+      "contract_id": "080",
+      "condition": "plain",
+      "question_id": "Q1",
+      "question_text": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "question_target": "Loan type classification",
+      "ground_truth": "CLASH",
+      "expect_clash": true,
+      "clash_type": "openend_closedend",
+      "timestamp": "2026-02-16T14:07:27",
+      "question": "What type of loan is described in this document? Is it a consumer loan, commercial loan, mortgage, student loan, or another type?",
+      "answer": "The document describes two loans. The first loan, with contract number LA-2025-080, is a consumer loan provided by Goldman Sachs to Dylan Peterson for vehicle purchase financing. The second loan, with contract number LA-2025-001, is a commercial loan provided by First National Bank to TechStart Inc. for an equipment modernization program.",
+      "num_sources": 3,
+      "triples": [],
+      "validation_is_valid": null,
+      "validation_explanation": null,
+      "correction_attempts": [],
+      "hard_reject": false,
+      "hard_reject_reason": null,
+      "total_attempts": 1,
+      "accepted_at_attempt": null,
+      "latency_rag": 1.7958528995513916,
+      "latency_extraction": 0.0,
+      "latency_validation": 0.0,
+      "latency_total": 1.7958641052246094,
+      "validation_passed": null,
+      "error": null,
+      "rouge_l": 0.0968,
+      "bertscore_precision": 0.8151,
+      "bertscore_recall": 0.8683,
+      "bertscore_f1": 0.8409
+    }
+  ]
+}
