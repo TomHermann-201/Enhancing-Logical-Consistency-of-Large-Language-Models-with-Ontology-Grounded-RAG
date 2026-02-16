@@ -1,0 +1,924 @@
+{
+  "Contract_061": {
+    "original": {
+      "answer": "This loan is secured. However, no specific assets have been designated as collateral at this time.",
+      "answer_triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        }
+      ],
+      "context_triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "ClosedEndCredit",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Commerce Bank of America",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "ACME Industries LLC",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,296,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.4%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 11, 2032",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasCollateral",
+          "obj": "Yes",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        }
+      ],
+      "merged_triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "ClosedEndCredit",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Commerce Bank of America",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "ACME Industries LLC",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,296,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.4%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 11, 2032",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasCollateral",
+          "obj": "Yes",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        }
+      ],
+      "validation_is_valid": true,
+      "validation_explanation": "All triples are logically consistent with LOAN ontology.\nValidated 9 assertion(s) successfully.",
+      "extended_violations": []
+    },
+    "optimized": {
+      "answer": "This loan is secured. However, no specific assets have been designated as collateral at this time.",
+      "answer_triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "UnsecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        }
+      ],
+      "context_triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "UnsecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "ClosedEndCredit",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "Commerce Bank of America",
+          "pred": "rdf:type",
+          "obj": "FinancialInstitution",
+          "sub_type": "Lender",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "ACME Industries LLC",
+          "pred": "rdf:type",
+          "obj": "Corporation",
+          "sub_type": "Borrower",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Commerce Bank of America",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "ACME Industries LLC",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,296,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.4%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 11, 2032",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        }
+      ],
+      "merged_triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "UnsecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "ClosedEndCredit",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "Commerce Bank of America",
+          "pred": "rdf:type",
+          "obj": "FinancialInstitution",
+          "sub_type": "Lender",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "ACME Industries LLC",
+          "pred": "rdf:type",
+          "obj": "Corporation",
+          "sub_type": "Borrower",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Commerce Bank of America",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "ACME Industries LLC",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,296,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.4%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 11, 2032",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        }
+      ],
+      "validation_is_valid": false,
+      "validation_explanation": "LOGICAL INCONSISTENCY DETECTED\n============================================================\n\nThe following assertions violate FIBO ontology constraints:\n\n1. TheLoan (Loan) rdf:type SecuredLoan (Class)\n2. TheLoan (Loan) rdf:type UnsecuredLoan (Class)\n3. TheLoan (Loan) rdf:type CommercialLoan (Class)\n4. TheLoan (Loan) rdf:type ClosedEndCredit (Class)\n5. Commerce Bank of America (Lender) rdf:type FinancialInstitution (Class)\n6. ACME Industries LLC (Borrower) rdf:type Corporation (Class)\n7. TheLoan (Loan) hasLender Commerce Bank of America (Lender)\n8. TheLoan (Loan) hasBorrower ACME Industries LLC (Borrower)\n9. TheLoan (Loan) hasLoanAmount USD 1,296,000.00 (Literal)\n10. TheLoan (Loan) hasInterestRate 5.4% (Literal)\n11. TheLoan (Loan) hasMaturityDate November 11, 2032 (Literal)\n\nPossible violations:\n• Disjointness: Entity cannot belong to disjoint classes\n• Cardinality: Property exceeds allowed number of values\n• Irreflexivity: Entity cannot have relation to itself\n• Domain/Range: Property applied to incompatible entity types\n\nReasoner output: Java error message is: Feb 16, 2026 11:19:00 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/RealEstateLoans/Mortgages\nFeb 16, 2026 11:19:00 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CommercialLoans\nFeb 16, 2026 11:19:00 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/ConsumerLoans\nFeb 16, 2026 11:19:00 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CardAccounts\nFeb 16, 2026 11:19:00 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/StudentLoans\nFeb 16, 2026 11:19:00 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/Loans\nFeb 16, 2026 11:19:00 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/GreenLoans\nERROR: Ontology is inconsistent, run \"pellet explain\" to get the reason\n",
+      "extended_violations": []
+    }
+  },
+  "Contract_091": {
+    "original": {
+      "answer": "In the loan agreement with Contract Number LA-2025-091, the borrower is Maria Garcia and the lender is Sallie Mae. Maria Garcia is an individual, and Sallie Mae is an organization.",
+      "answer_triples": [
+        {
+          "sub": "ContractNumber_LA-2025-091",
+          "pred": "rdf:type",
+          "obj": "LoanAgreement",
+          "sub_type": "Contract",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "MariaGarcia",
+          "pred": "rdf:type",
+          "obj": "Individual",
+          "sub_type": "Entity",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "SallieMae",
+          "pred": "rdf:type",
+          "obj": "Organization",
+          "sub_type": "Entity",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "ContractNumber_LA-2025-091",
+          "pred": "hasBorrower",
+          "obj": "MariaGarcia",
+          "sub_type": "LoanAgreement",
+          "obj_type": "Entity"
+        },
+        {
+          "sub": "ContractNumber_LA-2025-091",
+          "pred": "hasLender",
+          "obj": "SallieMae",
+          "sub_type": "LoanAgreement",
+          "obj_type": "Entity"
+        }
+      ],
+      "context_triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Sallie Mae",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "Maria Garcia",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,321,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.2%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 17, 2031",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasCollateral",
+          "obj": "The solar installation equipment",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Commerce Bank of America",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "ACME Industries LLC",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,296,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.4%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 11, 2032",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        }
+      ],
+      "merged_triples": [
+        {
+          "sub": "ContractNumber_LA-2025-091",
+          "pred": "rdf:type",
+          "obj": "LoanAgreement",
+          "sub_type": "Contract",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "MariaGarcia",
+          "pred": "rdf:type",
+          "obj": "Individual",
+          "sub_type": "Entity",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "SallieMae",
+          "pred": "rdf:type",
+          "obj": "Organization",
+          "sub_type": "Entity",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "ContractNumber_LA-2025-091",
+          "pred": "hasBorrower",
+          "obj": "MariaGarcia",
+          "sub_type": "LoanAgreement",
+          "obj_type": "Entity"
+        },
+        {
+          "sub": "ContractNumber_LA-2025-091",
+          "pred": "hasLender",
+          "obj": "SallieMae",
+          "sub_type": "LoanAgreement",
+          "obj_type": "Entity"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Sallie Mae",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "Maria Garcia",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,321,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.2%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 17, 2031",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasCollateral",
+          "obj": "The solar installation equipment",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Commerce Bank of America",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "ACME Industries LLC",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,296,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.4%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 11, 2032",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        }
+      ],
+      "validation_is_valid": true,
+      "validation_explanation": "All triples are logically consistent with LOAN ontology.\nValidated 18 assertion(s) successfully.",
+      "extended_violations": []
+    },
+    "optimized": {
+      "answer": "In the loan agreement with Contract Number LA-2025-091, the borrower is Maria Garcia and the lender is Sallie Mae. Maria Garcia is an individual, and Sallie Mae is an organization.",
+      "answer_triples": [
+        {
+          "sub": "Contract Number LA-2025-091",
+          "pred": "rdf:type",
+          "obj": "LoanAgreement",
+          "sub_type": "Contract",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "Maria Garcia",
+          "pred": "rdf:type",
+          "obj": "NaturalPerson",
+          "sub_type": "Entity",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "Sallie Mae",
+          "pred": "rdf:type",
+          "obj": "Corporation",
+          "sub_type": "Entity",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "Contract Number LA-2025-091",
+          "pred": "hasBorrower",
+          "obj": "Maria Garcia",
+          "sub_type": "LoanAgreement",
+          "obj_type": "NaturalPerson"
+        },
+        {
+          "sub": "Contract Number LA-2025-091",
+          "pred": "hasLender",
+          "obj": "Sallie Mae",
+          "sub_type": "LoanAgreement",
+          "obj_type": "Corporation"
+        }
+      ],
+      "context_triples": [
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "ClosedEndCredit",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Sallie Mae",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "Maria Garcia",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,321,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.2%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 17, 2031",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasCollateral",
+          "obj": "The solar installation equipment",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "ClosedEndCredit",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Commerce Bank of America",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "ACME Industries LLC",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,296,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.4%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 11, 2032",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "UnsecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        }
+      ],
+      "merged_triples": [
+        {
+          "sub": "Contract Number LA-2025-091",
+          "pred": "rdf:type",
+          "obj": "LoanAgreement",
+          "sub_type": "Contract",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "Maria Garcia",
+          "pred": "rdf:type",
+          "obj": "NaturalPerson",
+          "sub_type": "Entity",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "Sallie Mae",
+          "pred": "rdf:type",
+          "obj": "Corporation",
+          "sub_type": "Entity",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "Contract Number LA-2025-091",
+          "pred": "hasBorrower",
+          "obj": "Maria Garcia",
+          "sub_type": "LoanAgreement",
+          "obj_type": "NaturalPerson"
+        },
+        {
+          "sub": "Contract Number LA-2025-091",
+          "pred": "hasLender",
+          "obj": "Sallie Mae",
+          "sub_type": "LoanAgreement",
+          "obj_type": "Corporation"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "SecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "ClosedEndCredit",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "CommercialLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Sallie Mae",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "Maria Garcia",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,321,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.2%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 17, 2031",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasCollateral",
+          "obj": "The solar installation equipment",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLender",
+          "obj": "Commerce Bank of America",
+          "sub_type": "Loan",
+          "obj_type": "Lender"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasBorrower",
+          "obj": "ACME Industries LLC",
+          "sub_type": "Loan",
+          "obj_type": "Borrower"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasLoanAmount",
+          "obj": "USD 1,296,000.00",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasInterestRate",
+          "obj": "5.4%",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "hasMaturityDate",
+          "obj": "November 11, 2032",
+          "sub_type": "Loan",
+          "obj_type": "Literal"
+        },
+        {
+          "sub": "TheLoan",
+          "pred": "rdf:type",
+          "obj": "UnsecuredLoan",
+          "sub_type": "Loan",
+          "obj_type": "Class"
+        }
+      ],
+      "validation_is_valid": false,
+      "validation_explanation": "LOGICAL INCONSISTENCY DETECTED\n============================================================\n\nThe following assertions violate FIBO ontology constraints:\n\n1. Contract Number LA-2025-091 (Contract) rdf:type LoanAgreement (Class)\n2. Maria Garcia (Entity) rdf:type NaturalPerson (Class)\n3. Sallie Mae (Entity) rdf:type Corporation (Class)\n4. Contract Number LA-2025-091 (LoanAgreement) hasBorrower Maria Garcia (NaturalPerson)\n5. Contract Number LA-2025-091 (LoanAgreement) hasLender Sallie Mae (Corporation)\n6. TheLoan (Loan) rdf:type SecuredLoan (Class)\n7. TheLoan (Loan) rdf:type ClosedEndCredit (Class)\n8. TheLoan (Loan) rdf:type CommercialLoan (Class)\n9. TheLoan (Loan) hasLender Sallie Mae (Lender)\n10. TheLoan (Loan) hasBorrower Maria Garcia (Borrower)\n11. TheLoan (Loan) hasLoanAmount USD 1,321,000.00 (Literal)\n12. TheLoan (Loan) hasInterestRate 5.2% (Literal)\n13. TheLoan (Loan) hasMaturityDate November 17, 2031 (Literal)\n14. TheLoan (Loan) hasCollateral The solar installation equipment (Literal)\n15. TheLoan (Loan) hasLender Commerce Bank of America (Lender)\n16. TheLoan (Loan) hasBorrower ACME Industries LLC (Borrower)\n17. TheLoan (Loan) hasLoanAmount USD 1,296,000.00 (Literal)\n18. TheLoan (Loan) hasInterestRate 5.4% (Literal)\n19. TheLoan (Loan) hasMaturityDate November 11, 2032 (Literal)\n20. TheLoan (Loan) rdf:type UnsecuredLoan (Class)\n\nPossible violations:\n• Disjointness: Entity cannot belong to disjoint classes\n• Cardinality: Property exceeds allowed number of values\n• Irreflexivity: Entity cannot have relation to itself\n• Domain/Range: Property applied to incompatible entity types\n\nReasoner output: Java error message is: Feb 16, 2026 11:20:44 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/RealEstateLoans/Mortgages @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/RealEstateLoans/Mortgages\nFeb 16, 2026 11:20:44 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CommercialLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CommercialLoans\nFeb 16, 2026 11:20:44 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/ConsumerLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/ConsumerLoans\nFeb 16, 2026 11:20:44 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/CardAccounts @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/CardAccounts\nFeb 16, 2026 11:20:44 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/StudentLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/StudentLoans\nFeb 16, 2026 11:20:44 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansGeneral/Loans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansGeneral/Loans\nFeb 16, 2026 11:20:44 PM org.mindswap.pellet.jena.graph.loader.DefaultGraphLoader addUnsupportedFeature\nWARNING: Unsupported axiom: Ignoring triple with unknown property from OWL namespace: https://spec.edmcouncil.org/fibo/ontology/LOAN/LoansSpecific/GreenLoans @owl:versionIRI https://spec.edmcouncil.org/fibo/ontology/master/latest/LOAN/LoansSpecific/GreenLoans\nERROR: Ontology is inconsistent, run \"pellet explain\" to get the reason\n",
+      "extended_violations": [
+        "NaturalPerson 'Maria Garcia' as borrower for a CommercialLoan (commercial loans are for corporations/organizations)"
+      ]
+    }
+  }
+}
