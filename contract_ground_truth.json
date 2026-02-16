@@ -3,600 +3,1300 @@
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is TechStart Inc., a legal entity (organization). The lender is First National Bank, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 59 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 962,000.00 at an interest rate of 2.6% per annum. This is a Commercial Loan Agreement. The borrower is TechStart Inc. and the lender is First National Bank. The loan is unsecured."
+    }
   },
   "002": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Anna Miller, a natural person (individual). The lender is Commerce Bank of America, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 456 Park Avenue, New York, NY 10022.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 348 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 254,000.00 at an interest rate of 4.2% per annum. This is a Mortgage Loan Agreement. The borrower is Anna Miller and the lender is Commerce Bank of America. The loan is secured."
+    }
   },
   "003": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Student Loan Agreement.",
+      "Q2": "The borrower is James Wilson, a natural person (individual). The lender is Wells Fargo Home Mortgage, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 67 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 42,000.00 at an interest rate of 2.5% per annum. This is a Student Loan Agreement. The borrower is James Wilson and the lender is Wells Fargo Home Mortgage. The loan is unsecured."
+    }
   },
   "004": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Federal Subsidized Student Loan.",
+      "Q2": "The borrower is Maria Garcia, a natural person (individual). The lender is Sallie Mae, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 197 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 18,000.00 at an interest rate of 1.4% per annum. This is a Federal Subsidized Student Loan. The borrower is Maria Garcia and the lender is Sallie Mae. The loan is unsecured."
+    }
   },
   "005": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Green Loan / Sustainability Financing.",
+      "Q2": "The borrower is ACME Industries LLC, a legal entity (organization). The lender is U.S. Department of Education, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Manufacturing plant at 741 Spruce Avenue, San Francisco, CA 94101.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 143 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 4,647,000.00 at an interest rate of 3.6% per annum. This is a Green Loan / Sustainability Financing. The borrower is ACME Industries LLC and the lender is U.S. Department of Education. The loan is secured."
+    }
   },
   "006": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement (Revolving Credit).",
+      "Q2": "The borrower is Robert Chen, a natural person (individual). The lender is Green Investment Bank, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a revolving (open-end) credit facility with no fixed maturity date. Minimum monthly payments are required.",
+      "Q5": "The principal amount is USD 10,000.00 at an interest rate of 23.0% per annum. This is a Credit Card Account Agreement (Revolving Credit). The borrower is Robert Chen and the lender is Green Investment Bank. The loan is unsecured."
+    }
   },
   "007": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Syndicated Commercial Loan Agreement.",
+      "Q2": "The borrower is SolarTech Corporation, a legal entity (organization). The lender is American Express, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 79 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,357,000.00 at an interest rate of 6.3% per annum. This is a Syndicated Commercial Loan Agreement. The borrower is SolarTech Corporation and the lender is American Express. The loan is unsecured."
+    }
   },
   "008": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is Emily Johnson, a natural person (individual). The lender is JPMorgan Chase, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 36 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 24,000.00 at an interest rate of 3.9% per annum. This is a Consumer Loan Agreement. The borrower is Emily Johnson and the lender is JPMorgan Chase. The loan is unsecured."
+    }
   },
   "009": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is GreenField Enterprises, a legal entity (organization). The lender is Bank of America, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Manufacturing plant at 369 Walnut Way, Boston, MA 02101.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 101 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 2,990,000.00 at an interest rate of 7.2% per annum. This is a Commercial Loan Agreement. The borrower is GreenField Enterprises and the lender is Bank of America. The loan is secured."
+    }
   },
   "010": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Thomas Brown, a natural person (individual). The lender is Citibank, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 369 Walnut Way, Boston, MA 02101.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 216 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 277,000.00 at an interest rate of 4.9% per annum. This is a Mortgage Loan Agreement. The borrower is Thomas Brown and the lender is Citibank. The loan is secured."
+    }
   },
   "011": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Student Loan Agreement.",
+      "Q2": "The borrower is Sarah Davis, a natural person (individual). The lender is Quicken Loans, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 218 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 23,000.00 at an interest rate of 5.0% per annum. This is a Student Loan Agreement. The borrower is Sarah Davis and the lender is Quicken Loans. The loan is unsecured."
+    }
   },
   "012": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Federal Subsidized Student Loan.",
+      "Q2": "The borrower is Michael Lee, a natural person (individual). The lender is Goldman Sachs, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 128 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 41,000.00 at an interest rate of 1.2% per annum. This is a Federal Subsidized Student Loan. The borrower is Michael Lee and the lender is Goldman Sachs. The loan is unsecured."
+    }
   },
   "013": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Green Loan / Sustainability Financing.",
+      "Q2": "The borrower is Pinnacle Solutions Ltd., a legal entity (organization). The lender is Morgan Stanley, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: The solar installation equipment.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 70 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,916,000.00 at an interest rate of 6.8% per annum. This is a Green Loan / Sustainability Financing. The borrower is Pinnacle Solutions Ltd. and the lender is Morgan Stanley. The loan is secured."
+    }
   },
   "014": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement (Revolving Credit).",
+      "Q2": "The borrower is Jennifer Martinez, a natural person (individual). The lender is Deutsche Bank, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a revolving (open-end) credit facility with no fixed maturity date. Minimum monthly payments are required.",
+      "Q5": "The principal amount is USD 16,000.00 at an interest rate of 21.3% per annum. This is a Credit Card Account Agreement (Revolving Credit). The borrower is Jennifer Martinez and the lender is Deutsche Bank. The loan is unsecured."
+    }
   },
   "015": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Syndicated Commercial Loan Agreement.",
+      "Q2": "The borrower is Meridian Holdings Corp., a legal entity (organization). The lender is HSBC Holdings, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Shares in the acquired company.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 62 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,382,000.00 at an interest rate of 4.5% per annum. This is a Syndicated Commercial Loan Agreement. The borrower is Meridian Holdings Corp. and the lender is HSBC Holdings. The loan is secured."
+    }
   },
   "016": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is David Taylor, a natural person (individual). The lender is Barclays, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 58 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 43,000.00 at an interest rate of 4.5% per annum. This is a Consumer Loan Agreement. The borrower is David Taylor and the lender is Barclays. The loan is unsecured."
+    }
   },
   "017": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Nexus Digital Inc., a legal entity (organization). The lender is Credit Suisse, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 58 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,388,000.00 at an interest rate of 5.0% per annum. This is a Commercial Loan Agreement. The borrower is Nexus Digital Inc. and the lender is Credit Suisse. The loan is unsecured."
+    }
   },
   "018": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Lisa Anderson, a natural person (individual). The lender is UBS Group, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 321 Elm Street, Portland, OR 97201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 318 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 482,000.00 at an interest rate of 4.6% per annum. This is a Mortgage Loan Agreement. The borrower is Lisa Anderson and the lender is UBS Group. The loan is secured."
+    }
   },
   "019": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Student Loan Agreement.",
+      "Q2": "The borrower is Christopher White, a natural person (individual). The lender is TD Bank, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 140 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 57,000.00 at an interest rate of 0.2% per annum. This is a Student Loan Agreement. The borrower is Christopher White and the lender is TD Bank. The loan is unsecured."
+    }
   },
   "020": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Federal Subsidized Student Loan.",
+      "Q2": "The borrower is Amanda Harris, a natural person (individual). The lender is PNC Financial Services, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 236 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 22,000.00 at an interest rate of 0.4% per annum. This is a Federal Subsidized Student Loan. The borrower is Amanda Harris and the lender is PNC Financial Services. The loan is unsecured."
+    }
   },
   "021": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Green Loan / Sustainability Financing.",
+      "Q2": "The borrower is Atlas Manufacturing, a legal entity (organization). The lender is US Bancorp, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Manufacturing plant at 789 Oak Lane, Austin, TX 78701.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 123 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 2,627,000.00 at an interest rate of 3.7% per annum. This is a Green Loan / Sustainability Financing. The borrower is Atlas Manufacturing and the lender is US Bancorp. The loan is secured."
+    }
   },
   "022": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement (Revolving Credit).",
+      "Q2": "The borrower is Daniel Thompson, a natural person (individual). The lender is Truist Financial, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a revolving (open-end) credit facility with no fixed maturity date. Minimum monthly payments are required.",
+      "Q5": "The principal amount is USD 10,000.00 at an interest rate of 16.4% per annum. This is a Credit Card Account Agreement (Revolving Credit). The borrower is Daniel Thompson and the lender is Truist Financial. The loan is unsecured."
+    }
   },
   "023": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Syndicated Commercial Loan Agreement.",
+      "Q2": "The borrower is Quantum Analytics LLC, a legal entity (organization). The lender is Capital One Financial, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: The solar installation equipment.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 110 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 4,465,000.00 at an interest rate of 3.9% per annum. This is a Syndicated Commercial Loan Agreement. The borrower is Quantum Analytics LLC and the lender is Capital One Financial. The loan is secured."
+    }
   },
   "024": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is Jessica Moore, a natural person (individual). The lender is State Street Corporation, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 20 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 17,000.00 at an interest rate of 12.0% per annum. This is a Consumer Loan Agreement. The borrower is Jessica Moore and the lender is State Street Corporation. The loan is unsecured."
+    }
   },
   "025": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Horizon Energy Corp., a legal entity (organization). The lender is Charles Schwab, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 30 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 4,092,000.00 at an interest rate of 3.0% per annum. This is a Commercial Loan Agreement. The borrower is Horizon Energy Corp. and the lender is Charles Schwab. The loan is unsecured."
+    }
   },
   "026": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Andrew Clark, a natural person (individual). The lender is Fifth Third Bancorp, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 456 Park Avenue, New York, NY 10022.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 228 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 313,000.00 at an interest rate of 4.5% per annum. This is a Mortgage Loan Agreement. The borrower is Andrew Clark and the lender is Fifth Third Bancorp. The loan is secured."
+    }
   },
   "027": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Student Loan Agreement.",
+      "Q2": "The borrower is Megan Lewis, a natural person (individual). The lender is Citizens Financial Group, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 179 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 29,000.00 at an interest rate of 2.3% per annum. This is a Student Loan Agreement. The borrower is Megan Lewis and the lender is Citizens Financial Group. The loan is unsecured."
+    }
   },
   "028": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Federal Subsidized Student Loan.",
+      "Q2": "The borrower is Ryan Hall, a natural person (individual). The lender is KeyCorp, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 230 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 21,000.00 at an interest rate of 5.8% per annum. This is a Federal Subsidized Student Loan. The borrower is Ryan Hall and the lender is KeyCorp. The loan is unsecured."
+    }
   },
   "029": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Green Loan / Sustainability Financing.",
+      "Q2": "The borrower is Summit Capital Partners, a legal entity (organization). The lender is Regions Financial, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Intellectual property portfolio.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 128 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 988,000.00 at an interest rate of 6.2% per annum. This is a Green Loan / Sustainability Financing. The borrower is Summit Capital Partners and the lender is Regions Financial. The loan is secured."
+    }
   },
   "030": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement (Revolving Credit).",
+      "Q2": "The borrower is Laura Young, a natural person (individual). The lender is Huntington Bancshares, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a revolving (open-end) credit facility with no fixed maturity date. Minimum monthly payments are required.",
+      "Q5": "The principal amount is USD 11,000.00 at an interest rate of 19.3% per annum. This is a Credit Card Account Agreement (Revolving Credit). The borrower is Laura Young and the lender is Huntington Bancshares. The loan is unsecured."
+    }
   },
   "031": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Syndicated Commercial Loan Agreement.",
+      "Q2": "The borrower is Pacific Trading Co., a legal entity (organization). The lender is First National Bank, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Office building at 468 Magnolia Circle, Dallas, TX 75201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 69 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 76,000.00 at an interest rate of 7.7% per annum. This is a Syndicated Commercial Loan Agreement. The borrower is Pacific Trading Co. and the lender is First National Bank. The loan is secured."
+    }
   },
   "032": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is Kevin Allen, a natural person (individual). The lender is Commerce Bank of America, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 31 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 9,000.00 at an interest rate of 10.8% per annum. This is a Consumer Loan Agreement. The borrower is Kevin Allen and the lender is Commerce Bank of America. The loan is unsecured."
+    }
   },
   "033": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Sterling Construction LLC, a legal entity (organization). The lender is Wells Fargo Home Mortgage, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Office building at 468 Magnolia Circle, Dallas, TX 75201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 44 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,679,000.00 at an interest rate of 3.3% per annum. This is a Commercial Loan Agreement. The borrower is Sterling Construction LLC and the lender is Wells Fargo Home Mortgage. The loan is secured."
+    }
   },
   "034": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Sophia King, a natural person (individual). The lender is Sallie Mae, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 456 Park Avenue, New York, NY 10022.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 245 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 150,000.00 at an interest rate of 4.0% per annum. This is a Mortgage Loan Agreement. The borrower is Sophia King and the lender is Sallie Mae. The loan is secured."
+    }
   },
   "035": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Student Loan Agreement.",
+      "Q2": "The borrower is Brian Wright, a natural person (individual). The lender is U.S. Department of Education, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 138 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 28,000.00 at an interest rate of 5.3% per annum. This is a Student Loan Agreement. The borrower is Brian Wright and the lender is U.S. Department of Education. The loan is unsecured."
+    }
   },
   "036": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Federal Subsidized Student Loan.",
+      "Q2": "The borrower is Rachel Scott, a natural person (individual). The lender is Green Investment Bank, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 192 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 8,000.00 at an interest rate of 1.4% per annum. This is a Federal Subsidized Student Loan. The borrower is Rachel Scott and the lender is Green Investment Bank. The loan is unsecured."
+    }
   },
   "037": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Green Loan / Sustainability Financing.",
+      "Q2": "The borrower is Vertex Pharmaceuticals Inc., a legal entity (organization). The lender is American Express, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Office building at 159 Hickory Drive, Nashville, TN 37201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 164 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 751,000.00 at an interest rate of 6.5% per annum. This is a Green Loan / Sustainability Financing. The borrower is Vertex Pharmaceuticals Inc. and the lender is American Express. The loan is secured."
+    }
   },
   "038": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement (Revolving Credit).",
+      "Q2": "The borrower is Patrick Green, a natural person (individual). The lender is JPMorgan Chase, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a revolving (open-end) credit facility with no fixed maturity date. Minimum monthly payments are required.",
+      "Q5": "The principal amount is USD 6,000.00 at an interest rate of 16.3% per annum. This is a Credit Card Account Agreement (Revolving Credit). The borrower is Patrick Green and the lender is JPMorgan Chase. The loan is unsecured."
+    }
   },
   "039": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Syndicated Commercial Loan Agreement.",
+      "Q2": "The borrower is Catalyst Innovation Corp., a legal entity (organization). The lender is Bank of America, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Fleet vehicles (15 commercial trucks).",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 103 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 4,553,000.00 at an interest rate of 3.4% per annum. This is a Syndicated Commercial Loan Agreement. The borrower is Catalyst Innovation Corp. and the lender is Bank of America. The loan is secured."
+    }
   },
   "040": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is Olivia Adams, a natural person (individual). The lender is Citibank, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 56 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 37,000.00 at an interest rate of 9.8% per annum. This is a Consumer Loan Agreement. The borrower is Olivia Adams and the lender is Citibank. The loan is unsecured."
+    }
   },
   "041": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Eagle Transport Ltd., a legal entity (organization). The lender is Quicken Loans, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Office building at 258 Birch Boulevard, Chicago, IL 60601.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 109 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 2,603,000.00 at an interest rate of 4.7% per annum. This is a Commercial Loan Agreement. The borrower is Eagle Transport Ltd. and the lender is Quicken Loans. The loan is secured."
+    }
   },
   "042": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Nathan Baker, a natural person (individual). The lender is Goldman Sachs, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 123 Main Street, Springfield, IL 62701.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 136 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 273,000.00 at an interest rate of 3.1% per annum. This is a Mortgage Loan Agreement. The borrower is Nathan Baker and the lender is Goldman Sachs. The loan is secured."
+    }
   },
   "043": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Student Loan Agreement.",
+      "Q2": "The borrower is Victoria Nelson, a natural person (individual). The lender is Morgan Stanley, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 210 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 42,000.00 at an interest rate of 3.3% per annum. This is a Student Loan Agreement. The borrower is Victoria Nelson and the lender is Morgan Stanley. The loan is unsecured."
+    }
   },
   "044": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Federal Subsidized Student Loan.",
+      "Q2": "The borrower is Steven Hill, a natural person (individual). The lender is Deutsche Bank, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 200 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 5,000.00 at an interest rate of 0.4% per annum. This is a Federal Subsidized Student Loan. The borrower is Steven Hill and the lender is Deutsche Bank. The loan is unsecured."
+    }
   },
   "045": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Green Loan / Sustainability Financing.",
+      "Q2": "The borrower is Ironwood Properties LLC, a legal entity (organization). The lender is HSBC Holdings, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 64 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,925,000.00 at an interest rate of 2.9% per annum. This is a Green Loan / Sustainability Financing. The borrower is Ironwood Properties LLC and the lender is HSBC Holdings. The loan is unsecured."
+    }
   },
   "046": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement (Revolving Credit).",
+      "Q2": "The borrower is Katherine Campbell, a natural person (individual). The lender is Barclays, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a revolving (open-end) credit facility with no fixed maturity date. Minimum monthly payments are required.",
+      "Q5": "The principal amount is USD 9,000.00 at an interest rate of 17.8% per annum. This is a Credit Card Account Agreement (Revolving Credit). The borrower is Katherine Campbell and the lender is Barclays. The loan is unsecured."
+    }
   },
   "047": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Syndicated Commercial Loan Agreement.",
+      "Q2": "The borrower is Spectrum Communications Inc., a legal entity (organization). The lender is Credit Suisse, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Manufacturing plant at 159 Hickory Drive, Nashville, TN 37201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 109 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,805,000.00 at an interest rate of 5.5% per annum. This is a Syndicated Commercial Loan Agreement. The borrower is Spectrum Communications Inc. and the lender is Credit Suisse. The loan is secured."
+    }
   },
   "048": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is Gregory Mitchell, a natural person (individual). The lender is UBS Group, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 18 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 29,000.00 at an interest rate of 4.7% per annum. This is a Consumer Loan Agreement. The borrower is Gregory Mitchell and the lender is UBS Group. The loan is unsecured."
+    }
   },
   "049": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Frontier Agriculture Co., a legal entity (organization). The lender is TD Bank, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Shares in the acquired company.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 83 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 2,952,000.00 at an interest rate of 4.8% per annum. This is a Commercial Loan Agreement. The borrower is Frontier Agriculture Co. and the lender is TD Bank. The loan is secured."
+    }
   },
   "050": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Diana Roberts, a natural person (individual). The lender is PNC Financial Services, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 321 Elm Street, Portland, OR 97201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 324 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 562,000.00 at an interest rate of 4.3% per annum. This is a Mortgage Loan Agreement. The borrower is Diana Roberts and the lender is PNC Financial Services. The loan is secured."
+    }
   },
   "051": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Student Loan Agreement.",
+      "Q2": "The borrower is Mark Turner, a natural person (individual). The lender is US Bancorp, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 174 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 17,000.00 at an interest rate of 1.1% per annum. This is a Student Loan Agreement. The borrower is Mark Turner and the lender is US Bancorp. The loan is unsecured."
+    }
   },
   "052": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Federal Subsidized Student Loan.",
+      "Q2": "The borrower is Elizabeth Phillips, a natural person (individual). The lender is Truist Financial, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 179 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 32,000.00 at an interest rate of 1.1% per annum. This is a Federal Subsidized Student Loan. The borrower is Elizabeth Phillips and the lender is Truist Financial. The loan is unsecured."
+    }
   },
   "053": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Green Loan / Sustainability Financing.",
+      "Q2": "The borrower is Cardinal Health Systems, a legal entity (organization). The lender is Capital One Financial, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 170 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 667,000.00 at an interest rate of 4.9% per annum. This is a Green Loan / Sustainability Financing. The borrower is Cardinal Health Systems and the lender is Capital One Financial. The loan is unsecured."
+    }
   },
   "054": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement (Revolving Credit).",
+      "Q2": "The borrower is Jason Evans, a natural person (individual). The lender is State Street Corporation, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a revolving (open-end) credit facility with no fixed maturity date. Minimum monthly payments are required.",
+      "Q5": "The principal amount is USD 22,000.00 at an interest rate of 24.9% per annum. This is a Credit Card Account Agreement (Revolving Credit). The borrower is Jason Evans and the lender is State Street Corporation. The loan is unsecured."
+    }
   },
   "055": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Syndicated Commercial Loan Agreement.",
+      "Q2": "The borrower is Apex Retail Group, a legal entity (organization). The lender is Charles Schwab, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Manufacturing plant at 321 Elm Street, Portland, OR 97201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 66 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 814,000.00 at an interest rate of 7.6% per annum. This is a Syndicated Commercial Loan Agreement. The borrower is Apex Retail Group and the lender is Charles Schwab. The loan is secured."
+    }
   },
   "056": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is Samantha Edwards, a natural person (individual). The lender is Fifth Third Bancorp, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 22 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 28,000.00 at an interest rate of 11.1% per annum. This is a Consumer Loan Agreement. The borrower is Samantha Edwards and the lender is Fifth Third Bancorp. The loan is unsecured."
+    }
   },
   "057": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Coastal Logistics LLC, a legal entity (organization). The lender is Citizens Financial Group, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 57 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 67,000.00 at an interest rate of 7.9% per annum. This is a Commercial Loan Agreement. The borrower is Coastal Logistics LLC and the lender is Citizens Financial Group. The loan is unsecured."
+    }
   },
   "058": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Timothy Collins, a natural person (individual). The lender is KeyCorp, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 321 Elm Street, Portland, OR 97201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 244 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 719,000.00 at an interest rate of 4.2% per annum. This is a Mortgage Loan Agreement. The borrower is Timothy Collins and the lender is KeyCorp. The loan is secured."
+    }
   },
   "059": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Student Loan Agreement.",
+      "Q2": "The borrower is Rebecca Stewart, a natural person (individual). The lender is Regions Financial, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 74 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 23,000.00 at an interest rate of 1.3% per annum. This is a Student Loan Agreement. The borrower is Rebecca Stewart and the lender is Regions Financial. The loan is unsecured."
+    }
   },
   "060": {
     "label": "CLEAN",
     "expect_clash": false,
     "clash_type": null,
-    "clash_description": null
+    "clash_description": null,
+    "reference_answers": {
+      "Q1": "This is a Federal Subsidized Student Loan.",
+      "Q2": "The borrower is Benjamin Sanchez, a natural person (individual). The lender is Huntington Bancshares, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 215 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 52,000.00 at an interest rate of 3.3% per annum. This is a Federal Subsidized Student Loan. The borrower is Benjamin Sanchez and the lender is Huntington Bancshares. The loan is unsecured."
+    }
   },
   "061": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Commercial loan stated as secured but no collateral specified"
+    "clash_description": "Commercial loan stated as secured but no collateral specified",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is ACME Industries LLC, a legal entity (organization). The lender is Commerce Bank of America, a financial institution.",
+      "Q3": "This is stated as a secured loan, but no specific collateral is designated.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 82 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,296,000.00 at an interest rate of 5.4% per annum. This is a Commercial Loan Agreement. The borrower is ACME Industries LLC and the lender is Commerce Bank of America. The loan is secured."
+    }
   },
   "062": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Consumer loan with collateral but described as unsecured"
+    "clash_description": "Consumer loan with collateral but described as unsecured",
+    "reference_answers": {
+      "Q1": "This is a Unsecured Personal Loan Agreement.",
+      "Q2": "The borrower is Lisa Anderson, a natural person (individual). The lender is Commerce Bank of America, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (Vehicle title and personal savings account) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 23 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 37,000.00 at an interest rate of 4.9% per annum. This is a Unsecured Personal Loan Agreement. The borrower is Lisa Anderson and the lender is Commerce Bank of America. The loan is unsecured."
+    }
   },
   "063": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan",
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Nicole Morris, a natural person (individual). The lender is Wells Fargo Home Mortgage, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (First lien on property at 852 Willow Lane, Atlanta, GA 30301) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 360 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 320,000.00 at an interest rate of 3.5% per annum. This is a Mortgage Loan Agreement. The borrower is Nicole Morris and the lender is Wells Fargo Home Mortgage. The loan is unsecured."
+    }
   },
   "064": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Commercial loan stated as secured but no collateral specified"
+    "clash_description": "Commercial loan stated as secured but no collateral specified",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Atlas Manufacturing, a legal entity (organization). The lender is TD Bank, a financial institution.",
+      "Q3": "This is stated as a secured loan, but no specific collateral is designated.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 29 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,317,000.00 at an interest rate of 3.2% per annum. This is a Commercial Loan Agreement. The borrower is Atlas Manufacturing and the lender is TD Bank. The loan is secured."
+    }
   },
   "065": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Consumer loan with collateral but described as unsecured"
+    "clash_description": "Consumer loan with collateral but described as unsecured",
+    "reference_answers": {
+      "Q1": "This is a Unsecured Personal Loan Agreement.",
+      "Q2": "The borrower is Ashley Morgan, a natural person (individual). The lender is TD Bank, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (Vehicle title and personal savings account) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 28 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 41,000.00 at an interest rate of 9.8% per annum. This is a Unsecured Personal Loan Agreement. The borrower is Ashley Morgan and the lender is TD Bank. The loan is unsecured."
+    }
   },
   "066": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan",
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Ashley Morgan, a natural person (individual). The lender is Capital One Financial, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (First lien on property at 987 Cedar Road, Seattle, WA 98101) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 180 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 322,000.00 at an interest rate of 3.2% per annum. This is a Mortgage Loan Agreement. The borrower is Ashley Morgan and the lender is Capital One Financial. The loan is unsecured."
+    }
   },
   "067": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Commercial loan stated as secured but no collateral specified"
+    "clash_description": "Commercial loan stated as secured but no collateral specified",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Coastal Logistics LLC, a legal entity (organization). The lender is US Bancorp, a financial institution.",
+      "Q3": "This is stated as a secured loan, but no specific collateral is designated.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 83 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 714,000.00 at an interest rate of 5.3% per annum. This is a Commercial Loan Agreement. The borrower is Coastal Logistics LLC and the lender is US Bancorp. The loan is secured."
+    }
   },
   "068": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Consumer loan with collateral but described as unsecured"
+    "clash_description": "Consumer loan with collateral but described as unsecured",
+    "reference_answers": {
+      "Q1": "This is a Unsecured Personal Loan Agreement.",
+      "Q2": "The borrower is Anna Miller, a natural person (individual). The lender is HSBC Holdings, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (Vehicle title and personal savings account) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 18 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 44,000.00 at an interest rate of 15.0% per annum. This is a Unsecured Personal Loan Agreement. The borrower is Anna Miller and the lender is HSBC Holdings. The loan is unsecured."
+    }
   },
   "069": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan",
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Samantha Edwards, a natural person (individual). The lender is American Express, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (First lien on property at 369 Walnut Way, Boston, MA 02101) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 240 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 335,000.00 at an interest rate of 2.8% per annum. This is a Mortgage Loan Agreement. The borrower is Samantha Edwards and the lender is American Express. The loan is unsecured."
+    }
   },
   "070": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Commercial loan stated as secured but no collateral specified"
+    "clash_description": "Commercial loan stated as secured but no collateral specified",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Crestview Financial Group, a legal entity (organization). The lender is Wells Fargo Home Mortgage, a financial institution.",
+      "Q3": "This is stated as a secured loan, but no specific collateral is designated.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 42 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,900,000.00 at an interest rate of 4.2% per annum. This is a Commercial Loan Agreement. The borrower is Crestview Financial Group and the lender is Wells Fargo Home Mortgage. The loan is secured."
+    }
   },
   "071": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Consumer loan with collateral but described as unsecured"
+    "clash_description": "Consumer loan with collateral but described as unsecured",
+    "reference_answers": {
+      "Q1": "This is a Unsecured Personal Loan Agreement.",
+      "Q2": "The borrower is Katherine Campbell, a natural person (individual). The lender is Citizens Financial Group, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (Vehicle title and personal savings account) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 51 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 39,000.00 at an interest rate of 11.7% per annum. This is a Unsecured Personal Loan Agreement. The borrower is Katherine Campbell and the lender is Citizens Financial Group. The loan is unsecured."
+    }
   },
   "072": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan",
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Anna Miller, a natural person (individual). The lender is Truist Financial, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (First lien on property at 357 Poplar Place, Charlotte, NC 28201) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 360 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 483,000.00 at an interest rate of 3.2% per annum. This is a Mortgage Loan Agreement. The borrower is Anna Miller and the lender is Truist Financial. The loan is unsecured."
+    }
   },
   "073": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Commercial loan stated as secured but no collateral specified"
+    "clash_description": "Commercial loan stated as secured but no collateral specified",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is GreenField Enterprises, a legal entity (organization). The lender is Regions Financial, a financial institution.",
+      "Q3": "This is stated as a secured loan, but no specific collateral is designated.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 80 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 375,000.00 at an interest rate of 4.3% per annum. This is a Commercial Loan Agreement. The borrower is GreenField Enterprises and the lender is Regions Financial. The loan is secured."
+    }
   },
   "074": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Consumer loan with collateral but described as unsecured"
+    "clash_description": "Consumer loan with collateral but described as unsecured",
+    "reference_answers": {
+      "Q1": "This is a Unsecured Personal Loan Agreement.",
+      "Q2": "The borrower is Alexander Cooper, a natural person (individual). The lender is UBS Group, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (Vehicle title and personal savings account) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 50 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 14,000.00 at an interest rate of 7.0% per annum. This is a Unsecured Personal Loan Agreement. The borrower is Alexander Cooper and the lender is UBS Group. The loan is unsecured."
+    }
   },
   "075": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "secured_unsecured",
-    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan"
+    "clash_description": "Mortgage with collateral listed but explicitly stated as unsecured loan",
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Brandon Bailey, a natural person (individual). The lender is Quicken Loans, a financial institution.",
+      "Q3": "This is stated as an unsecured loan, though collateral (First lien on property at 321 Elm Street, Portland, OR 97201) is mentioned in the agreement.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 240 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 551,000.00 at an interest rate of 4.1% per annum. This is a Mortgage Loan Agreement. The borrower is Brandon Bailey and the lender is Quicken Loans. The loan is unsecured."
+    }
   },
   "076": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit",
+    "reference_answers": {
+      "Q1": "This is a Revolving Commercial Loan Agreement.",
+      "Q2": "The borrower is Ironwood Properties LLC, a legal entity (organization). The lender is Barclays, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: The solar installation equipment.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 39 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,128,000.00 at an interest rate of 7.5% per annum. This is a Revolving Commercial Loan Agreement. The borrower is Ironwood Properties LLC and the lender is Barclays. The loan is secured."
+    }
   },
   "077": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously",
+    "reference_answers": {
+      "Q1": "This is a Personal Revolving Loan Agreement.",
+      "Q2": "The borrower is Ryan Hall, a natural person (individual). The lender is Commerce Bank of America, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 32 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 5,000.00 at an interest rate of 8.3% per annum. This is a Personal Revolving Loan Agreement. The borrower is Ryan Hall and the lender is Commerce Bank of America. The loan is unsecured."
+    }
   },
   "078": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end",
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement.",
+      "Q2": "The borrower is Lisa Anderson, a natural person (individual). The lender is State Street Corporation, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 36 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 17,000.00 at an interest rate of 20.5% per annum. This is a Credit Card Account Agreement. The borrower is Lisa Anderson and the lender is State Street Corporation. The loan is unsecured."
+    }
   },
   "079": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit",
+    "reference_answers": {
+      "Q1": "This is a Revolving Commercial Loan Agreement.",
+      "Q2": "The borrower is Spectrum Communications Inc., a legal entity (organization). The lender is First National Bank, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Office building at 123 Main Street, Springfield, IL 62701.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 80 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 558,000.00 at an interest rate of 3.4% per annum. This is a Revolving Commercial Loan Agreement. The borrower is Spectrum Communications Inc. and the lender is First National Bank. The loan is secured."
+    }
   },
   "080": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously",
+    "reference_answers": {
+      "Q1": "This is a Personal Revolving Loan Agreement.",
+      "Q2": "The borrower is Dylan Peterson, a natural person (individual). The lender is Goldman Sachs, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 32 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 40,000.00 at an interest rate of 6.5% per annum. This is a Personal Revolving Loan Agreement. The borrower is Dylan Peterson and the lender is Goldman Sachs. The loan is unsecured."
+    }
   },
   "081": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end",
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement.",
+      "Q2": "The borrower is Kevin Allen, a natural person (individual). The lender is Goldman Sachs, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 24 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 4,000.00 at an interest rate of 23.9% per annum. This is a Credit Card Account Agreement. The borrower is Kevin Allen and the lender is Goldman Sachs. The loan is unsecured."
+    }
   },
   "082": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit",
+    "reference_answers": {
+      "Q1": "This is a Revolving Commercial Loan Agreement.",
+      "Q2": "The borrower is Coastal Logistics LLC, a legal entity (organization). The lender is JPMorgan Chase, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Agricultural land and equipment.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 71 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 2,831,000.00 at an interest rate of 3.5% per annum. This is a Revolving Commercial Loan Agreement. The borrower is Coastal Logistics LLC and the lender is JPMorgan Chase. The loan is secured."
+    }
   },
   "083": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously",
+    "reference_answers": {
+      "Q1": "This is a Personal Revolving Loan Agreement.",
+      "Q2": "The borrower is David Taylor, a natural person (individual). The lender is Huntington Bancshares, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 35 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 20,000.00 at an interest rate of 13.6% per annum. This is a Personal Revolving Loan Agreement. The borrower is David Taylor and the lender is Huntington Bancshares. The loan is unsecured."
+    }
   },
   "084": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end",
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement.",
+      "Q2": "The borrower is James Wilson, a natural person (individual). The lender is Green Investment Bank, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 36 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 13,000.00 at an interest rate of 22.7% per annum. This is a Credit Card Account Agreement. The borrower is James Wilson and the lender is Green Investment Bank. The loan is unsecured."
+    }
   },
   "085": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit",
+    "reference_answers": {
+      "Q1": "This is a Revolving Commercial Loan Agreement.",
+      "Q2": "The borrower is OceanView Hospitality Inc., a legal entity (organization). The lender is Truist Financial, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: The solar installation equipment.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 80 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,116,000.00 at an interest rate of 4.3% per annum. This is a Revolving Commercial Loan Agreement. The borrower is OceanView Hospitality Inc. and the lender is Truist Financial. The loan is secured."
+    }
   },
   "086": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously",
+    "reference_answers": {
+      "Q1": "This is a Personal Revolving Loan Agreement.",
+      "Q2": "The borrower is Maria Garcia, a natural person (individual). The lender is KeyCorp, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 53 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 35,000.00 at an interest rate of 7.2% per annum. This is a Personal Revolving Loan Agreement. The borrower is Maria Garcia and the lender is KeyCorp. The loan is unsecured."
+    }
   },
   "087": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end",
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement.",
+      "Q2": "The borrower is Kevin Allen, a natural person (individual). The lender is Citizens Financial Group, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 48 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 10,000.00 at an interest rate of 17.2% per annum. This is a Credit Card Account Agreement. The borrower is Kevin Allen and the lender is Citizens Financial Group. The loan is unsecured."
+    }
   },
   "088": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Term loan (closed-end) described as revolving open-end credit"
+    "clash_description": "Term loan (closed-end) described as revolving open-end credit",
+    "reference_answers": {
+      "Q1": "This is a Revolving Commercial Loan Agreement.",
+      "Q2": "The borrower is Nexus Digital Inc., a legal entity (organization). The lender is Morgan Stanley, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Intellectual property portfolio.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 40 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,444,000.00 at an interest rate of 4.4% per annum. This is a Revolving Commercial Loan Agreement. The borrower is Nexus Digital Inc. and the lender is Morgan Stanley. The loan is secured."
+    }
   },
   "089": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously"
+    "clash_description": "Consumer loan described as both revolving and fixed-term simultaneously",
+    "reference_answers": {
+      "Q1": "This is a Personal Revolving Loan Agreement.",
+      "Q2": "The borrower is Elizabeth Phillips, a natural person (individual). The lender is Morgan Stanley, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 25 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 39,000.00 at an interest rate of 8.3% per annum. This is a Personal Revolving Loan Agreement. The borrower is Elizabeth Phillips and the lender is Morgan Stanley. The loan is unsecured."
+    }
   },
   "090": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "openend_closedend",
-    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end"
+    "clash_description": "Credit card (open-end) with fixed maturity date described as closed-end",
+    "reference_answers": {
+      "Q1": "This is a Credit Card Account Agreement.",
+      "Q2": "The borrower is Kayla James, a natural person (individual). The lender is Bank of America, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 36 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 8,000.00 at an interest rate of 20.7% per annum. This is a Credit Card Account Agreement. The borrower is Kayla James and the lender is Bank of America. The loan is unsecured."
+    }
   },
   "091": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "borrower_type",
-    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)"
+    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Maria Garcia, a natural person (individual). The lender is Sallie Mae, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: The solar installation equipment.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 70 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,321,000.00 at an interest rate of 5.2% per annum. This is a Commercial Loan Agreement. The borrower is Maria Garcia and the lender is Sallie Mae. The loan is secured."
+    }
   },
   "092": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "borrower_type",
-    "clash_description": "Consumer loan issued to a corporation (should be NaturalPerson)"
+    "clash_description": "Consumer loan issued to a corporation (should be NaturalPerson)",
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is Ironwood Properties LLC, a legal entity (organization). The lender is Sallie Mae, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 24 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 34,000.00 at an interest rate of 11.2% per annum. This is a Consumer Loan Agreement. The borrower is Ironwood Properties LLC and the lender is Sallie Mae. The loan is unsecured."
+    }
   },
   "093": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "borrower_type",
-    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)"
+    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Megan Lewis, a natural person (individual). The lender is Commerce Bank of America, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: Fleet vehicles (15 commercial trucks).",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 57 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,551,000.00 at an interest rate of 5.2% per annum. This is a Commercial Loan Agreement. The borrower is Megan Lewis and the lender is Commerce Bank of America. The loan is secured."
+    }
   },
   "094": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "borrower_type",
-    "clash_description": "Consumer loan issued to a corporation (should be NaturalPerson)"
+    "clash_description": "Consumer loan issued to a corporation (should be NaturalPerson)",
+    "reference_answers": {
+      "Q1": "This is a Consumer Loan Agreement.",
+      "Q2": "The borrower is Vertex Pharmaceuticals Inc., a legal entity (organization). The lender is Wells Fargo Home Mortgage, a financial institution.",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 54 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 31,000.00 at an interest rate of 9.0% per annum. This is a Consumer Loan Agreement. The borrower is Vertex Pharmaceuticals Inc. and the lender is Wells Fargo Home Mortgage. The loan is unsecured."
+    }
   },
   "095": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "borrower_type",
-    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)"
+    "clash_description": "Commercial loan issued to a natural person (should be LegalEntity)",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Amber Gray, a natural person (individual). The lender is Sallie Mae, a financial institution.",
+      "Q3": "This is a secured loan. The collateral is: The solar installation equipment.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 56 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 1,574,000.00 at an interest rate of 7.5% per annum. This is a Commercial Loan Agreement. The borrower is Amber Gray and the lender is Sallie Mae. The loan is secured."
+    }
   },
   "096": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "lender_type",
-    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)"
+    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Sapphire Technologies Inc., a legal entity (organization). The lender is Nathan Baker, a natural person (individual).",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 36 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 201,000.00 at an interest rate of 8.9% per annum. This is a Commercial Loan Agreement. The borrower is Sapphire Technologies Inc. and the lender is Nathan Baker. The loan is unsecured."
+    }
   },
   "097": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "lender_type",
-    "clash_description": "Mortgage issued by a natural person (should be FinancialInstitution)"
+    "clash_description": "Mortgage issued by a natural person (should be FinancialInstitution)",
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Jonathan Bell, a natural person (individual). The lender is Victoria Nelson, a natural person (individual).",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 147 Pine Court, Miami, FL 33101.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 180 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 496,000.00 at an interest rate of 6.0% per annum. This is a Mortgage Loan Agreement. The borrower is Jonathan Bell and the lender is Victoria Nelson. The loan is secured."
+    }
   },
   "098": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "lender_type",
-    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)"
+    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Frontier Agriculture Co., a legal entity (organization). The lender is Joshua Rogers, a natural person (individual).",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 24 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 204,000.00 at an interest rate of 7.8% per annum. This is a Commercial Loan Agreement. The borrower is Frontier Agriculture Co. and the lender is Joshua Rogers. The loan is unsecured."
+    }
   },
   "099": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "lender_type",
-    "clash_description": "Mortgage issued by a natural person (should be FinancialInstitution)"
+    "clash_description": "Mortgage issued by a natural person (should be FinancialInstitution)",
+    "reference_answers": {
+      "Q1": "This is a Mortgage Loan Agreement.",
+      "Q2": "The borrower is Laura Young, a natural person (individual). The lender is Kevin Allen, a natural person (individual).",
+      "Q3": "This is a secured loan. The collateral is: First lien on property at 321 Elm Street, Portland, OR 97201.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 360 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 370,000.00 at an interest rate of 6.1% per annum. This is a Mortgage Loan Agreement. The borrower is Laura Young and the lender is Kevin Allen. The loan is secured."
+    }
   },
   "100": {
     "label": "CLASH",
     "expect_clash": true,
     "clash_type": "lender_type",
-    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)"
+    "clash_description": "Commercial loan from a natural person (should be FinancialInstitution)",
+    "reference_answers": {
+      "Q1": "This is a Commercial Loan Agreement.",
+      "Q2": "The borrower is Summit Capital Partners, a legal entity (organization). The lender is Matthew Cook, a natural person (individual).",
+      "Q3": "This is an unsecured loan. No collateral is pledged.",
+      "Q4": "This is a fixed-term (closed-end) loan with a term of 37 months and fixed monthly installments.",
+      "Q5": "The principal amount is USD 288,000.00 at an interest rate of 8.1% per annum. This is a Commercial Loan Agreement. The borrower is Summit Capital Partners and the lender is Matthew Cook. The loan is unsecured."
+    }
   }
 }

@@ -14,6 +14,7 @@ logical hallucinations in RAG-generated financial text.
 import os
 import sys
 import argparse
+import time
 from pathlib import Path
 from typing import List, Optional
 
@@ -104,9 +105,16 @@ class OVRAGSystem:
         print(f"Question: {question}")
         print()
 
+        _t_start = time.time()
+        _t_rag = 0.0
+        _t_extraction = 0.0
+        _t_validation = 0.0
+
         # Step 1: Generate initial answer using RAG
         print("[1/3] Generating answer with RAG...")
+        _t0 = time.time()
         rag_result = self.rag.query(question)
+        _t_rag += time.time() - _t0
         answer = rag_result["answer"]
         source_documents = rag_result["source_documents"]
 
@@ -124,6 +132,10 @@ class OVRAGSystem:
         }
 
         if not validate:
+            result["latency_rag"] = _t_rag
+            result["latency_extraction"] = 0.0
+            result["latency_validation"] = 0.0
+            result["latency_total"] = time.time() - _t_start
             return result
 
         # === Extract-Validate Loop ===
@@ -134,12 +146,18 @@ class OVRAGSystem:
             attempt_label = "initial" if attempt == 0 else f"correction {attempt}"
             print("\n" + "="*70)
             print(f"[2/3] Extracting triples ({attempt_label})...")
+            _t0 = time.time()
             extraction_result = self.extractor.extract_triples(current_answer)
+            _t_extraction += time.time() - _t0
 
             if not extraction_result.success:
                 print(f"[X] Extraction failed: {extraction_result.error}")
                 result["answer"] = current_answer
                 result["total_attempts"] = attempt + 1
+                result["latency_rag"] = _t_rag
+                result["latency_extraction"] = _t_extraction
+                result["latency_validation"] = _t_validation
+                result["latency_total"] = time.time() - _t_start
                 return result
 
             triples = extraction_result.triples
@@ -149,15 +167,21 @@ class OVRAGSystem:
                 result["answer"] = current_answer
                 result["triples"] = triples
                 result["total_attempts"] = attempt + 1
+                result["latency_rag"] = _t_rag
+                result["latency_extraction"] = _t_extraction
+                result["latency_validation"] = _t_validation
+                result["latency_total"] = time.time() - _t_start
                 return result
 
             # Validate against LOAN ontology
             print("\n" + "="*70)
             print(f"[3/3] Validating against LOAN ontology ({attempt_label})...")
+            _t0 = time.time()
             validation_result = self.validator.validate_text_answer(
                 current_answer,
                 triples
             )
+            _t_validation += time.time() - _t0
 
             # Log this attempt
             attempt_log = {
@@ -176,6 +200,10 @@ class OVRAGSystem:
                 result["validation"] = validation_result
                 result["total_attempts"] = attempt + 1
                 result["accepted_at_attempt"] = attempt
+                result["latency_rag"] = _t_rag
+                result["latency_extraction"] = _t_extraction
+                result["latency_validation"] = _t_validation
+                result["latency_total"] = time.time() - _t_start
                 self._print_summary(result)
                 return result
 
@@ -184,6 +212,7 @@ class OVRAGSystem:
                 # Still have correction attempts left
                 print(f"\n[!] Validation failed ({attempt_label}). "
                       f"Requesting correction ({attempt + 1}/{MAX_CORRECTION_ATTEMPTS})...")
+                _t0 = time.time()
                 correction_result = self.rag.query_with_correction(
                     question=question,
                     previous_answer=current_answer,
@@ -191,6 +220,7 @@ class OVRAGSystem:
                     attempt_number=attempt + 1,
                     source_documents=source_documents,
                 )
+                _t_rag += time.time() - _t0
                 current_answer = correction_result["answer"]
             else:
                 # All correction attempts exhausted → Hard-Reject
@@ -203,9 +233,17 @@ class OVRAGSystem:
                     f"Answer failed ontology validation after {MAX_CORRECTION_ATTEMPTS} "
                     f"correction attempt(s). Last failure: {validation_result.explanation}"
                 )
+                result["latency_rag"] = _t_rag
+                result["latency_extraction"] = _t_extraction
+                result["latency_validation"] = _t_validation
+                result["latency_total"] = time.time() - _t_start
                 self._print_summary(result)
                 return result
 
+        result["latency_rag"] = _t_rag
+        result["latency_extraction"] = _t_extraction
+        result["latency_validation"] = _t_validation
+        result["latency_total"] = time.time() - _t_start
         return result
 
     def _print_summary(self, result: dict):

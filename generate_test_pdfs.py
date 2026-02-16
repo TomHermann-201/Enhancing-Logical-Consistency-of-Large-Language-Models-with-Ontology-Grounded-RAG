@@ -711,8 +711,55 @@ def generate_contract_pdf(contract: LoanContract, output_dir: str = "data") -> s
 # Ground truth export
 # ---------------------------------------------------------------------------
 
+def _generate_reference_answers(contract: LoanContract) -> Dict[str, str]:
+    """Generate ground truth reference answers for Q1-Q5 based on contract data."""
+    bt = "a natural person (individual)" if contract.borrower_type == "NaturalPerson" else "a legal entity (organization)"
+    lt = "a financial institution" if contract.lender_type == "FinancialInstitution" else "a natural person (individual)"
+    secured_word = "secured" if contract.is_secured else "unsecured"
+
+    q1 = f"This is a {contract.loan_type_description}."
+
+    q2 = (
+        f"The borrower is {contract.borrower_name}, {bt}. "
+        f"The lender is {contract.lender_name}, {lt}."
+    )
+
+    if contract.is_secured and contract.collateral:
+        q3 = f"This is a secured loan. The collateral is: {contract.collateral}."
+    elif contract.is_secured:
+        q3 = "This is stated as a secured loan, but no specific collateral is designated."
+    elif contract.collateral:
+        q3 = (
+            f"This is stated as an unsecured loan, though collateral "
+            f"({contract.collateral}) is mentioned in the agreement."
+        )
+    else:
+        q3 = "This is an unsecured loan. No collateral is pledged."
+
+    if contract.term_months == 0:
+        q4 = (
+            "This is a revolving (open-end) credit facility with no fixed maturity date. "
+            "Minimum monthly payments are required."
+        )
+    else:
+        q4 = (
+            f"This is a fixed-term (closed-end) loan with a term of "
+            f"{contract.term_months} months and fixed monthly installments."
+        )
+
+    q5 = (
+        f"The principal amount is {contract.currency} {contract.principal_amount:,.2f} "
+        f"at an interest rate of {contract.interest_rate}% per annum. "
+        f"This is a {contract.loan_type_description}. "
+        f"The borrower is {contract.borrower_name} and the lender is {contract.lender_name}. "
+        f"The loan is {secured_word}."
+    )
+
+    return {"Q1": q1, "Q2": q2, "Q3": q3, "Q4": q4, "Q5": q5}
+
+
 def export_ground_truth(contracts: List[LoanContract], output_path: str = "contract_ground_truth.json"):
-    """Export ground truth labels as JSON for evaluate.py."""
+    """Export ground truth labels and reference answers as JSON for evaluate.py."""
     gt = {}
     for c in contracts:
         gt[c.contract_id] = {
@@ -720,12 +767,13 @@ def export_ground_truth(contracts: List[LoanContract], output_path: str = "contr
             "expect_clash": c.label == "CLASH",
             "clash_type": c.clash_type,
             "clash_description": c.clash_description,
+            "reference_answers": _generate_reference_answers(c),
         }
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(gt, f, indent=2, ensure_ascii=False)
 
-    print(f"[OK] Ground truth saved to {output_path}")
+    print(f"[OK] Ground truth saved to {output_path} (with reference answers)")
     return gt
 
 

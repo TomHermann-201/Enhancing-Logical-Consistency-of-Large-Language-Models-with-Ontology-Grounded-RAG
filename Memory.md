@@ -58,7 +58,7 @@
 
 ## 6. Bekannte Probleme / Blockaden
 - HermiT Reasoner hat Probleme mit `langString` Datatype → Pellet-Fallback implementiert
-- Java-Memory muss auf 4GB gesetzt werden für komplexe Ontologien
+- Java-Memory muss auf 4GB gesetzt werden für komplexe Ontologien 
 
 ## 7. Nächste Schritte (Reihenfolge)
 1. ~~`vocabulary_scanner.py` implementieren~~ ✅

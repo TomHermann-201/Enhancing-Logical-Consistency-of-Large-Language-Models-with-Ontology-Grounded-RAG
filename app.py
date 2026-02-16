@@ -629,6 +629,131 @@ def page_dashboard():
 
     st.divider()
 
+    # --- A/B Comparison: OV-RAG vs Plain RAG ---
+    ab_comparison = data.get("ab_comparison", [])
+    if ab_comparison:
+        st.subheader("A/B Vergleich: OV-RAG vs Plain RAG")
+        st.caption("Side-by-side Vergleich der wichtigsten Metriken zwischen den beiden Bedingungen.")
+
+        ab_df = pd.DataFrame(ab_comparison).rename(columns={
+            "metric": "Metrik", "plain_rag": "Plain RAG",
+            "ovrag": "OV-RAG", "difference": "Differenz",
+        })
+        st.dataframe(ab_df, use_container_width=True, hide_index=True)
+
+        # Bar charts: ROUGE-L and BERTScore side-by-side
+        col_ab1, col_ab2 = st.columns(2)
+
+        with col_ab1:
+            rouge_ovrag = metrics.get("avg_rouge_l_ovrag")
+            rouge_plain = metrics.get("avg_rouge_l_plain")
+            bert_ovrag = metrics.get("avg_bertscore_f1_ovrag")
+            bert_plain = metrics.get("avg_bertscore_f1_plain")
+
+            if any(v is not None for v in [rouge_ovrag, rouge_plain, bert_ovrag, bert_plain]):
+                nlp_bar_data = []
+                if rouge_plain is not None:
+                    nlp_bar_data.append({"Metrik": "ROUGE-L", "Bedingung": "Plain RAG", "Wert": rouge_plain})
+                if rouge_ovrag is not None:
+                    nlp_bar_data.append({"Metrik": "ROUGE-L", "Bedingung": "OV-RAG", "Wert": rouge_ovrag})
+                if bert_plain is not None:
+                    nlp_bar_data.append({"Metrik": "BERTScore-F1", "Bedingung": "Plain RAG", "Wert": bert_plain})
+                if bert_ovrag is not None:
+                    nlp_bar_data.append({"Metrik": "BERTScore-F1", "Bedingung": "OV-RAG", "Wert": bert_ovrag})
+
+                if nlp_bar_data:
+                    fig_nlp = px.bar(
+                        pd.DataFrame(nlp_bar_data),
+                        x="Metrik", y="Wert", color="Bedingung",
+                        barmode="group", text_auto=".3f",
+                        title="NLP-Qualitätsmetriken: Plain RAG vs OV-RAG",
+                        range_y=[0, 1.05],
+                    )
+                    fig_nlp.update_layout(height=350, margin=dict(t=40, b=20))
+                    st.plotly_chart(fig_nlp, use_container_width=True)
+
+        with col_ab2:
+            lat_ovrag = metrics.get("avg_latency_ovrag")
+            lat_plain = metrics.get("avg_latency_plain")
+            if lat_ovrag is not None or lat_plain is not None:
+                lat_data = []
+                if lat_plain is not None:
+                    lat_data.append({"Bedingung": "Plain RAG", "Latenz (s)": lat_plain})
+                if lat_ovrag is not None:
+                    lat_data.append({"Bedingung": "OV-RAG", "Latenz (s)": lat_ovrag})
+                fig_lat = px.bar(
+                    pd.DataFrame(lat_data),
+                    x="Bedingung", y="Latenz (s)", color="Bedingung",
+                    text_auto=".1f",
+                    title="Durchschnittliche Latenz pro Bedingung",
+                )
+                fig_lat.update_layout(height=350, showlegend=False, margin=dict(t=40, b=20))
+                st.plotly_chart(fig_lat, use_container_width=True)
+
+    st.divider()
+
+    # --- NLP Quality Metrics ---
+    st.subheader("NLP-Qualitätsmetriken")
+    st.caption(
+        "Misst, ob die Antwortqualität durch die Ontologie-Validierung leidet. "
+        "ROUGE-L misst die textuelle Überlappung, BERTScore die semantische Ähnlichkeit "
+        "zwischen generierter Antwort und Ground-Truth-Referenzantwort."
+    )
+
+    n1, n2, n3, n4 = st.columns(4)
+    n1.metric(
+        "ROUGE-L (OV-RAG)", _fmt(metrics.get("avg_rouge_l_ovrag")),
+        help="Durchschnittlicher ROUGE-L F-measure für OV-RAG Antworten",
+    )
+    n2.metric(
+        "ROUGE-L (Plain)", _fmt(metrics.get("avg_rouge_l_plain")),
+        help="Durchschnittlicher ROUGE-L F-measure für Plain RAG Antworten",
+    )
+    n3.metric(
+        "BERTScore-F1 (OV-RAG)", _fmt(metrics.get("avg_bertscore_f1_ovrag")),
+        help="Durchschnittlicher BERTScore F1 für OV-RAG Antworten",
+    )
+    n4.metric(
+        "BERTScore-F1 (Plain)", _fmt(metrics.get("avg_bertscore_f1_plain")),
+        help="Durchschnittlicher BERTScore F1 für Plain RAG Antworten",
+    )
+
+    st.divider()
+
+    # --- Latency Section ---
+    st.subheader("Latenz-Analyse")
+    lat_ovrag = metrics.get("avg_latency_ovrag")
+    lat_plain = metrics.get("avg_latency_plain")
+    overhead_s = metrics.get("latency_overhead_seconds")
+    overhead_pct = metrics.get("latency_overhead_percent")
+
+    l1, l2, l3 = st.columns(3)
+    l1.metric(
+        "Avg Latenz (OV-RAG)",
+        f"{lat_ovrag:.1f}s" if lat_ovrag is not None else "N/A",
+        help="Durchschnittliche Gesamtzeit pro Query (RAG + Extraktion + Validierung)",
+    )
+    l2.metric(
+        "Avg Latenz (Plain RAG)",
+        f"{lat_plain:.1f}s" if lat_plain is not None else "N/A",
+        help="Durchschnittliche Gesamtzeit pro Query (nur RAG)",
+    )
+    l3.metric(
+        "Overhead",
+        f"+{overhead_s:.1f}s" if overhead_s is not None else "N/A",
+        delta=f"{overhead_pct:.1f}%" if overhead_pct is not None else None,
+        delta_color="inverse",
+        help="Zusätzliche Latenz durch die Ontologie-Prüfung",
+    )
+
+    if overhead_s is not None:
+        st.info(
+            f"Die Ontologie-Prüfung kostet durchschnittlich **{overhead_s:.1f} Sekunden** "
+            f"zusätzlich pro Query (**{overhead_pct:.1f}% Overhead** gegenüber Plain RAG)."
+        )
+
+    st.divider()
+
     # --- Per-Contract Table ---
     st.subheader("Ergebnisse pro Vertrag")
     st.caption("Für jeden Vertrag: wie viele der 5 Fragen wurden korrekt validiert?")
@@ -663,7 +788,7 @@ def page_dashboard():
 
     # --- Downloads ---
     st.subheader("Ergebnisse herunterladen")
-    col_d1, col_d2, col_d3 = st.columns(3)
+    col_d1, col_d2, col_d3, col_d4 = st.columns(4)
 
     with col_d1:
         st.download_button(
@@ -690,6 +815,16 @@ def page_dashboard():
                 "CSV (pro Clash-Typ)",
                 data=clash_csv.read_text(),
                 file_name="evaluation_per_clash_type.csv",
+                mime="text/csv",
+            )
+
+    with col_d4:
+        ab_csv = Path("evaluation_output/evaluation_ab_comparison.csv")
+        if ab_csv.exists():
+            st.download_button(
+                "CSV (A/B Vergleich)",
+                data=ab_csv.read_text(),
+                file_name="evaluation_ab_comparison.csv",
                 mime="text/csv",
             )
 
