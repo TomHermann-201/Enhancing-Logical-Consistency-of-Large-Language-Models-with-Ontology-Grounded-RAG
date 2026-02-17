@@ -1,532 +1,421 @@
 # Enhancing Logical Consistency of Large Language Models with Ontology-Grounded RAG
 
-A Bachelor Thesis project in Business Informatics demonstrating how formal loan ontologies can detect and correct logical hallucinations in RAG systems for financial loan documentation.
+A Bachelor Thesis prototype demonstrating how formal loan ontologies (FIBO/LOAN) can detect and correct logical hallucinations in RAG-generated financial text. The system extracts structured triples from LLM answers, validates them against an OWL ontology using the Pellet reasoner, and triggers a correction loop when inconsistencies are found.
 
-## Overview
+## The Problem
 
-Standard RAG systems generate answers that sound plausible but may violate strict domain-specific logical constraints. This project implements a **Validation Layer** that uses a **LOAN Ontology** and Description Logic reasoning to ensure logical consistency in LLM-generated loan and financial text.
+Standard RAG systems generate answers that sound plausible but may violate strict domain-specific logical constraints. In the loan domain, an LLM might:
 
-### The Problem
+- Describe a mortgage as "unsecured" while listing collateral (SecuredLoan / UnsecuredLoan disjointness)
+- Call a credit card a "closed-end" loan (OpenEndCredit / ClosedEndCredit disjointness)
+- Issue a consumer loan to a corporation (borrower type constraint)
+- Have a natural person as lender for a commercial loan (lender type constraint)
 
-LLMs can generate factually incorrect statements that violate fundamental logical rules in the loan domain, such as:
-- Classifying a loan type incorrectly (e.g., claiming a commercial loan is a student loan)
-- Stating conflicting loan characteristics (e.g., a subsidized loan with private lender)
-- Violating cardinality constraints (e.g., multiple guarantors when only one is allowed)
-- Asserting impossible relationships between borrowers, lenders, and loans
+These are not just factual errors — they are **logically impossible** according to the LOAN ontology's formal axioms.
 
-### The Solution
+## The Solution: OV-RAG Pipeline
 
-A three-component system:
-1. **Generator (RAG Pipeline)**: Standard RAG using LangChain + ChromaDB
-2. **Extractor**: LLM-based triple extraction mapping to LOAN ontology classes
-3. **Validator**: Ontology reasoning with HermiT/Pellet to detect inconsistencies
-
-## System Architecture
+A three-component pipeline with a correction loop:
 
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    User Query                               │
-└─────────────────┬───────────────────────────────────────────┘
-                  │
-                  ▼
-┌─────────────────────────────────────────────────────────────┐
-│  Component A: RAG Pipeline (Generator)                      │
-│  • Chunk & Embed Documents                                  │
-│  • Retrieve Top-k Context                                   │
-│  • Generate Answer (Temperature=0.7)                        │
-└─────────────────┬───────────────────────────────────────────┘
-                  │ Answer Text
-                  ▼
-┌─────────────────────────────────────────────────────────────┐
-│  Component B: Triple Extractor                              │
-│  • Parse Answer                                             │
-│  • Extract Entities & Relations                             │
-│  • Map to LOAN Ontology Classes                             │
-└─────────────────┬───────────────────────────────────────────┘
-                  │ RDF Triples
-                  ▼
-┌─────────────────────────────────────────────────────────────┐
-│  Component C: Ontology Validator                            │
-│  • Load LOAN Ontology                                       │
-│  • Create Individuals                                       │
-│  • Assert Properties                                        │
-│  • Run HermiT/Pellet Reasoner                               │
-│  • Detect Inconsistencies                                   │
-└─────────────────┬───────────────────────────────────────────┘
-                  │
-                  ▼
-          ✓ Valid / ✗ Invalid + Explanation
+         User Query
+              │
+              ▼
+┌──────────────────────────────┐
+│  Component A: RAG Generator  │  GPT-4o + ChromaDB + LangChain
+│  Retrieve context → Answer   │
+└──────────┬───────────────────┘
+           │ Answer + Source Documents
+           ▼
+┌──────────────────────────────┐
+│  Component B: Triple         │  GPT-4o → JSON triples
+│  Extractor (Answer+Context)  │  Mapped to LOAN ontology classes
+└──────────┬───────────────────┘
+           │ Merged Triples
+           ▼
+┌──────────────────────────────┐
+│  Component C: Ontology       │  owlready2 + Pellet Reasoner
+│  Validator                   │  Disjointness + Role checks
+└──────────┬───────────────────┘
+           │
+     ┌─────┴─────┐
+     │           │
+   Valid    Invalid
+     │           │
+     ▼           ▼
+  Accept    Correction Loop (up to 3x)
+              │
+         Still invalid?
+              │
+              ▼
+         Hard-Reject
+```
+
+### Key Features
+
+- **Dual-source extraction**: Triples extracted from both the LLM answer and the source documents, then merged — catches contradictions between what the document says and what the LLM claims
+- **Correction loop**: Invalid answers are re-prompted with ontology feedback up to 3 times
+- **Hard-reject**: Answers that remain inconsistent after all corrections are rejected
+- **4 clash types detected**: secured/unsecured, open-end/closed-end, borrower type, lender type
+- **100 synthetic contracts**: 60 clean + 40 with planted ontological contradictions
+
+## Project Structure
+
+```
+.
+├── src/                              # Core pipeline modules
+│   ├── rag_pipeline.py               # Component A: RAG Generator (GPT-4o + ChromaDB)
+│   ├── extractor.py                  # Component B: Triple Extractor (GPT-4o → LOAN triples)
+│   ├── validator.py                  # Component C: Ontology Validator (Pellet Reasoner)
+│   ├── vocabulary_scanner.py         # Scans RDF files → dynamic extractor prompt
+│   └── setup_ontologies.py           # Ontology setup utility
+│
+├── evaluation/                       # Evaluation pipeline
+│   ├── evaluate.py                   # Main evaluation (100 contracts × 5 questions × 2 conditions)
+│   ├── evaluate_optimized_10.py      # 10-contract run with optimized extraction prompts
+│   ├── evaluate_optimized_100.py     # Full 100-contract optimized run
+│   ├── generate_test_pdfs.py         # Generates 100 synthetic loan contract PDFs
+│   ├── recall_improvement_test.py    # Prompt tuning A/B test for clash detection
+│   └── results/                      # Evaluation outputs
+│       ├── baseline/                 # Original prompts, full evaluation
+│       ├── optimized_10/             # Optimized prompts, 10 contracts
+│       ├── optimized_100/            # Optimized prompts, 100 contracts
+│       ├── run_10q/                  # Quick 10-query test run
+│       ├── run_mini/                 # Mini evaluation run
+│       ├── run_10contracts/          # 10-contract evaluation
+│       └── run_verify/              # Verification run
+│
+├── tests/                            # Test scripts (standalone, no pytest)
+│   ├── test_extractor_loan_type.py   # Loan type extraction test
+│   ├── test_hermit_fix.py            # Reasoner compatibility test
+│   ├── test_manual_clash.py          # Manual OWL clash test (self-contained ontology)
+│   ├── test_validation_loop.py       # End-to-end correction loop test
+│   └── test_vocabulary_scanner.py    # Vocabulary scanner test
+│
+├── config/                           # Configuration files
+│   ├── contract_ground_truth.json    # Ground truth for 100 contracts (labels + reference answers)
+│   └── vocabulary_cache.json         # Cached ontology vocabulary + dynamic prompt
+│
+├── data/                             # 100 synthetic loan contract PDFs
+│   └── Contract_001..100.pdf
+│
+├── ontologies/                       # FIBO/LOAN ontology RDF files
+│   ├── loans general module/         # Loans.rdf (base classes)
+│   ├── loans specific module/        # ConsumerLoans, CommercialLoans, StudentLoans, etc.
+│   └── real estate loans module/     # Mortgages.rdf
+│
+├── docs/                             # Documentation
+│   ├── REQUIREMENTS.md               # Original requirements specification
+│   └── PHASE_1_PLAN.md               # Phase 1 implementation plan
+│
+├── main.py                           # CLI entry point
+├── app.py                            # Streamlit Web UI (Demo, Batch, Dashboard)
+├── requirements.txt                  # Python dependencies
+├── .env.example                      # Environment variable template
+└── README.md
 ```
 
 ## Tech Stack
 
-- **Language**: Python 3.10+
-- **Orchestration**: LangChain
-- **Ontology & Reasoning**: Owlready2 (with HermiT/Pellet reasoners)
-- **Vector DB**: ChromaDB (local, transient)
-- **LLM**: OpenAI API (gpt-4o)
-- **Data Format**: RDF/XML for ontologies
-
-## LOAN Ontology Coverage
-
-This project uses a custom LOAN ontology with the following modules:
-
-### Loans General Module
-- `Loan` (base class for all loan types)
-- `Lender` (financial institutions providing loans)
-- `Borrower` (entities receiving loans)
-- Core properties: `hasLender`, `hasBorrower`, `hasLoanAmount`, `hasInterestRate`
-
-### Loans Specific Module
-- `ConsumerLoan` (loans to individual consumers)
-- `CommercialLoan` (loans to businesses/corporations)
-- `StudentLoan` (education financing)
-- `SubsidizedStudentLoan` (government-subsidized education loans)
-- `GreenLoan` (sustainable/environmental financing)
-- `CardAccounts` (credit card accounts)
-
-### Real Estate Loans Module
-- `Mortgage` (real estate loans)
-- Mortgage-specific properties and constraints
+| Component | Technology |
+|-----------|-----------|
+| Language | Python 3.10+ |
+| LLM | OpenAI GPT-4o |
+| RAG Orchestration | LangChain |
+| Vector DB | ChromaDB (local, transient) |
+| Embeddings | text-embedding-3-small |
+| Ontology Reasoning | owlready2 + Pellet Reasoner |
+| Ontology Format | RDF/XML (FIBO/LOAN) |
+| Web UI | Streamlit + Plotly |
+| NLP Metrics | rouge-score, bert-score |
+| PDF Generation | ReportLab |
 
 ## Installation
 
 ### Prerequisites
 
-- Python 3.10 or higher
+- Python 3.10+
+- Java Runtime (for Pellet reasoner) — Java 11+ recommended
 - OpenAI API key
-- LOAN ontology files (must be provided separately)
 
-### Step 1: Clone the Repository
+### Setup
 
 ```bash
+# 1. Clone
 git clone https://github.com/yourusername/Enhancing-Logical-Consistency-of-Large-Language-Models-with-Ontology-Grounded-RAG.git
 cd Enhancing-Logical-Consistency-of-Large-Language-Models-with-Ontology-Grounded-RAG
-```
 
-### Step 2: Create Virtual Environment
+# 2. Virtual environment
+python -m venv .venv
+source .venv/bin/activate  # macOS/Linux
+# .venv\Scripts\activate   # Windows
 
-```bash
-python -m venv venv
-
-# On Windows
-venv\Scripts\activate
-
-# On macOS/Linux
-source venv/bin/activate
-```
-
-### Step 3: Install Dependencies
-
-```bash
+# 3. Install dependencies
 pip install -r requirements.txt
-```
 
-### Step 4: Set Up OpenAI API Key
+# 4. Configure API key
+cp .env.example .env
+# Edit .env and add your OpenAI API key: OPENAI_API_KEY=sk-...
 
-```bash
-# Option 1: Environment variable
-export OPENAI_API_KEY='your-key-here'
+# 5. Place LOAN ontology files in ontologies/ (see structure above)
 
-# Option 2: Create .env file
-echo "OPENAI_API_KEY=your-key-here" > .env
-```
-
-### Step 5: Set Up LOAN Ontologies
-
-**IMPORTANT**: The project requires LOAN ontology files in the following structure:
-
-```
-ontologies/
-├── loans general module/
-│   └── Loans.rdf
-├── loans specific module/
-│   ├── ConsumerLoans.rdf
-│   ├── CommercialLoans.rdf
-│   ├── StudentLoans.rdf
-│   ├── GreenLoans.rdf
-│   └── CardAccounts.rdf
-└── real estate loans module/
-    └── Mortgages.rdf
-```
-
-These ontology files must be obtained separately. The `setup_ontologies.py` script in this repository attempts to download FIBO ontology files, which are **NOT** the correct ontologies for this system. You need LOAN-specific ontology files instead.
-
-### Step 6: Add Loan Documentation
-
-Place PDF documents related to loans in the `./data` directory:
-
-```bash
-mkdir -p data
-# Copy your loan PDF documents to ./data
+# 6. Generate test contracts (optional — 100 synthetic PDFs)
+python evaluation/generate_test_pdfs.py
 ```
 
 ## Usage
 
-### Interactive Mode
+### CLI — Single Query
 
 ```bash
-python main.py
+python main.py --query "Is this loan secured or unsecured?" --docs data/Contract_001.pdf
 ```
 
-This starts an interactive CLI where you can enter queries and see the complete validation pipeline in action.
-
-### Single Query Mode
+### CLI — Interactive Mode
 
 ```bash
-python main.py --query "What type of loan is described in the document?"
+python main.py --docs data/Contract_061.pdf
+# Then type queries at the prompt
 ```
 
-### Specify Documents
+### CLI — RAG Only (no validation)
 
 ```bash
-python main.py --docs data/loan_agreement.pdf data/facility_agreement.pdf
+python main.py --no-validate --query "What type of loan is this?"
 ```
 
-### Skip Validation (RAG Only)
+### Streamlit Web UI
 
 ```bash
-python main.py --no-validate
+streamlit run app.py
 ```
 
-### Command-Line Options
+Three pages:
+- **Demo**: Select a contract, ask a question, see the full pipeline step by step
+- **Batch Evaluation**: Run evaluation over multiple contracts and questions
+- **Dashboard**: Visualize evaluation results (confusion matrix, NLP metrics, latency)
 
-```
-usage: main.py [-h] [--docs DOCS [DOCS ...]] [--query QUERY] [--no-validate]
-               [--ontology-dir ONTOLOGY_DIR]
+### Evaluation Pipeline
 
-Options:
-  --docs DOCS [DOCS ...]    PDF documents to load (default: all PDFs in ./data)
-  --query QUERY             Single query to process (skip interactive mode)
-  --no-validate             Skip ontology validation (RAG only)
-  --ontology-dir DIR        Directory containing LOAN ontology files (default: ./ontologies)
+```bash
+# Full evaluation (100 contracts × 5 questions × 2 conditions = 1000 queries)
+.venv/bin/python evaluation/evaluate.py
+
+# Dry run (print plan, no API calls)
+.venv/bin/python evaluation/evaluate.py --dry-run
+
+# Subset: specific contracts and questions
+.venv/bin/python evaluation/evaluate.py --contracts 001 061 076 --questions Q1 Q3
+
+# OV-RAG only (skip plain RAG baseline)
+.venv/bin/python evaluation/evaluate.py --conditions ovrag
+
+# Resume interrupted run
+.venv/bin/python evaluation/evaluate.py --resume
+
+# Optimized prompts (10 representative contracts)
+.venv/bin/python evaluation/evaluate_optimized_10.py
+
+# Optimized prompts (full 100 contracts)
+.venv/bin/python evaluation/evaluate_optimized_100.py
 ```
 
-## Project Structure
+## Test Data: 100 Synthetic Contracts
 
-```
-project/
-├── data/                    # PDF loan documents for RAG
-├── ontologies/              # LOAN ontology RDF/OWL files
-│   ├── loans general module/
-│   ├── loans specific module/
-│   └── real estate loans module/
-├── main.py                  # CLI entry point
-├── rag_pipeline.py          # Component A: RAG Generator
-├── extractor.py             # Component B: Triple Extractor
-├── validator.py             # Component C: Ontology Validator
-├── setup_ontologies.py      # Ontology download script (NOT FUNCTIONAL - downloads wrong ontology)
-├── test_hermit_fix.py       # Tests for reasoner compatibility
-├── test_extractor_loan_type.py  # Tests for loan type extraction
-├── requirements.txt         # Python dependencies
-├── .env                     # Environment variables (create this)
-└── README.md                # This file
-```
+Generated by `evaluation/generate_test_pdfs.py` with `random.seed(42)` for reproducibility.
+
+| Range | Count | Label | Description |
+|-------|-------|-------|-------------|
+| 001–060 | 60 | CLEAN | Diverse loan types, no ontological contradictions |
+| 061–075 | 15 | CLASH | **Secured vs Unsecured** — e.g., mortgage listed as "unsecured" with collateral |
+| 076–090 | 15 | CLASH | **OpenEnd vs ClosedEnd** — e.g., credit card with fixed maturity date |
+| 091–095 | 5 | CLASH | **Borrower Type** — e.g., ConsumerLoan issued to a corporation |
+| 096–100 | 5 | CLASH | **Lender Type** — e.g., CommercialLoan from a natural person |
+
+Ground truth including reference answers for NLP metrics is stored in `config/contract_ground_truth.json`.
+
+## Evaluation Metrics
+
+The evaluation pipeline measures:
+
+### Clash Detection (OV-RAG condition)
+- **Precision**: Of all answers flagged as inconsistent, how many actually contain clashes?
+- **Recall**: Of all planted clashes, how many were detected?
+- **F1 Score**: Harmonic mean of precision and recall
+- **Confusion Matrix**: TP (clash detected), TN (clean passed), FP (false alarm), FN (missed clash)
+- **Per-clash-type breakdown**: Detection rate for each of the 4 clash types
+
+### Answer Quality (both conditions)
+- **ROUGE-L**: Textual overlap between generated answer and ground truth reference
+- **BERTScore-F1**: Semantic similarity between generated answer and reference
+
+### Efficiency
+- **Latency per query**: RAG time, extraction time, validation time, total time
+- **Latency overhead**: Additional cost of the ontology validation layer vs plain RAG
+
+### Evaluation Results (Optimized Prompts, 10 Contracts)
+
+| Metric | Value |
+|--------|-------|
+| Precision | 0.556 |
+| Recall | 0.200 |
+| F1 | 0.294 |
+| Avg BERTScore-F1 | 0.895 |
+| Avg ROUGE-L | 0.356 |
+| Avg Latency (OV-RAG) | 10.5s |
+| Hard-Reject Rate | 18% |
+
+## LOAN Ontology
+
+The project uses FIBO-based LOAN ontology modules with the following key concepts:
+
+### Classes (Loan Types)
+`Loan`, `ConsumerLoan`, `CommercialLoan`, `Mortgage`, `StudentLoan`, `SubsidizedStudentLoan`, `GreenLoan`, `CardAccount`
+
+### Classes (Credit Types)
+`SecuredLoan`, `UnsecuredLoan`, `OpenEndCredit`, `ClosedEndCredit`
+
+### Classes (Entities)
+`Lender`, `Borrower`, `Corporation`, `FinancialInstitution`, `NaturalPerson`
+
+### Key Properties
+`hasLender`, `hasBorrower`, `hasCollateral`, `hasLoanAmount`, `hasInterestRate`, `hasMaturityDate`, `rdf:type`
+
+### Disjointness Axioms (Critical for Clash Detection)
+- `SecuredLoan` ⊥ `UnsecuredLoan` — a loan cannot be both secured and unsecured
+- `OpenEndCredit` ⊥ `ClosedEndCredit` — a loan cannot be both revolving and fixed-term
+- `ConsumerLoan` ⊥ `CommercialLoan` — consumer and commercial are distinct categories
 
 ## How It Works
 
-### 1. RAG Pipeline (Component A)
-
-The RAG pipeline generates answers using standard retrieval-augmented generation from loan PDF documents.
+### 1. RAG Generation (Component A)
 
 ```python
 from rag_pipeline import RAGPipeline
 
-pipeline = RAGPipeline()
-pipeline.load_documents(["data/loan_agreement.pdf"])
-result = pipeline.query("What type of loan is this?")
+rag = RAGPipeline(api_key="sk-...")
+rag.load_documents(["data/Contract_061.pdf"])
+result = rag.query("Is this loan secured or unsecured?")
 print(result["answer"])
 ```
 
-**Note**: Temperature is set to 0.7 to encourage creative responses that may contain hallucinations for testing purposes.
+The PDF is chunked (1000 chars, 200 overlap), embedded with `text-embedding-3-small`, stored in ChromaDB, and the top-3 chunks are retrieved as context for GPT-4o.
 
 ### 2. Triple Extraction (Component B)
-
-The extractor uses a specialized LLM prompt to map natural language to LOAN ontology-compliant triples:
 
 ```python
 from extractor import TripleExtractor
 
 extractor = TripleExtractor()
-result = extractor.extract_triples("The loan is a Subsidized Student Loan for education purposes.")
-
-# Output: [{"sub": "TheLoan", "pred": "rdf:type", "obj": "SubsidizedStudentLoan", ...}]
+# Extract from LLM answer
+result = extractor.extract_triples(answer_text)
+# Extract from source documents (preserves contradictions)
+context_result = extractor.extract_from_context(source_text)
 ```
 
-The extractor recognizes loan-specific entities like:
-- Loan types (StudentLoan, Mortgage, CommercialLoan, etc.)
-- Relationships (hasLender, hasBorrower, hasGuarantor)
-- Type assertions (rdf:type for classifying loans)
+Produces JSON triples like:
+```json
+{"sub": "TheLoan", "pred": "rdf:type", "obj": "SecuredLoan", "sub_type": "Loan", "obj_type": "Class"}
+{"sub": "TheLoan", "pred": "rdf:type", "obj": "UnsecuredLoan", "sub_type": "Loan", "obj_type": "Class"}
+```
+
+The extractor uses a dynamic prompt generated from the ontology vocabulary (`config/vocabulary_cache.json`) if available, or falls back to a static prompt.
 
 ### 3. Ontology Validation (Component C)
-
-The validator checks triples against the LOAN ontology using HermiT or Pellet reasoner:
 
 ```python
 from validator import OntologyValidator
 
 validator = OntologyValidator()
-result = validator.validate_triples(triples)
+result = validator.validate_triples(merged_triples)
 
 if not result.is_valid:
-    print(f"Inconsistency detected: {result.explanation}")
+    print(f"Inconsistency: {result.explanation}")
+    # e.g., "SecuredLoan and UnsecuredLoan are disjoint classes"
 ```
 
-### Types of Inconsistencies Detected
+The validator:
+1. Loads the LOAN ontology RDF files
+2. Creates OWL individuals from the extracted triples
+3. Runs the Pellet reasoner to check for logical consistency
+4. Performs additional role-constraint checks (borrower/lender type rules)
 
-The system detects several types of logical violations:
+### 4. Correction Loop
 
-1. **Disjointness Violations**
-   - Example: An entity cannot be both a ConsumerLoan and a CommercialLoan
-   - The ontology defines these classes as mutually exclusive
+When validation fails, the system re-prompts GPT-4o with the validation feedback:
 
-2. **Cardinality Violations**
-   - Example: A property that should have exactly one value has multiple
-   - Violating max/min cardinality constraints defined in the ontology
-
-3. **Domain/Range Violations**
-   - Example: Applying `hasLender` to an entity that isn't a Loan
-   - Properties have specific domain and range restrictions
-
-4. **Type Inconsistencies**
-   - Example: Asserting incompatible types for the same entity
-   - An entity cannot be both a StudentLoan and a Mortgage simultaneously
-
-## Known Issues and Limitations
-
-### 1. HermiT Reasoner langString Incompatibility
-
-**Issue**: The HermiT reasoner does not support the `langString` datatype that appears in many RDF ontologies with language-tagged literals (e.g., `"Text"@en`).
-
-**Symptoms**: When running validation, you may see:
 ```
-[!] HermiT cannot handle langString datatype in ontology schema
+"Your previous answer was flagged as logically inconsistent:
+ SecuredLoan and UnsecuredLoan are disjoint — a loan cannot be both.
+ Please correct your answer..."
 ```
 
-**Workaround**: The system automatically falls back to the Pellet reasoner when HermiT fails due to langString issues. This is handled transparently in validator.py:230-294.
-
-**Impact**: Validation still works, but uses Pellet instead of HermiT. Pellet is also a complete OWL-DL reasoner and provides equivalent inconsistency detection.
-
-### 2. setup_ontologies.py Downloads Wrong Ontology
-
-**Issue**: The `setup_ontologies.py` script downloads FIBO (Financial Industry Business Ontology) files, but the validator expects LOAN ontology files.
-
-**Impact**: Running `python setup_ontologies.py` will download files that the system cannot use.
-
-**Workaround**: You must manually obtain the LOAN ontology files and place them in the correct directory structure (see Installation Step 5).
-
-### 3. Memory Requirements for Reasoning
-
-**Issue**: Description Logic reasoning can be memory-intensive, especially with large ontologies.
-
-**Configuration**: The validator sets Java heap memory to 4GB in validator.py:33:
-```python
-owlready2.reasoning.JAVA_MEMORY = 4000
-```
-
-**Workaround**: If you encounter memory errors, you can:
-- Reduce the ontology scope (load fewer modules)
-- Increase the memory limit if your system has more RAM
-- Process fewer documents at once
-
-### 4. Temperature Setting Encourages Hallucinations
-
-**Not a Bug**: The RAG pipeline uses `temperature=0.7` (rag_pipeline.py:59) intentionally to encourage creative/hallucinated responses for testing the validation layer.
-
-**Note**: For production use, you should set `temperature=0.0` or lower values for more deterministic outputs.
-
-## Testing the System
-
-### Test with Valid Loan Statement
-
-```bash
-python test_hermit_fix.py
-```
-
-This tests extraction and validation of a valid loan type statement.
-
-### Test Individual Components
-
-Each component can be tested independently:
-
-```bash
-# Test RAG Pipeline only
-python rag_pipeline.py
-
-# Test Triple Extractor only
-python extractor.py
-
-# Test Validator only
-python validator.py
-```
-
-### Example Test Case
-
-Create a test document or use the provided sample:
-
-```python
-from main import OVRAGSystem
-
-system = OVRAGSystem()
-system.load_documents(["data/facility_agreement_loan.pdf"])
-
-# Valid query
-result = system.process_query("What type of loan is described in the document?")
-
-# The validator should accept valid loan classifications
-# and reject logically inconsistent statements
-```
+Up to 3 correction attempts. If still invalid → **Hard-Reject**.
 
 ## Configuration
 
-Key parameters can be adjusted in the code:
+| Parameter | Location | Default | Description |
+|-----------|----------|---------|-------------|
+| `OPENAI_API_KEY` | `.env` | — | OpenAI API key |
+| `temperature` | `src/rag_pipeline.py` | 0.7 | RAG generation temperature |
+| `top_k` | `src/rag_pipeline.py` | 3 | Number of chunks to retrieve |
+| `chunk_size` | `src/rag_pipeline.py` | 1000 | Text chunk size |
+| `MAX_CORRECTION_ATTEMPTS` | `main.py` | 3 | Max correction loop iterations |
+| `JAVA_MEMORY` | `src/validator.py` | 4000 | Java heap for Pellet (MB) |
 
-**RAG Configuration** (rag_pipeline.py):
-```python
-temperature = 0.7      # Higher = more creative/risky answers
-chunk_size = 1000      # Size of text chunks
-chunk_overlap = 200    # Overlap between chunks
-top_k = 3              # Number of chunks to retrieve
-```
+## Running Tests
 
-**LLM Models** (main.py):
-```python
-rag_model = "gpt-4o"              # For answer generation
-extraction_model = "gpt-4o"        # For triple extraction
-embedding_model = "text-embedding-3-small"  # For embeddings
-```
-
-**Java Memory for Reasoner** (validator.py):
-```python
-owlready2.reasoning.JAVA_MEMORY = 4000  # 4GB heap size
-```
-
-## Troubleshooting
-
-### "LOAN ontology files not found"
-
-Ensure your ontology files are in the correct directory structure:
 ```bash
-ontologies/
-├── loans general module/Loans.rdf
-├── loans specific module/*.rdf
-└── real estate loans module/Mortgages.rdf
+# Loan type extraction
+python tests/test_extractor_loan_type.py
+
+# Reasoner compatibility
+python tests/test_hermit_fix.py
+
+# Manual OWL clash (no API key needed)
+python tests/test_manual_clash.py
+
+# End-to-end correction loop
+python tests/test_validation_loop.py
+
+# Vocabulary scanner
+python tests/test_vocabulary_scanner.py
 ```
 
-The `setup_ontologies.py` script does NOT download the correct files. You must obtain LOAN ontology files separately.
+## Known Limitations
 
-### "OpenAI API key not found"
+1. **HermiT reasoner retired**: HermiT does not support `langString` datatypes in FIBO RDF files. The system uses **Pellet** exclusively.
 
-Set your API key:
-```bash
-export OPENAI_API_KEY='your-key-here'
-# Or create a .env file with: OPENAI_API_KEY=your-key-here
-```
+2. **Recall depends on extraction quality**: If the extractor fails to produce dual-type triples (e.g., both `SecuredLoan` and `UnsecuredLoan`), the validator cannot detect the clash. Optimized prompts improve recall from 0% to 20%.
 
-### "No PDF files found"
+3. **Java dependency**: The Pellet reasoner requires a Java runtime. Tested with Java 25.
 
-Add loan PDF documents to the `./data` directory:
-```bash
-mkdir -p data
-cp your_loan_agreement.pdf data/
-```
+4. **Rate limits**: The evaluation pipeline includes `tenacity` retry (5 attempts, exponential backoff) and a 2-second cooldown between API calls to handle OpenAI 429 errors.
 
-### Reasoning Takes Too Long
-
-The reasoner can be slow with complex ontologies. To improve performance:
-- Reduce the number of ontology modules loaded
-- Increase Java heap memory if you have sufficient RAM
-- Consider using only essential ontology modules for your use case
-
-### Memory Issues
-
-If you encounter out-of-memory errors:
-1. Increase `owlready2.reasoning.JAVA_MEMORY` in validator.py:33
-2. Reduce chunk size in RAG pipeline
-3. Process fewer documents at once
-4. Reduce top-k retrieval parameter
-
-### HermiT Reasoner Errors
-
-If you see HermiT errors about langString:
-- This is expected behavior with ontologies containing language tags
-- The system automatically falls back to Pellet reasoner
-- Validation still works correctly
-- No action required
+5. **Memory**: Pellet reasoning requires ~4 GB Java heap. Configurable via `JAVA_MEMORY`.
 
 ## Research Context
 
-This project is part of a Bachelor Thesis investigating:
+This project investigates three research questions:
 
-1. **Logical Consistency in LLMs**: How often do LLMs violate domain-specific logical constraints in the loan/financial domain?
-2. **Ontology-Based Validation**: Can formal ontologies effectively detect these violations?
-3. **RAG Enhancement**: Does adding an ontology validation layer improve RAG reliability for financial compliance?
+1. **Can formal ontologies detect logical hallucinations in RAG-generated financial text?**
+   Yes — the Pellet reasoner detects disjointness violations (SecuredLoan ⊥ UnsecuredLoan, OpenEndCredit ⊥ ClosedEndCredit) when the extractor produces the correct triples.
 
-### Evaluation Metrics
+2. **Does a correction loop improve answer quality?**
+   Partially — the correction success rate is ~10%, meaning most clashes persist through all 3 correction attempts and result in a hard-reject.
 
-The system can be evaluated on:
-- **Precision**: False positive rate (valid answers marked invalid)
-- **Recall**: False negative rate (invalid answers marked valid)
-- **Explanation Quality**: Usefulness of inconsistency explanations
-- **Latency**: Time overhead of validation layer
-
-## Future Work
-
-Potential extensions:
-
-1. **Automatic Correction**: Not just detect, but suggest corrected answers
-2. **Expanded Ontology Coverage**: Include more loan types and financial instruments
-3. **Other Domain Ontologies**: Test with different domain ontologies (medical, legal, etc.)
-4. **User Feedback Loop**: Learn from user corrections to improve extraction
-5. **Performance Optimization**: Caching, incremental reasoning, parallel processing
-6. **Fine-tuned Extractor**: Train a specialized model for LOAN ontology extraction
-7. **Fix setup_ontologies.py**: Create proper script to obtain LOAN ontology files
-
-## Contributing
-
-This is a thesis project, but suggestions and issues are welcome!
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+3. **What is the latency cost of ontology validation?**
+   The validation layer adds ~5–15 seconds per query depending on the number of extracted triples and whether corrections are triggered.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License.
 
 ## References
 
-- **Owlready2**: Python package for ontology-oriented programming - https://owlready2.readthedocs.io/
-- **LangChain**: Framework for LLM applications - https://langchain.com/
-- **HermiT Reasoner**: OWL reasoner - http://www.hermit-reasoner.com/
-- **Pellet Reasoner**: Alternative OWL-DL reasoner - https://github.com/stardog-union/pellet
-- **OpenAI API**: https://platform.openai.com/docs/api-reference
-
-## Citation
-
-If you use this work in your research, please cite:
-
-```bibtex
-@thesis{yourname2024,
-  title={Enhancing Logical Consistency of Large Language Models with Ontology-Grounded Retrieval Augmented Generation},
-  author={Your Name},
-  year={2024},
-  school={Your University},
-  type={Bachelor's Thesis}
-}
-```
-
-## Contact
-
-For questions or feedback:
-- Email: your.email@example.com
-- GitHub Issues: https://github.com/yourusername/repo/issues
-
-## Acknowledgments
-
-- LOAN ontology development team
-- Owlready2 maintainers
-- LangChain community
-- OpenAI for API access
-- HermiT and Pellet reasoner developers
+- [Owlready2](https://owlready2.readthedocs.io/) — Python ontology-oriented programming
+- [LangChain](https://langchain.com/) — LLM application framework
+- [Pellet Reasoner](https://github.com/stardog-union/pellet) — OWL-DL reasoner
+- [FIBO](https://spec.edmcouncil.org/fibo/) — Financial Industry Business Ontology
+- [OpenAI API](https://platform.openai.com/docs/api-reference)
+- [ChromaDB](https://www.trychroma.com/) — Vector database
