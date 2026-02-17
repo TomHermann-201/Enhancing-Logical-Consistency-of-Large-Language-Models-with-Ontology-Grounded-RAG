@@ -9,9 +9,15 @@ import contextlib
 import io
 import json
 import os
+import sys
 import tempfile
 import time
 from pathlib import Path
+
+# Add src/ and evaluation/ to import path
+_app_root = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, os.path.join(_app_root, 'src'))
+sys.path.insert(0, os.path.join(_app_root, 'evaluation'))
 
 import pandas as pd
 import plotly.express as px
@@ -54,7 +60,7 @@ def get_extractor():
 
 
 def get_ground_truth() -> dict:
-    gt_path = Path("contract_ground_truth.json")
+    gt_path = Path("config/contract_ground_truth.json")
     if gt_path.exists():
         with open(gt_path, "r") as f:
             return json.load(f)
@@ -119,7 +125,7 @@ def page_demo():
     if source_mode == "Vorhandener Vertrag":
         contracts = list_contracts()
         if not contracts:
-            st.warning("Keine Verträge gefunden. Bitte zuerst `python generate_test_pdfs.py` ausführen.")
+            st.warning("Keine Verträge gefunden. Bitte zuerst `python evaluation/generate_test_pdfs.py` ausführen.")
             return
         gt = get_ground_truth()
 
@@ -362,7 +368,7 @@ def page_batch():
 
     contracts = list_contracts()
     if not contracts:
-        st.warning("Keine Verträge gefunden. Bitte `python generate_test_pdfs.py` ausführen.")
+        st.warning("Keine Verträge gefunden. Bitte `python evaluation/generate_test_pdfs.py` ausführen.")
         return
 
     st.divider()
@@ -475,9 +481,9 @@ def page_batch():
         st.session_state["batch_done"] = True
 
     # Link to dashboard
-    if st.session_state.get("batch_done") or Path("evaluation_output/evaluation_results.json").exists():
+    if st.session_state.get("batch_done") or Path("evaluation/results/baseline/evaluation_results.json").exists():
         st.divider()
-        st.info("Ergebnisse gespeichert in `evaluation_output/`. Wechsle zum **Dashboard** um die Ergebnisse zu visualisieren.")
+        st.info("Ergebnisse gespeichert in `evaluation/results/baseline/`. Wechsle zum **Dashboard** um die Ergebnisse zu visualisieren.")
 
 
 # ===================================================================
@@ -487,7 +493,7 @@ def page_dashboard():
     st.title("Evaluation Dashboard")
     st.markdown("Visualisierung der Evaluationsergebnisse — wie gut erkennt OV-RAG die logischen Widersprüche?")
 
-    results_path = Path("evaluation_output/evaluation_results.json")
+    results_path = Path("evaluation/results/baseline/evaluation_results.json")
     if not results_path.exists():
         st.warning("Keine Ergebnisse gefunden. Bitte zuerst eine Batch Evaluation durchführen.")
         return
@@ -799,7 +805,7 @@ def page_dashboard():
         )
 
     with col_d2:
-        csv_path = Path("evaluation_output/evaluation_per_query.csv")
+        csv_path = Path("evaluation/results/baseline/evaluation_per_query.csv")
         if csv_path.exists():
             st.download_button(
                 "CSV (pro Query)",
@@ -809,7 +815,7 @@ def page_dashboard():
             )
 
     with col_d3:
-        clash_csv = Path("evaluation_output/evaluation_per_clash_type.csv")
+        clash_csv = Path("evaluation/results/baseline/evaluation_per_clash_type.csv")
         if clash_csv.exists():
             st.download_button(
                 "CSV (pro Clash-Typ)",
@@ -819,7 +825,7 @@ def page_dashboard():
             )
 
     with col_d4:
-        ab_csv = Path("evaluation_output/evaluation_ab_comparison.csv")
+        ab_csv = Path("evaluation/results/baseline/evaluation_ab_comparison.csv")
         if ab_csv.exists():
             st.download_button(
                 "CSV (A/B Vergleich)",

@@ -18,6 +18,9 @@ import time
 from pathlib import Path
 from typing import List, Optional
 
+# Add src/ to import path
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src'))
+
 from dotenv import load_dotenv
 
 from rag_pipeline import RAGPipeline

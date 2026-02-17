@@ -21,6 +21,10 @@ import os
 import sys
 from pathlib import Path
 
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.insert(0, os.path.join(_root, 'src'))
+sys.path.insert(0, _root)
+
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -48,14 +52,14 @@ def check_prerequisites():
         print("[X] OPENAI_API_KEY not set")
         sys.exit(1)
 
-    ontology_path = Path("ontologies")
+    ontology_path = Path(os.path.join(_root, "ontologies"))
     if not ontology_path.exists() or not any(ontology_path.glob("**/*.rdf")):
         print("[X] LOAN ontology files not found in ./ontologies/")
         sys.exit(1)
 
     # Check for test PDFs
-    contract_001 = Path("data/Contract_001.pdf")
-    contract_010 = Path("data/Contract_010.pdf")
+    contract_001 = Path(os.path.join(_root, "data/Contract_001.pdf"))
+    contract_010 = Path(os.path.join(_root, "data/Contract_010.pdf"))
 
     if not contract_001.exists():
         print(f"[X] Test document not found: {contract_001}")
@@ -82,7 +86,7 @@ def test_scenario_1_first_attempt_pass():
     print(SEPARATOR)
 
     system = OVRAGSystem()
-    system.load_documents(["data/Contract_001.pdf"])
+    system.load_documents([os.path.join(_root, "data/Contract_001.pdf")])
 
     result = system.process_query("Who is the borrower of this consumer loan?")
 
@@ -150,7 +154,7 @@ def test_scenario_2_correction_loop():
     print(SEPARATOR)
 
     system = OVRAGSystem()
-    system.load_documents(["data/Contract_010.pdf"])
+    system.load_documents([os.path.join(_root, "data/Contract_010.pdf")])
 
     result = system.process_query(
         "Who is the lender for this commercial loan?"
@@ -206,7 +210,7 @@ def test_scenario_3_logging_structure():
     print(SEPARATOR)
 
     system = OVRAGSystem()
-    system.load_documents(["data/Contract_001.pdf"])
+    system.load_documents([os.path.join(_root, "data/Contract_001.pdf")])
 
     result = system.process_query(
         "Who is the borrower of this loan and what type of loan is it? Is it secured or unsecured?"
@@ -259,7 +263,7 @@ def test_scenario_4_phase2_fields():
     print(SEPARATOR)
 
     system = OVRAGSystem()
-    system.load_documents(["data/Contract_001.pdf"])
+    system.load_documents([os.path.join(_root, "data/Contract_001.pdf")])
 
     result = system.process_query("What is the interest rate?")
 

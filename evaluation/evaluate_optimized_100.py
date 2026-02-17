@@ -3,6 +3,13 @@ evaluate_optimized_100.py
 Full 100-contract evaluation with optimized extraction prompts.
 """
 import os, sys
+
+# Add project root and src/ to import path
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.insert(0, os.path.join(_root, 'src'))
+sys.path.insert(0, _root)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 from dotenv import load_dotenv
 load_dotenv()
 if not os.getenv("OPENAI_API_KEY"):
@@ -29,7 +36,7 @@ runner = EvaluationRunner(
     contracts=sorted(GROUND_TRUTH.keys()),
     questions=[q["id"] for q in QUESTIONS],
     conditions=["ovrag", "plain"],
-    output_dir="evaluation_optimized_100",
+    output_dir=os.path.join(_root, "evaluation", "results", "optimized_100"),
     resume=True,
 )
 runner.run()

@@ -19,6 +19,8 @@ from typing import Dict, List, Optional, Set
 from dataclasses import dataclass, asdict
 from xml.etree import ElementTree as ET
 
+# Project root (parent of src/)
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 
 # XML Namespaces für RDF/OWL Parsing
 NAMESPACES = {
@@ -77,7 +79,7 @@ class VocabularyScanner:
     Scannt LOAN-Ontologie RDF-Dateien und extrahiert das Vokabular.
     """
 
-    def __init__(self, ontology_dir: str = "ontologies"):
+    def __init__(self, ontology_dir: str = os.path.join(_root, "ontologies")):
         """
         Initialisiert den Scanner.
 
@@ -427,7 +429,7 @@ If no triples can be extracted, return: {{"triples": []}}
 """
         return prompt
 
-    def save_cache(self, output_path: str = "vocabulary_cache.json"):
+    def save_cache(self, output_path: str = os.path.join(_root, "config", "vocabulary_cache.json")):
         """
         Speichert das Vokabular als JSON-Cache.
 
@@ -444,7 +446,7 @@ If no triples can be extracted, return: {{"triples": []}}
         return output_path
 
 
-def scan_and_cache(ontology_dir: str = "ontologies", cache_path: str = "vocabulary_cache.json") -> dict:
+def scan_and_cache(ontology_dir: str = os.path.join(_root, "ontologies"), cache_path: str = os.path.join(_root, "config", "vocabulary_cache.json")) -> dict:
     """
     Convenience-Funktion: Scannt Ontologien und speichert Cache.
 
@@ -461,7 +463,7 @@ def scan_and_cache(ontology_dir: str = "ontologies", cache_path: str = "vocabula
     return vocabulary
 
 
-def load_cached_prompt(cache_path: str = "vocabulary_cache.json") -> Optional[str]:
+def load_cached_prompt(cache_path: str = os.path.join(_root, "config", "vocabulary_cache.json")) -> Optional[str]:
     """
     Lädt den generierten Prompt aus dem Cache.
 
@@ -491,7 +493,7 @@ if __name__ == "__main__":
     print()
 
     # Scanne Ontologien
-    scanner = VocabularyScanner("ontologies")
+    scanner = VocabularyScanner()
     vocabulary = scanner.scan_all()
 
     # Generiere und zeige Prompt

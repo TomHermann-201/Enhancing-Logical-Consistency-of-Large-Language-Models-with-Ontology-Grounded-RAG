@@ -23,7 +23,7 @@ from openai import OpenAI
 # Versuche dynamischen Prompt aus Cache zu laden
 def _load_dynamic_prompt() -> Optional[str]:
     """Lädt den dynamisch generierten Prompt aus dem Vokabular-Cache."""
-    cache_path = "vocabulary_cache.json"
+    cache_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'config', 'vocabulary_cache.json')
     if os.path.exists(cache_path):
         try:
             with open(cache_path, 'r', encoding='utf-8') as f:

@@ -24,6 +24,12 @@ import json
 import time
 import copy
 from pathlib import Path
+
+# Add project root and src/ to import path
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.insert(0, os.path.join(_root, 'src'))
+sys.path.insert(0, _root)
+
 from dotenv import load_dotenv
 
 from rag_pipeline import RAGPipeline
@@ -398,7 +404,7 @@ def print_report(results):
               f"{'YES' if not orig_ok and opt_ok else 'no'}")
 
 
-def save_results(results, path="recall_improvement_results.json"):
+def save_results(results, path=os.path.join(_root, "evaluation", "results", "recall_improvement_results.json")):
     """Save results to JSON (triples are already serializable dicts)."""
     with open(path, "w", encoding="utf-8") as f:
         json.dump(results, f, indent=2, ensure_ascii=False)
@@ -420,7 +426,7 @@ def main():
 
     for tc in TEST_CASES:
         cid = tc["contract_id"]
-        pdf_path = f"data/{cid}.pdf"
+        pdf_path = os.path.join(_root, "data", f"{cid}.pdf")
 
         if not Path(pdf_path).exists():
             print(f"[X] {pdf_path} not found, skipping")

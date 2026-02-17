@@ -16,6 +16,9 @@ import re
 import shutil
 import tempfile
 from pathlib import Path
+
+# Project root (parent of src/)
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 from typing import Dict, List, Tuple, Optional
 from dataclasses import dataclass
 
@@ -62,7 +65,7 @@ class OntologyValidator:
     logical consistency of LLM-generated financial/loan statements.
     """
 
-    def __init__(self, ontology_dir: str = "ontologies"):
+    def __init__(self, ontology_dir: str = os.path.join(_root, "ontologies")):
         """
         Initialize the validator with LOAN ontologies.
 
@@ -852,7 +855,7 @@ class OntologyValidator:
 def validate_answer(
     answer: str,
     triples: List[Dict],
-    ontology_dir: str = "ontologies"
+    ontology_dir: str = os.path.join(_root, "ontologies")
 ) -> ValidationResult:
     """
     Convenience function to validate an answer with triples.

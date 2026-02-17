@@ -19,6 +19,12 @@ import os
 import sys
 from dotenv import load_dotenv
 
+# Add project root and src/ to import path
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.insert(0, os.path.join(_root, 'src'))
+sys.path.insert(0, _root)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+
 load_dotenv()
 
 if not os.getenv("OPENAI_API_KEY"):
@@ -70,7 +76,7 @@ CONTRACTS = [
     "061", "070", "076", "091", "096",
 ]
 
-OUTPUT_DIR = "evaluation_optimized_10"
+OUTPUT_DIR = os.path.join(_root, "evaluation", "results", "optimized_10")
 
 runner = EvaluationRunner(
     contracts=CONTRACTS,

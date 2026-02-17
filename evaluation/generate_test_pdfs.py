@@ -20,11 +20,16 @@ Also exports contract_ground_truth.json for evaluate.py.
 
 import json
 import os
+import sys
 import random
 from dataclasses import dataclass, field
 from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Dict, List, Optional
+
+# Add project root to path
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.insert(0, _root)
 
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_JUSTIFY
@@ -792,7 +797,7 @@ def generate_all_contracts() -> List[LoanContract]:
     return contracts
 
 
-def generate_all_pdfs(output_dir: str = "data") -> list:
+def generate_all_pdfs(output_dir: str = os.path.join(_root, "data")) -> list:
     """Generate all 100 test PDFs and ground truth JSON."""
     contracts = generate_all_contracts()
 
@@ -822,15 +827,14 @@ def generate_all_pdfs(output_dir: str = "data") -> list:
     print(f"COMPLETE: {len(generated)}/{len(contracts)} PDFs generated in {output_dir}/")
     print("=" * 70)
 
-    # Export ground truth
-    gt_path = os.path.join(output_dir, "..", "contract_ground_truth.json")
-    # Put ground truth in project root
-    export_ground_truth(contracts, "contract_ground_truth.json")
+    # Export ground truth to config/
+    gt_path = os.path.join(_root, "config", "contract_ground_truth.json")
+    export_ground_truth(contracts, gt_path)
 
     return generated
 
 
-def verify_pdfs(pdf_dir: str = "data") -> dict:
+def verify_pdfs(pdf_dir: str = os.path.join(_root, "data")) -> dict:
     """Verify the generated PDFs."""
     print()
     print("=" * 70)
@@ -865,4 +869,4 @@ if __name__ == "__main__":
     verify_pdfs()
     print()
     print("The PDFs can now be used for the OV-RAG benchmark.")
-    print("Ground truth: contract_ground_truth.json")
+    print("Ground truth: config/contract_ground_truth.json")

@@ -2,6 +2,12 @@
 Test extractor with loan type statements
 """
 import os
+import sys
+
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.insert(0, os.path.join(_root, 'src'))
+sys.path.insert(0, _root)
+
 from dotenv import load_dotenv
 from extractor import TripleExtractor
 

@@ -40,6 +40,10 @@ ENV/
 ontologies/*.rdf
 ontologies/*.owl
 
+# SQLite cache
+*.sqlite3
+*.sqlite3-journal
+
 # ChromaDB
 chroma_db/
 *.chroma

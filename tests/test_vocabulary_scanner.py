@@ -4,9 +4,14 @@ Tests für den Vocabulary Scanner
 """
 
 import os
+import sys
 import json
 import tempfile
 from pathlib import Path
+
+_root = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+sys.path.insert(0, os.path.join(_root, 'src'))
+sys.path.insert(0, _root)
 
 from vocabulary_scanner import (
     VocabularyScanner,
