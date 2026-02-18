@@ -35,7 +35,8 @@
       "Bash(.venv/bin/python:*)",
       "Bash(git -C /Users/tomhermann/Desktop/Bachelor-Arbeit/Enhancing-Logical-Consistency-of-Large-Language-Models-with-Ontology-Grounded-RAG remote -v)",
       "Bash(git mv:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(/Users/tomhermann/Desktop/Bachelor-Arbeit/Enhancing-Logical-Consistency-of-Large-Language-Models-with-Ontology-Grounded-RAG/.venv/bin/pip list:*)"
     ]
   }
 }

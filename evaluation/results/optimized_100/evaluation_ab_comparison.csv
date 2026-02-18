@@ -1,0 +1,6 @@
+metric,plain_rag,ovrag,difference
+Avg ROUGE-L,0.3460,0.3028,-0.0432
+Avg BERTScore-F1,0.8953,0.8864,-0.0089
+Avg Latency,1.64s,100.94s,+99.30s (6054.9%)
+Clash Detection Rate,N/A (no validator),0.5477,—
+Hard-Reject Rate,N/A,0.2287,—
